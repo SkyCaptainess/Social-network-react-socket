@@ -1,3 +1,7 @@
 node_modules
 .DS_Store
 secrets.json
+notes.md
+src/start-ref.js
+src/cute-animals.js
+src/hello-world.js
