@@ -48,7 +48,10 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                {this.state.error && <div className="error">Oops!</div>}
+                <div className="title">
+                    <h1>Hello there.</h1>
+                </div>
+
                 <div className="login">
                     <div className="inputDiv">
                         <input
@@ -64,6 +67,11 @@ export default class Login extends React.Component {
                         />
                         <button onClick={() => this.submit()}>submit</button>
                     </div>
+                    {this.state.error && (
+                        <div className="error title">
+                            <h1>Oops! Something went wrong.</h1>
+                        </div>
+                    )}
                 </div>
             </div>
         );
