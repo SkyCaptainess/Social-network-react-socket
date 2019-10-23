@@ -16,12 +16,6 @@ export default class Register extends React.Component {
     }
 
     submit() {
-        console.log("is it possible to log anything here?");
-        // if (this.state.email.indexOf("@") == -1) {
-        //     this.setState({
-        //         error: true
-        //     });
-        // }
         axios
             .post("/register", {
                 first: this.state.first,
@@ -73,6 +67,7 @@ export default class Register extends React.Component {
                         />
                         <input
                             name="password"
+                            type="password"
                             placeholder="password"
                             onChange={e => this.handleChange(e)}
                         />

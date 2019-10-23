@@ -5,9 +5,8 @@ import Welcome from "./welcome";
 
 //use the url to determine if the user is logged in
 const userIsLoggedIn = location.pathname != "/welcome";
+
 let elem;
-// let a = 1;
-// if (a) {
 if (!userIsLoggedIn) {
     elem = <Welcome />;
 } else {

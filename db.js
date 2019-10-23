@@ -24,12 +24,3 @@ exports.getPassword = email => {
         [email]
     );
 };
-
-exports.getUserId = id => {
-    return db.query(
-        `
-        SELECT user_id FROM signatures WHERE user_id = $1
-        `,
-        [id]
-    );
-};

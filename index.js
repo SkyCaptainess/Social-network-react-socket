@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const { hash, compare } = require("./passwordModules");
-const { register, getPassword, getUserId } = require("./db");
+const { register, getPassword } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 
