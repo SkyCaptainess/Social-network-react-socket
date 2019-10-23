@@ -15,3 +15,21 @@ exports.register = (first, last, email, password) => {
         [first, last, email, password]
     );
 };
+
+exports.getPassword = email => {
+    return db.query(
+        `
+        SELECT password, id FROM users WHERE email = $1
+        `,
+        [email]
+    );
+};
+
+exports.getUserId = id => {
+    return db.query(
+        `
+        SELECT user_id FROM signatures WHERE user_id = $1
+        `,
+        [id]
+    );
+};

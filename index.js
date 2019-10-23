@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const { hash, compare } = require("./passwordModules");
-const { register } = require("./db");
+const { register, getPassword, getUserId } = require("./db");
 const cookieSession = require("cookie-session");
+const csurf = require("csurf");
 
 app.use(compression());
 
@@ -17,6 +18,12 @@ app.use(
 );
 
 app.use(express.json());
+app.use(csurf());
+
+app.use(function(req, res, next) {
+    res.cookie("mytoken", req.csrfToken());
+    next();
+});
 
 if (process.env.NODE_ENV != "production") {
     app.use(
@@ -40,7 +47,7 @@ app.get("/welcome", function(req, res) {
 app.post("/register", (req, res) => {
     console.log("req body ");
     let firstName = req.body.first;
-    console.log("getting first name: ", firstName);
+    // console.log("getting first name: ", firstName);
     let lastName = req.body.last;
     let email = req.body.email;
     let origPswd = req.body.password;
@@ -54,18 +61,53 @@ app.post("/register", (req, res) => {
 
         .then(password => {
             console.log("testing ", password);
-            register(firstName, lastName, email, password)
-                .then(({ rows }) => {
-                    console.log("Am i getting rows?", rows);
-                    req.session.userId = rows[0].id;
-                    res.json({
-                        success: true
-                    });
-                })
-                .catch(err => {
-                    console.log(err);
-                    res.render("registration", { error: true });
+            register(firstName, lastName, email, password).then(({ rows }) => {
+                console.log("Am i getting rows?", rows);
+                req.session.userId = rows[0].id;
+                res.json({
+                    success: true
                 });
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
+app.post("/login", (req, res) => {
+    let id;
+    let email = req.body.email;
+    let logPass = req.body.password;
+    getPassword(email)
+        .then(({ rows }) => {
+            let receivedPass = rows[0].password;
+            let receivedId = rows[0].id;
+            console.log("Top received ID: ", receivedId);
+            console.log("receivedPass: ", receivedPass);
+            let isMatch = compare(logPass, receivedPass);
+            id = receivedId;
+            // let returnArray = [isMatch, receivedId];
+            // return returnArray;
+
+            return isMatch;
+        })
+        .then(isMatch => {
+            console.log("I'm in then isMatch");
+            // if (isMatch && !req.session.signedId) {
+            if (isMatch) {
+                console.log("is match id: ", id);
+                req.session.userId = id;
+                res.json({
+                    success: true
+                });
+            } else {
+                res.sendStatus(500);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.sendStatus(500);
         });
 });
 

@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "./axios";
-import { Link } from "react-router-dom";
 
-export default class Register extends React.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -23,9 +22,7 @@ export default class Register extends React.Component {
         //     });
         // }
         axios
-            .post("/register", {
-                first: this.state.first,
-                last: this.state.last,
+            .post("/login", {
                 email: this.state.email,
                 password: this.state.password
             })
@@ -33,9 +30,7 @@ export default class Register extends React.Component {
                 console.log("data is back: ", data);
                 if (data.success) {
                     console.log("data success: ", data.success);
-                    setTimeout(function() {
-                        location.replace("/");
-                    }, 5000);
+                    location.replace("/");
                 } else {
                     this.setState({
                         error: true
@@ -54,30 +49,19 @@ export default class Register extends React.Component {
         return (
             <div>
                 {this.state.error && <div className="error">Oops!</div>}
-                <div className="welcome">
+                <div className="login">
                     <div className="inputDiv">
                         <input
-                            name="first"
-                            placeholder="first"
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            name="last"
-                            placeholder="last"
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            name="email"
                             placeholder="email"
+                            name="email"
                             onChange={e => this.handleChange(e)}
                         />
                         <input
-                            name="password"
                             placeholder="password"
+                            name="password"
                             onChange={e => this.handleChange(e)}
                         />
                         <button onClick={() => this.submit()}>submit</button>
-                        <Link to="/login">Click here to Log in!</Link>
                     </div>
                 </div>
             </div>
