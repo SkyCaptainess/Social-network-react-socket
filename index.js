@@ -2,9 +2,32 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const { hash, compare } = require("./passwordModules");
-const { register, getPassword } = require("./db");
+const { register, getPassword, getUser, addImage } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
+const multer = require("multer");
+const uidSafe = require("uid-safe");
+const path = require("path");
+const s3 = require("./s3");
+const { s3Url } = require("./config");
+
+const diskStorage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, __dirname + "/uploads");
+    },
+    filename: function(req, file, callback) {
+        uidSafe(24).then(function(uid) {
+            callback(null, uid + path.extname(file.originalname));
+        });
+    }
+});
+
+const uploader = multer({
+    storage: diskStorage,
+    limits: {
+        fileSize: 2097152
+    }
+});
 
 app.use(compression());
 
@@ -106,6 +129,33 @@ app.post("/login", (req, res) => {
             }
         })
         .catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
+app.get("/user", async (req, res) => {
+    try {
+        const { rows } = await getUser(req.session.userId);
+        res.json(rows[0]);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
+    // const { username, title, desc } = req.body;
+    console.log("upload req body: ", req.body);
+    const url = `${s3Url}${req.file.filename}`;
+    console.log("url: ", url);
+    addImage(url, req.session.userId)
+        .then(function({ rows }) {
+            console.log("upload rows: ", rows);
+            res.json(rows);
+            //send image to  client
+        })
+        .catch(function(err) {
             console.log(err);
             res.sendStatus(500);
         });

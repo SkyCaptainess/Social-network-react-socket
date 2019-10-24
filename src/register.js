@@ -43,9 +43,7 @@ export default class Register extends React.Component {
                 console.log("data is back: ", data);
                 if (data.success) {
                     console.log("data success: ", data.success);
-                    setTimeout(function() {
-                        location.replace("/");
-                    }, 5000);
+                    location.replace("/");
                 } else {
                     this.setState({
                         error: true
