@@ -4,14 +4,19 @@ import Uploader from "./uploader";
 import axios from "./axios";
 
 export default class App extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            first: "Pete",
-            last: "Anderson",
-            img: "",
             uploaderIsVisible: false
         };
+        // this.state = {
+        //     first: "Pete",
+        //     last: "Anderson",
+        //     url: "",
+        //     uploaderIsVisible: false
+        // };
+        this.methodInApp = this.methodInApp.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     async componentDidMount() {
@@ -59,26 +64,27 @@ export default class App extends React.Component {
         // } else {
         //     this.setState({uploaderIsVisible: true});
         // }
-        this.setState({ uploaderIsVisible: !this.state.uploader });
+        this.setState({ uploaderIsVisible: !this.state.uploaderIsVisible });
     }
 
-    methodInApp(muffin) {
+    methodInApp(freshUrl) {
+        console.log("fresh url: ", freshUrl);
         console.log("I am a method running in APP");
-        console.log("muffin: ", muffin);
-        this.setState({ muffin: muffin });
+        // console.log("muffin: ", muffin);
+        this.setState({ url: freshUrl });
     }
 
     render() {
         return (
             <div>
-                <h1 onClick={() => this.toggleModal()}>Hello from App!</h1>;
+                <h1 onClick={this.toggleModal}>Hello from App!</h1>;
                 <ProfilePic
                     firstName={this.state.first}
                     lastName={this.state.last}
                     imgUrl={this.state.url}
                 />
                 {this.state.uploaderIsVisible && (
-                    <Uploader methodInApp={() => this.methodInApp()} />
+                    <Uploader methodInApp={this.methodInApp} />
                 )}
             </div>
         );

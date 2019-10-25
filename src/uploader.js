@@ -2,8 +2,8 @@ import React from "react";
 import axios from "./axios";
 
 export default class Uploader extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {};
         // this.handleChange = this.handleChange.bind(this);
     }
@@ -14,11 +14,13 @@ export default class Uploader extends React.Component {
     }
 
     muffinMaker() {
-        this.props.methodInApp("Lots of muffins");
+        this.props.methodInApp(this.state.url);
     }
 
-    fileSelected(sth) {
-        console.log("file selected: ", sth);
+    fileSelected({ target }) {
+        this.setState({
+            file: target.files[0]
+        });
     }
 
     uploadImg() {
@@ -26,7 +28,9 @@ export default class Uploader extends React.Component {
         var fd = new FormData();
         fd.append("image", this.state.file);
         axios.post("/upload", fd).then(({ data }) => {
-            console.log("upload data is back: ", data);
+            console.log("data[0].url ", data[0].url);
+            this.props.methodInApp(data[0].url);
+            // console.log("upload data is back: ", data);
         });
     }
 
@@ -37,11 +41,9 @@ export default class Uploader extends React.Component {
                     type="file"
                     id="file"
                     accept="image/*"
-                    onChange={e =>
-                        this.setState({
-                            file: e.target.files[0]
-                        })
-                    }
+                    onChange={e => {
+                        this.fileSelected(e);
+                    }}
                 />
                 <h1 onClick={() => this.uploadImg()}>uploader </h1>
             </div>

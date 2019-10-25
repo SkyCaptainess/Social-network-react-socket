@@ -30,6 +30,7 @@ module.exports.addImage = (url, id) => {
         `
         UPDATE users SET url = $1
         WHERE id = $2
+        RETURNING url
          `,
         [url, id]
     );

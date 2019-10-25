@@ -3,6 +3,7 @@ import React from "react";
 export function ProfilePic({ firstName, lastName, imgUrl }) {
     console.log("props is profile pic: ", firstName, lastName, imgUrl);
     imgUrl = imgUrl || "/img/default.png";
+
     return (
         <div>
             <h2>
