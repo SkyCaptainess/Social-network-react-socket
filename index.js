@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const { hash, compare } = require("./passwordModules");
-const { register, getPassword, getUser, addImage } = require("./db");
+const { register, getPassword, getUser, addImage, addBio } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const multer = require("multer");
@@ -153,6 +153,20 @@ app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
         .then(function({ rows }) {
             console.log("upload rows: ", rows);
             res.json(rows);
+            //send image to  client
+        })
+        .catch(function(err) {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
+app.post("/editBio", (req, res) => {
+    console.log("editbio req body ", req.body);
+    addBio(req.body.bio, req.session.userId)
+        .then(function({ rows }) {
+            console.log("editBio rows[0]: ", rows[0]);
+            res.json(rows[0].bio);
             //send image to  client
         })
         .catch(function(err) {

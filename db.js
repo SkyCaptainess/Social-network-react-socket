@@ -36,10 +36,21 @@ module.exports.addImage = (url, id) => {
     );
 };
 
+module.exports.addBio = (bio, id) => {
+    return db.query(
+        `
+        UPDATE users SET bio = $1
+        WHERE id = $2
+        RETURNING bio
+         `,
+        [bio, id]
+    );
+};
+
 exports.getUser = id => {
     return db.query(
         `
-        SELECT first, last, url FROM users WHERE id = $1
+        SELECT first, last, url, bio FROM users WHERE id = $1
         `,
         [id]
     );

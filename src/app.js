@@ -1,6 +1,7 @@
 import React from "react";
-import { ProfilePic } from "./profile-pic";
+
 import Uploader from "./uploader";
+import Profile from "./profile";
 import axios from "./axios";
 
 export default class App extends React.Component {
@@ -17,12 +18,14 @@ export default class App extends React.Component {
         // };
         this.methodInApp = this.methodInApp.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.setBio = this.setBio.bind(this);
     }
 
     async componentDidMount() {
         console.log("App mounted!!");
         console.log("this.props: ", this.props);
         const { data } = await axios.get("/user");
+        console.log("app data: ", data);
         this.setState(data);
         // axios.get('/user').then(
         //     ({data}) => {
@@ -74,14 +77,24 @@ export default class App extends React.Component {
         this.setState({ url: freshUrl });
     }
 
+    setBio(newBio) {
+        this.setState({ bio: newBio });
+    }
+
+    // setBio(sth) {
+    //     console.log(sth);
+    // }
+
     render() {
         return (
             <div>
                 <h1 onClick={this.toggleModal}>Hello from App!</h1>;
-                <ProfilePic
+                <Profile
                     firstName={this.state.first}
                     lastName={this.state.last}
                     imgUrl={this.state.url}
+                    bio={this.state.bio}
+                    setBio={this.setBio}
                 />
                 {this.state.uploaderIsVisible && (
                     <Uploader methodInApp={this.methodInApp} />
