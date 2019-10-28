@@ -4,6 +4,22 @@ import Uploader from "./uploader";
 import Profile from "./profile";
 import axios from "./axios";
 
+const appDiv = {
+    border: "2px solid black"
+};
+
+const appTitle = {
+    border: "2px solid red",
+    display: "flex",
+    justifyContent: "space-between"
+};
+
+const smallLogo = {
+    width: "100px",
+    height: "100px",
+    objectFit: "cover"
+};
+
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -27,37 +43,6 @@ export default class App extends React.Component {
         const { data } = await axios.get("/user");
         console.log("app data: ", data);
         this.setState(data);
-        // axios.get('/user').then(
-        //     ({data}) => {
-        //         this.setState(data)
-        //     }
-        // )
-        // axios
-        //     .get("/user")
-        //     .then(({ data }) => {
-        //         console.log("data is back: ", data);
-        //         if (data) {
-        //             console.log("data app: ", data);
-        //             this.setState({
-        //                 first: data.first,
-        //                 last: data.last,
-        //                 img: data.
-        //             });
-        //         } else {
-        //             this.setState({
-        //                 error: true
-        //             });
-        //         }
-        //     })
-        //     .catch(err => {
-        //         console.log("error: ", err);
-        //         this.setState({
-        //             error: true
-        //         });
-        //     });
-        //this is where we awant to make an axios const
-        // a Get req to a route called user
-        //when we get a res we want to put the info into state
     }
 
     toggleModal() {
@@ -87,8 +72,19 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1 onClick={this.toggleModal}>Hello from App!</h1>;
+            <div style={appDiv}>
+                <div style={appTitle}>
+                    <img
+                        style={smallLogo}
+                        src="https://www.logolynx.com/images/logolynx/0a/0a6d1bda65baddebe16baeba09e18bcb.jpeg"
+                    />
+                    <img
+                        onClick={this.toggleModal}
+                        style={smallLogo}
+                        src={this.state.url}
+                    />
+                </div>
+                <h1 onClick={this.toggleModal}>Hello from App!</h1>
                 <Profile
                     firstName={this.state.first}
                     lastName={this.state.last}

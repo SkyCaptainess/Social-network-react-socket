@@ -5,7 +5,7 @@ export default class BioEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            buttonEnterBioIsVisible: false
+            bioTxtAreaIsVisible: false
         };
         // this.handleChange = this.handleChange.bind(this);
     }
@@ -30,6 +30,9 @@ export default class BioEditor extends React.Component {
             .then(({ data }) => {
                 console.log("data is back: ", data);
                 this.props.setBio(data);
+                this.setState({
+                    bioTxtAreaIsVisible: !this.state.bioTxtAreaIsVisible
+                });
                 if (data.success) {
                     console.log("data success: ", data.success);
                 } else {
@@ -46,19 +49,42 @@ export default class BioEditor extends React.Component {
             });
     }
 
+    toggleBioInput() {
+        console.log("I'm a togglebioinput");
+        // if (this.uploaderIsVisible) {
+        //     this.setState({uploaderIsVisible: false});
+        // } else {
+        //     this.setState({uploaderIsVisible: true});
+        // }
+        this.setState({ bioTxtAreaIsVisible: !this.state.bioTxtAreaIsVisible });
+    }
+
     render() {
         return (
             <div>
                 <h2>Bio Editor</h2>
                 <h2>Bio: {this.props.bio}</h2>
-                <textarea
-                    name="bio"
-                    placeholder="enter bio here"
-                    onChange={e => this.handleChange(e)}
-                ></textarea>
-                <button onClick={() => this.submit()}>SUBMIT</button>
-                {!this.props.bio && <h1>NO BIO</h1>}
-                {this.props.bio && <h1>EDIT BIO</h1>}
+                {this.state.bioTxtAreaIsVisible && (
+                    <div className="bioTextArea">
+                        <textarea
+                            name="bio"
+                            placeholder="enter bio here"
+                            onChange={e => this.handleChange(e)}
+                        ></textarea>
+                        <button onClick={() => this.submit()}>SUBMIT</button>
+                    </div>
+                )}
+
+                {!this.props.bio && (
+                    <button onClick={() => this.toggleBioInput()}>
+                        Add bio
+                    </button>
+                )}
+                {this.props.bio && (
+                    <button onClick={() => this.toggleBioInput()}>
+                        Edit bio
+                    </button>
+                )}
             </div>
         );
     }
