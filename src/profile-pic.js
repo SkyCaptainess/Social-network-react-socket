@@ -1,11 +1,21 @@
 import React from "react";
 
-export function ProfilePic({ imgUrl }) {
-    imgUrl = imgUrl || "/img/default.png";
+export function ProfilePic({ imgUrl, first, last, toggleModal }) {
+    imgUrl = imgUrl || "/default.jpg";
 
     return (
         <div>
-            <img src={imgUrl} />
+            <img onClick={toggleModal} src={imgUrl} />
         </div>
     );
 }
+
+// const ProfilePic = ({ first, last, imgUrl='default.jpg'}) => {
+//     return (
+//             <div>
+//                 <img src={imgUrl} />
+//             </div>
+//         );
+// };
+//
+// export default function ProfilePic();

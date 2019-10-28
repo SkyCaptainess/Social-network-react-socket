@@ -50,7 +50,7 @@ module.exports.addBio = (bio, id) => {
 exports.getUser = id => {
     return db.query(
         `
-        SELECT first, last, url, bio FROM users WHERE id = $1
+        SELECT id, first, last, url, bio FROM users WHERE id = $1
         `,
         [id]
     );

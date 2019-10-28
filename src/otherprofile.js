@@ -23,23 +23,34 @@ export class OtherProfile extends React.Component {
     async componentDidMount() {
         console.log("othrprofile mounted");
         console.log("this.props.match.params.id", this.props.match.params.id);
+        try {
+            const { data } = await axios.get(
+                "/api/user/" + this.props.match.params.id
+            );
+            console.log("otherprofile data: ", data);
+            this.setState({
+                imgUrl: data.rows.url,
+                firstName: data.rows.first,
+                lastName: data.rows.last,
+                bio: data.rows.bio,
+                id: data.cookieId
+            });
+        } catch (err) {
+            console.log("error in OtherProfile: ", err);
+            this.props.history.push("/");
+        }
         const { data } = await axios.get(
             "/api/user/" + this.props.match.params.id
         );
-        console.log("otherprofile data: ", data);
-        this.setState({
-            imgUrl: data.url,
-            firstName: data.first,
-            lastName: data.last,
-            bio: data.bio
-        });
-        //make an axios req to server asking for info about this.props.match.params.id
-        // if there's no user with that id, redirect back to /
-        // if the user is trying to visit their own page redirect them back to /
-        if (this.props.match.params.id == 6) {
+
+        if (!data || this.props.match.params.id == this.state.id) {
             // imagine i'm logged in as user 6
             this.props.history.push("/");
         }
+
+        //make an axios req to server asking for info about this.props.match.params.id
+        // if there's no user with that id, redirect back to /
+        // if the user is trying to visit their own page redirect them back to /
     }
 
     render() {

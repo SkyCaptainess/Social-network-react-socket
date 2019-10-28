@@ -36,7 +36,10 @@ export default class Profile extends React.Component {
             <div>
                 <div style={profileInfo}>
                     <div style={profilePic}>
-                        <ProfilePic imgUrl={this.props.imgUrl} />
+                        <ProfilePic
+                            imgUrl={this.props.imgUrl}
+                            toggleModal={this.props.toggleModal}
+                        />
                     </div>
 
                     <div style={profileName}>

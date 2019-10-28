@@ -27,12 +27,6 @@ export default class App extends React.Component {
         this.state = {
             uploaderIsVisible: false
         };
-        // this.state = {
-        //     first: "Pete",
-        //     last: "Anderson",
-        //     url: "",
-        //     uploaderIsVisible: false
-        // };
         this.methodInApp = this.methodInApp.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.setBio = this.setBio.bind(this);
@@ -72,6 +66,9 @@ export default class App extends React.Component {
     // }
 
     render() {
+        if (!this.state.id) {
+            return null;
+        }
         return (
             <div style={appDiv}>
                 <BrowserRouter>
@@ -101,6 +98,7 @@ export default class App extends React.Component {
                                     imgUrl={this.state.url}
                                     bio={this.state.bio}
                                     setBio={this.setBio}
+                                    toggleModal={this.toggleModal}
                                 />
                             )}
                         />

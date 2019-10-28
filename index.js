@@ -179,7 +179,10 @@ app.get("/api/user/:id", async (req, res) => {
     console.log("api user id: ", req.params);
     try {
         const { rows } = await getUser(req.params.id);
-        res.json(rows[0]);
+        res.json({
+            rows: rows[0],
+            cookieId: req.session.userId
+        });
     } catch (err) {
         console.log(err);
         res.sendStatus(500);
