@@ -16,7 +16,13 @@ export function FindPeople() {
         // console.log("useEffect is running!");
         (async () => {
             console.log("userInput: ", userInput);
-            const { data } = await axios.get("/users/new");
+            const { data } = await axios.get("/api/users/new");
+            console.log("find people data: ", data);
+            setUsers(data);
+        })();
+        (async () => {
+            console.log("userInput: ", userInput);
+            const { data } = await axios.get(`/api/users/${userInput}`);
             console.log("find people data: ", data);
             if (!ignore) {
                 setUsers(data);
@@ -49,6 +55,7 @@ export function FindPeople() {
                 </ul>
             </div>
 
+            <h2>Looking for someone?</h2>
             <input
                 name="user-input"
                 type="text"

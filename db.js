@@ -63,3 +63,11 @@ exports.getNewUsers = () => {
         `
     );
 };
+exports.findPeople = name => {
+    return db.query(
+        `
+        SELECT first, last, url FROM users WHERE first ILIKE $1;
+        `,
+        [name + "%"]
+    );
+};

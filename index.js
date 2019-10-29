@@ -8,7 +8,8 @@ const {
     getUser,
     addImage,
     addBio,
-    getNewUsers
+    getNewUsers,
+    findPeople
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -151,9 +152,19 @@ app.get("/user", async (req, res) => {
     }
 });
 
-app.get("/users/new", async (req, res) => {
+app.get("/api/users", async (req, res) => {
     try {
         const { rows } = await getNewUsers(req.session.userId);
+        res.json(rows);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
+app.get("/api/users/:name", async (req, res) => {
+    try {
+        const { rows } = await findPeople(req.params.name);
         res.json(rows);
     } catch (err) {
         console.log(err);
