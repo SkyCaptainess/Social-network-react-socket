@@ -55,3 +55,11 @@ exports.getUser = id => {
         [id]
     );
 };
+
+exports.getNewUsers = () => {
+    return db.query(
+        `
+        SELECT first, last, url FROM users ORDER BY id DESC LIMIT 3
+        `
+    );
+};

@@ -2,7 +2,14 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const { hash, compare } = require("./passwordModules");
-const { register, getPassword, getUser, addImage, addBio } = require("./db");
+const {
+    register,
+    getPassword,
+    getUser,
+    addImage,
+    addBio,
+    getNewUsers
+} = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const multer = require("multer");
@@ -144,6 +151,16 @@ app.get("/user", async (req, res) => {
     }
 });
 
+app.get("/users/new", async (req, res) => {
+    try {
+        const { rows } = await getNewUsers(req.session.userId);
+        res.json(rows);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
+
 app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
     // const { username, title, desc } = req.body;
     console.log("upload req body: ", req.body);
@@ -184,7 +201,7 @@ app.get("/api/user/:id", async (req, res) => {
             cookieId: req.session.userId
         });
     } catch (err) {
-        console.log(err);
+        console.log("error getting other profile: ", err);
         res.sendStatus(500);
     }
 });

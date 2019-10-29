@@ -25,11 +25,11 @@ test("Clicking either the Add or Edit button causes a textarea and a Save button
 test("Clicking the Save button causes an ajax request", async () => {
     const onClick = jest.fn();
     const { container } = render(<BioEditor />);
-    fireEvent.click(container.querySelector("#addBio"));
-    fireEvent.click(container.querySelector("#save"));
     const { data } = await axios.post.mockResolvedValue({
         confirm: true
     });
+    fireEvent.click(container.querySelector("#addBio"));
+    fireEvent.click(container.querySelector("#save"));
 
     expect(data.confirm).toBe(true);
 });

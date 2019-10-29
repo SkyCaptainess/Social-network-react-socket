@@ -4,9 +4,11 @@ import Uploader from "./uploader";
 import Profile from "./profile";
 import axios from "./axios";
 import { OtherProfile } from "./otherprofile";
+import { FindPeople } from "./find-people";
 
 const appDiv = {
-    border: "2px solid black"
+    border: "2px solid black",
+    overflow: "auto"
 };
 
 const appTitle = {
@@ -107,6 +109,7 @@ export default class App extends React.Component {
                             path="/user/:id"
                             component={OtherProfile}
                         />
+                        <Route exact path="/users/" component={FindPeople} />
                     </div>
                 </BrowserRouter>
 
