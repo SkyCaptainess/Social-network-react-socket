@@ -152,9 +152,10 @@ app.get("/user", async (req, res) => {
     }
 });
 
-app.get("/api/users", async (req, res) => {
+app.get("/api/users/new", async (req, res) => {
     try {
         const { rows } = await getNewUsers(req.session.userId);
+        console.log("three new users: ", rows);
         res.json(rows);
     } catch (err) {
         console.log(err);
@@ -165,7 +166,10 @@ app.get("/api/users", async (req, res) => {
 app.get("/api/users/:name", async (req, res) => {
     try {
         const { rows } = await findPeople(req.params.name);
-        res.json(rows);
+        console.log("users by name: ", rows);
+        const filteredRows = rows.filter(row => row.id != req.session.userId);
+        console.log("filtered rows: ", filteredRows);
+        res.json(filteredRows);
     } catch (err) {
         console.log(err);
         res.sendStatus(500);

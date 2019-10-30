@@ -56,17 +56,21 @@ exports.getUser = id => {
     );
 };
 
-exports.getNewUsers = () => {
+exports.getNewUsers = id => {
     return db.query(
         `
-        SELECT first, last, url FROM users ORDER BY id DESC LIMIT 3
-        `
+        SELECT id, first, last, url FROM users
+        WHERE id != $1
+        ORDER BY id DESC LIMIT 3
+        `,
+        [id]
     );
 };
 exports.findPeople = name => {
     return db.query(
         `
-        SELECT first, last, url FROM users WHERE first ILIKE $1;
+        SELECT id, first, last, url FROM users
+        WHERE first ILIKE $1;
         `,
         [name + "%"]
     );

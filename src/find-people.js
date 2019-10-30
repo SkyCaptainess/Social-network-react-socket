@@ -8,29 +8,33 @@ const findPeopleDiv = {
 export function FindPeople() {
     const [users, setUsers] = useState([]);
 
-    const [userInput, setUserInput] = useState("");
+    const [userInput, setUserInput] = useState();
 
     useEffect(() => {
         let ignore = false;
         //if ignore is false that means axios response is good and I want to use it
         // console.log("useEffect is running!");
-        (async () => {
-            console.log("userInput: ", userInput);
-            const { data } = await axios.get("/api/users/new");
-            console.log("find people data: ", data);
-            setUsers(data);
-        })();
-        (async () => {
-            console.log("userInput: ", userInput);
-            const { data } = await axios.get(`/api/users/${userInput}`);
-            console.log("find people data: ", data);
-            if (!ignore) {
+        if (!userInput) {
+            (async () => {
+                console.log("userInput: ", userInput);
+                const { data } = await axios.get("/api/users/new");
+                console.log("find people data: ", data);
                 setUsers(data);
-                console.log("set users data: ", users);
-            } else {
-                console.log("ignored!");
-            }
-        })();
+                console.log("new people data: ", users);
+            })();
+        } else {
+            (async () => {
+                console.log("userInput: ", userInput);
+                const { data } = await axios.get(`/api/users/${userInput}`);
+                console.log("2nd find people data: ", data);
+                if (!ignore) {
+                    setUsers(data);
+                    console.log("set users data: ", users);
+                } else {
+                    console.log("ignored!");
+                }
+            })();
+        }
 
         return () => {
             ignore = true;
