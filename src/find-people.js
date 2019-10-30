@@ -53,7 +53,9 @@ export function FindPeople() {
                             <h1>
                                 {user.first} {user.last}
                             </h1>
-                            <img src={user.url} />
+                            <a href={`user/${user.id}`}>
+                                <img src={user.url} />
+                            </a>
                         </li>
                     ))}
                 </ul>
