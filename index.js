@@ -11,7 +11,9 @@ const {
     getNewUsers,
     findPeople,
     getInitialStatus,
-    sendRequest
+    sendRequest,
+    acceptRequest,
+    endFriendship
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -233,6 +235,8 @@ app.get("/get-initial-status/:id", async (req, res) => {
         console.log("get init status rows: ", rows);
         if (rows.length == 0) {
             res.json({ relationship: "false" });
+        } else {
+            res.json(rows[0]);
         }
     } catch (err) {
         console.log("error getting initial status: ", err);
@@ -244,6 +248,31 @@ app.post("/send-friend-request/:id", async (req, res) => {
     console.log("send request id: ", req.params);
     try {
         const { rows } = await sendRequest(req.params.id, req.session.userId);
+        console.log("get init status rows: ", rows);
+
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting initial status: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.post("/accept-friend-request/:id", async (req, res) => {
+    console.log("send request id: ", req.params);
+    try {
+        const { rows } = await acceptRequest(req.params.id, req.session.userId);
+        console.log("get init status rows: ", rows);
+
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting initial status: ", err);
+        res.sendStatus(500);
+    }
+});
+app.post("/end-friendship/:id", async (req, res) => {
+    console.log("send request id: ", req.params);
+    try {
+        const { rows } = await endFriendship(req.params.id, req.session.userId);
         console.log("get init status rows: ", rows);
 
         res.json(rows);

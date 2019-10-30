@@ -96,3 +96,25 @@ exports.sendRequest = (profileId, currentId) => {
         [profileId, currentId]
     );
 };
+exports.acceptRequest = (profileId, currentId) => {
+    return db.query(
+        `
+        UPDATE friendships SET accepted = true
+        WHERE (receiver_id = $1 AND sender_id = $2)
+        OR (receiver_id = $2 AND sender_id = $1)
+        RETURNING true
+        `,
+        [profileId, currentId]
+    );
+};
+exports.endFriendship = (profileId, currentId) => {
+    return db.query(
+        `
+        DELETE FROM friendships
+        WHERE (receiver_id = $1 AND sender_id = $2)
+        OR (receiver_id = $2 AND sender_id = $1)
+        RETURNING true
+        `,
+        [profileId, currentId]
+    );
+};

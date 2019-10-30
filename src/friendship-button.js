@@ -19,10 +19,10 @@ const FriendshipButton = props => {
             console.log("use effect data: ", data);
             if (data.relationship == "false") {
                 setStatus("Make Friend Request");
-            } else if (data.friendship == true) {
+            } else if (data.accepted == true) {
                 setStatus("End Friendship");
-            } else if (data.friendship == false) {
-                setStatus("Pending");
+            } else if (data.accepted == false) {
+                setStatus("Accept Friend Request");
             }
             // console.log("button data.relationship: ", data.relationship);
             // setResult("result with a string");
@@ -46,6 +46,13 @@ const FriendshipButton = props => {
             );
             if (data) {
                 setStatus("End Friendship");
+            }
+        } else if (status === "End Friendship") {
+            const { data } = await axios.post(
+                `/end-friendship/${props.profileId}`
+            );
+            if (data) {
+                setStatus("Make Friend Request");
             }
         }
     };
