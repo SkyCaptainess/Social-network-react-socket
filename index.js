@@ -9,7 +9,9 @@ const {
     addImage,
     addBio,
     getNewUsers,
-    findPeople
+    findPeople,
+    getInitialStatus,
+    sendRequest
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -217,6 +219,36 @@ app.get("/api/user/:id", async (req, res) => {
         });
     } catch (err) {
         console.log("error getting other profile: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.get("/get-initial-status/:id", async (req, res) => {
+    console.log("initial status id: ", req.params);
+    try {
+        const { rows } = await getInitialStatus(
+            req.params.id,
+            req.session.userId
+        );
+        console.log("get init status rows: ", rows);
+        if (rows.length == 0) {
+            res.json({ relationship: "false" });
+        }
+    } catch (err) {
+        console.log("error getting initial status: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.post("/send-friend-request/:id", async (req, res) => {
+    console.log("send request id: ", req.params);
+    try {
+        const { rows } = await sendRequest(req.params.id, req.session.userId);
+        console.log("get init status rows: ", rows);
+
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting initial status: ", err);
         res.sendStatus(500);
     }
 });
