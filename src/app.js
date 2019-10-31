@@ -7,12 +7,12 @@ import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
 
 const appDiv = {
-    border: "2px solid black",
+    // border: "2px solid black",
     overflow: "auto"
 };
 
 const appTitle = {
-    border: "2px solid red",
+    borderBottom: "2px solid black",
     display: "flex",
     justifyContent: "space-between"
 };
@@ -72,11 +72,10 @@ export default class App extends React.Component {
             return null;
         }
         return (
-            <div style={appDiv}>
+            <div>
                 <BrowserRouter>
-                    <div>
-                        <h1 onClick={this.toggleModal}>Hello from App!</h1>
-                        <div style={appTitle}>
+                    <div className="container" style={appDiv}>
+                        <header style={appTitle}>
                             <img
                                 style={smallLogo}
                                 src="https://www.logolynx.com/images/logolynx/0a/0a6d1bda65baddebe16baeba09e18bcb.jpeg"
@@ -86,30 +85,39 @@ export default class App extends React.Component {
                                 style={smallLogo}
                                 src={this.state.url}
                             />
-                        </div>
-                        <Route
-                            exact
-                            path="/"
-                            render={props => (
-                                <Profile
-                                    key={props.match.url}
-                                    match={props.match}
-                                    history={props.history}
-                                    firstName={this.state.first}
-                                    lastName={this.state.last}
-                                    imgUrl={this.state.url}
-                                    bio={this.state.bio}
-                                    setBio={this.setBio}
-                                    toggleModal={this.toggleModal}
+                        </header>
+                        <div className="content">
+                            <div className="profile">
+                                <Route
+                                    exact
+                                    path="/"
+                                    render={props => (
+                                        <Profile
+                                            key={props.match.url}
+                                            match={props.match}
+                                            history={props.history}
+                                            firstName={this.state.first}
+                                            lastName={this.state.last}
+                                            imgUrl={this.state.url}
+                                            bio={this.state.bio}
+                                            setBio={this.setBio}
+                                            toggleModal={this.toggleModal}
+                                        />
+                                    )}
                                 />
-                            )}
-                        />
-                        <Route
-                            exact
-                            path="/user/:id"
-                            component={OtherProfile}
-                        />
-                        <Route exact path="/users/" component={FindPeople} />
+                            </div>
+
+                            <Route
+                                exact
+                                path="/user/:id"
+                                component={OtherProfile}
+                            />
+                            <Route
+                                exact
+                                path="/users/"
+                                component={FindPeople}
+                            />
+                        </div>
                     </div>
                 </BrowserRouter>
 

@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #fff9ff;
+    background-color: white;
 }
 
 input {
@@ -26,6 +26,38 @@ input::placeholder {
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+.container {
+    border: 2px solid red;
+    display: grid;
+    grid-template-areas: "header" "content" "footer";
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 10px;
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+}
+
+.content {
+    display: grid;
+    grid-area: content;
+    border: 2px solid blue;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile {
+    border: 2px solid green;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profile img {
+    width: 50%;
 }
 
 .title {
