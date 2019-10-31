@@ -62,28 +62,37 @@ export default class BioEditor extends React.Component {
     render() {
         return (
             <div>
-                <h2>Bio Editor</h2>
-                <h2>Bio: {this.props.bio}</h2>
+                <p>{this.props.bio}</p>
+
                 {this.state.bioTxtAreaIsVisible && (
-                    <div className="bioTextArea">
+                    <div>
                         <textarea
                             name="bio"
+                            className="uk-textarea"
                             placeholder="enter bio here"
                             onChange={e => this.handleChange(e)}
                         ></textarea>
-                        <button onClick={() => this.submit()}>SUBMIT</button>
+                        <button
+                            className="uk-button uk-button-default bio-button"
+                            onClick={() => this.submit()}
+                        >
+                            SUBMIT
+                        </button>
                     </div>
                 )}
-
                 {!this.props.bio && (
-                    <button id="addBio" onClick={() => this.toggleBioInput()}>
+                    <button
+                        id="addBio"
+                        className="uk-button uk-button-default bio-button"
+                        onClick={() => this.toggleBioInput()}
+                    >
                         Add bio
                     </button>
                 )}
                 {this.props.bio && (
                     <button
                         id="editBio"
-                        className="uk-button"
+                        className="uk-button uk-button-default bio-button"
                         onClick={() => this.toggleBioInput()}
                     >
                         Edit bio

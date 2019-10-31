@@ -1,6 +1,6 @@
 import React from "react";
 
-export function ProfilePic({ imgUrl, first, last, toggleModal }) {
+export function ProfilePic({ imgUrl, toggleModal }) {
     imgUrl = imgUrl || "/default.jpg";
 
     return (

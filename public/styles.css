@@ -29,7 +29,7 @@ input::placeholder {
 }
 
 .container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: grid;
     grid-template-areas: "header" "content" "footer";
     grid-template-rows: auto 1fr auto;
@@ -43,21 +43,23 @@ header {
 
 .content {
     display: grid;
-    grid-area: content;
-    border: 2px solid blue;
+    /* grid-area: content;
+    border: 2px solid blue; */
     align-items: center;
     justify-content: center;
 }
 
 .profile {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
 }
 
 .profile img {
-    width: 50%;
+    width: 100%;
+    object-fit: cover;
+    max-height: 60%;
 }
 
 .title {
@@ -84,6 +86,11 @@ header {
     border-color: black;
     font-family: "Times New Roman";
     font-size: 20px;
+}
+
+.uk-card button {
+    width: 150px;
+    margin: 10px auto;
 }
 
 .logLink {

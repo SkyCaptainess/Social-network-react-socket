@@ -69,7 +69,12 @@ export default function FriendshipButton(props) {
 
     return (
         <div>
-            <button onClick={postRequest}>{status}</button>
+            <button
+                className="uk-button uk-button-default bio-button"
+                onClick={postRequest}
+            >
+                {status}
+            </button>
         </div>
     );
 }

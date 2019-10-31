@@ -56,25 +56,26 @@ export class OtherProfile extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>OTHER PROFILE</h1>
-                <div style={profileInfo}>
-                    <div style={profilePic}>
-                        <ProfilePic imgUrl={this.state.imgUrl} />
-                    </div>
-
-                    <div style={profileName}>
-                        <h2>
-                            Profile: {this.state.firstName}{" "}
-                            {this.state.lastName}
-                        </h2>
-                        <br />
+            <div className="profile">
+                <div className="uk-card uk-card-body uk-card-default">
+                    <div className="uk-child-width-1-2@m" uk-grid>
                         <div>
-                            <h2>Bio: {this.state.bio}</h2>
+                            <div className="uk-card uk-card-default">
+                                <div className="uk-card-media-top">
+                                    <ProfilePic imgUrl={this.state.imgUrl} />
+                                </div>
+                                <div className="uk-card-body">
+                                    <h3 className="uk-card-title">
+                                        {this.state.firstName}{" "}
+                                        {this.state.lastName}
+                                    </h3>
+                                    {this.state.bio}
+                                </div>
+                                <FriendshipButton
+                                    profileId={this.props.match.params.id}
+                                />
+                            </div>
                         </div>
-                        <FriendshipButton
-                            profileId={this.props.match.params.id}
-                        />
                     </div>
                 </div>
             </div>
