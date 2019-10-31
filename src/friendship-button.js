@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
 
-const FriendshipButton = props => {
+export default function FriendshipButton(props) {
     console.log("button props: ", props.profileId);
     const [status, setStatus] = useState();
-    const [result, setResult] = useState();
     //
     // const [userInput, setUserInput] = useState();
 
@@ -22,7 +21,11 @@ const FriendshipButton = props => {
             } else if (data.accepted == true) {
                 setStatus("End Friendship");
             } else if (data.accepted == false) {
-                setStatus("Accept Friend Request");
+                if (data.sender_id == props.profileId) {
+                    setStatus("Accept Friend Request");
+                } else if (data.receiver_id == props.profileId) {
+                    setStatus("Cancel Friend Request");
+                }
             }
             // console.log("button data.relationship: ", data.relationship);
             // setResult("result with a string");
@@ -54,6 +57,13 @@ const FriendshipButton = props => {
             if (data) {
                 setStatus("Make Friend Request");
             }
+        } else if (status === "Cancel Friend Request") {
+            const { data } = await axios.post(
+                `/end-friendship/${props.profileId}`
+            );
+            if (data) {
+                setStatus("Make Friend Request");
+            }
         }
     };
 
@@ -62,6 +72,4 @@ const FriendshipButton = props => {
             <button onClick={postRequest}>{status}</button>
         </div>
     );
-};
-
-export default FriendshipButton;
+}
