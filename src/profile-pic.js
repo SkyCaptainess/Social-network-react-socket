@@ -9,13 +9,3 @@ export function ProfilePic({ imgUrl, toggleModal }) {
         </div>
     );
 }
-
-// const ProfilePic = ({ first, last, imgUrl='default.jpg'}) => {
-//     return (
-//             <div>
-//                 <img src={imgUrl} />
-//             </div>
-//         );
-// };
-//
-// export default function ProfilePic();

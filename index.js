@@ -80,9 +80,7 @@ app.get("/welcome", function(req, res) {
 });
 
 app.post("/register", (req, res) => {
-    console.log("req body ");
     let firstName = req.body.first;
-    // console.log("getting first name: ", firstName);
     let lastName = req.body.last;
     let email = req.body.email;
     let origPswd = req.body.password;
@@ -97,7 +95,6 @@ app.post("/register", (req, res) => {
         .then(password => {
             console.log("testing ", password);
             register(firstName, lastName, email, password).then(({ rows }) => {
-                console.log("Am i getting rows?", rows);
                 req.session.userId = rows[0].id;
                 res.json({
                     success: true
@@ -118,20 +115,12 @@ app.post("/login", (req, res) => {
         .then(({ rows }) => {
             let receivedPass = rows[0].password;
             let receivedId = rows[0].id;
-            console.log("Top received ID: ", receivedId);
-            console.log("receivedPass: ", receivedPass);
             let isMatch = compare(logPass, receivedPass);
             id = receivedId;
-            // let returnArray = [isMatch, receivedId];
-            // return returnArray;
-
             return isMatch;
         })
         .then(isMatch => {
-            console.log("I'm in then isMatch");
-            // if (isMatch && !req.session.signedId) {
             if (isMatch) {
-                console.log("is match id: ", id);
                 req.session.userId = id;
                 res.json({
                     success: true
@@ -170,9 +159,7 @@ app.get("/api/users/new", async (req, res) => {
 app.get("/api/users/:name", async (req, res) => {
     try {
         const { rows } = await findPeople(req.params.name);
-        console.log("users by name: ", rows);
         const filteredRows = rows.filter(row => row.id != req.session.userId);
-        console.log("filtered rows: ", filteredRows);
         res.json(filteredRows);
     } catch (err) {
         console.log(err);
@@ -181,15 +168,12 @@ app.get("/api/users/:name", async (req, res) => {
 });
 
 app.post("/upload", uploader.single("image"), s3.upload, function(req, res) {
-    // const { username, title, desc } = req.body;
-    console.log("upload req body: ", req.body);
     const url = `${s3Url}${req.file.filename}`;
     console.log("url: ", url);
     addImage(url, req.session.userId)
         .then(function({ rows }) {
             console.log("upload rows: ", rows);
             res.json(rows);
-            //send image to  client
         })
         .catch(function(err) {
             console.log(err);
@@ -201,9 +185,7 @@ app.post("/editBio", (req, res) => {
     console.log("editbio req body ", req.body);
     addBio(req.body.bio, req.session.userId)
         .then(function({ rows }) {
-            console.log("editBio rows[0]: ", rows[0]);
             res.json(rows[0].bio);
-            //send image to  client
         })
         .catch(function(err) {
             console.log(err);
@@ -212,7 +194,6 @@ app.post("/editBio", (req, res) => {
 });
 
 app.get("/api/user/:id", async (req, res) => {
-    console.log("api user id: ", req.params);
     try {
         const { rows } = await getUser(req.params.id);
         res.json({
@@ -226,13 +207,11 @@ app.get("/api/user/:id", async (req, res) => {
 });
 
 app.get("/get-initial-status/:id", async (req, res) => {
-    console.log("initial status id: ", req.params);
     try {
         const { rows } = await getInitialStatus(
             req.params.id,
             req.session.userId
         );
-        console.log("get init status rows: ", rows);
         if (rows.length == 0) {
             res.json({ relationship: "false" });
         } else {
@@ -245,10 +224,8 @@ app.get("/get-initial-status/:id", async (req, res) => {
 });
 
 app.post("/send-friend-request/:id", async (req, res) => {
-    console.log("send request id: ", req.params);
     try {
         const { rows } = await sendRequest(req.params.id, req.session.userId);
-        console.log("get init status rows: ", rows);
 
         res.json(rows);
     } catch (err) {
@@ -258,11 +235,8 @@ app.post("/send-friend-request/:id", async (req, res) => {
 });
 
 app.post("/accept-friend-request/:id", async (req, res) => {
-    console.log("send request id: ", req.params);
     try {
         const { rows } = await acceptRequest(req.params.id, req.session.userId);
-        console.log("get init status rows: ", rows);
-
         res.json(rows);
     } catch (err) {
         console.log("error getting initial status: ", err);
@@ -270,11 +244,8 @@ app.post("/accept-friend-request/:id", async (req, res) => {
     }
 });
 app.post("/end-friendship/:id", async (req, res) => {
-    console.log("send request id: ", req.params);
     try {
         const { rows } = await endFriendship(req.params.id, req.session.userId);
-        console.log("get init status rows: ", rows);
-
         res.json(rows);
     } catch (err) {
         console.log("error getting initial status: ", err);

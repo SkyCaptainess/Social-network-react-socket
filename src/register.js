@@ -25,7 +25,6 @@ export default class Register extends React.Component {
     }
 
     handleChange({ target }) {
-        // this[target.name] = target.value;
         this.setState({
             [target.name]: target.value
         });

@@ -7,16 +7,13 @@ export default class BioEditor extends React.Component {
         this.state = {
             bioTxtAreaIsVisible: false
         };
-        // this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        console.log("bioeditor mounted!");
         console.log("this.props bioeditor: ", this.props);
     }
 
     handleChange({ target }) {
-        // this[target.name] = target.value;
         this.setState({
             [target.name]: target.value
         });
@@ -28,7 +25,6 @@ export default class BioEditor extends React.Component {
                 bio: this.state.bio
             })
             .then(({ data }) => {
-                console.log("data is back: ", data);
                 this.props.setBio(data);
                 this.setState({
                     bioTxtAreaIsVisible: !this.state.bioTxtAreaIsVisible
@@ -51,11 +47,6 @@ export default class BioEditor extends React.Component {
 
     toggleBioInput() {
         console.log("I'm a togglebioinput");
-        // if (this.uploaderIsVisible) {
-        //     this.setState({uploaderIsVisible: false});
-        // } else {
-        //     this.setState({uploaderIsVisible: true});
-        // }
         this.setState({ bioTxtAreaIsVisible: !this.state.bioTxtAreaIsVisible });
     }
 

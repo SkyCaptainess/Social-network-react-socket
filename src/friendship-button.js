@@ -8,14 +8,10 @@ export default function FriendshipButton(props) {
     // const [userInput, setUserInput] = useState();
 
     useEffect(() => {
-        console.log("Control I'm here!");
-        console.log("button use effect props: ", props);
         (async () => {
-            console.log("async button id: ", props.profileId);
             const { data } = await axios.get(
                 `/get-initial-status/${props.profileId}`
             );
-            console.log("use effect data: ", data);
             if (data.relationship == "false") {
                 setStatus("Make Friend Request");
             } else if (data.accepted == true) {
@@ -27,15 +23,10 @@ export default function FriendshipButton(props) {
                     setStatus("Cancel Friend Request");
                 }
             }
-            // console.log("button data.relationship: ", data.relationship);
-            // setResult("result with a string");
-            // console.log("result: ", result);
         })();
-        // let res = undefined;
     }, []);
 
     const postRequest = async () => {
-        console.log("button status: ", status);
         if (status === "Make Friend Request") {
             const { data } = await axios.post(
                 `/send-friend-request/${props.profileId}`

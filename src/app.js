@@ -7,7 +7,6 @@ import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
 
 const appDiv = {
-    // border: "2px solid black",
     overflow: "auto"
 };
 
@@ -44,11 +43,6 @@ export default class App extends React.Component {
 
     toggleModal() {
         console.log("I'm a togglemodal");
-        // if (this.uploaderIsVisible) {
-        //     this.setState({uploaderIsVisible: false});
-        // } else {
-        //     this.setState({uploaderIsVisible: true});
-        // }
         this.setState({ uploaderIsVisible: !this.state.uploaderIsVisible });
     }
 
@@ -62,10 +56,6 @@ export default class App extends React.Component {
     setBio(newBio) {
         this.setState({ bio: newBio });
     }
-
-    // setBio(sth) {
-    //     console.log(sth);
-    // }
 
     render() {
         if (!this.state.id) {
@@ -128,4 +118,3 @@ export default class App extends React.Component {
         );
     }
 }
-// in render use div or react.fragment to wrap the content

@@ -8,28 +8,19 @@ export default class Login extends React.Component {
     }
 
     handleChange({ target }) {
-        // this[target.name] = target.value;
         this.setState({
             [target.name]: target.value
         });
     }
 
     submit() {
-        console.log("is it possible to log anything here?");
-        // if (this.state.email.indexOf("@") == -1) {
-        //     this.setState({
-        //         error: true
-        //     });
-        // }
         axios
             .post("/login", {
                 email: this.state.email,
                 password: this.state.password
             })
             .then(({ data }) => {
-                console.log("data is back: ", data);
                 if (data.success) {
-                    console.log("data success: ", data.success);
                     location.replace("/");
                 } else {
                     this.setState({
