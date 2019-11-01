@@ -256,9 +256,7 @@ app.post("/end-friendship/:id", async (req, res) => {
 
 app.get("/friends-wannabes", async (req, res) => {
     try {
-        console.log("friends wannabees id: ", req.session.userId);
         const { rows } = await getFriendsWannabes(req.session.userId);
-        console.log("friends_wannabes rows: ", rows);
         res.json(rows);
     } catch (err) {
         console.log("error getting friends-wannabes: ", err);
