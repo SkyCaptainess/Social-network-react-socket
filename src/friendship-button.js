@@ -4,8 +4,6 @@ import axios from "./axios";
 export default function FriendshipButton(props) {
     console.log("button props: ", props.profileId);
     const [status, setStatus] = useState();
-    //
-    // const [userInput, setUserInput] = useState();
 
     useEffect(() => {
         (async () => {
@@ -61,7 +59,7 @@ export default function FriendshipButton(props) {
     return (
         <div>
             <button
-                className="uk-button uk-button-default bio-button"
+                className="uk-button uk-button-default friendship-button"
                 onClick={postRequest}
             >
                 {status}

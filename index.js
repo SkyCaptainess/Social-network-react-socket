@@ -13,7 +13,8 @@ const {
     getInitialStatus,
     sendRequest,
     acceptRequest,
-    endFriendship
+    endFriendship,
+    getFriendsWannabes
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -249,6 +250,18 @@ app.post("/end-friendship/:id", async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.log("error getting initial status: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.get("/friends-wannabes", async (req, res) => {
+    try {
+        console.log("friends wannabees id: ", req.session.userId);
+        const { rows } = await getFriendsWannabes(req.session.userId);
+        console.log("friends_wannabes rows: ", rows);
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting friends-wannabes: ", err);
         res.sendStatus(500);
     }
 });

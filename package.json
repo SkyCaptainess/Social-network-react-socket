@@ -38,7 +38,7 @@
         "react-router-dom": "^5.1.2",
         "react-test-renderer": "^16.10.2",
         "redux": "^3.7.1",
-        "redux-devtools-extension": "^2.13.2",
+        "redux-devtools-extension": "^2.13.8",
         "redux-promise": "^0.5.3",
         "socket.io": "^2.3.0",
         "spiced-pg": "^1.0.0",

@@ -86,6 +86,10 @@ header {
     margin: 10px auto;
 }
 
+.friendship-button {
+    width: 300px;
+}
+
 .logLink {
     text-align: center;
     margin-bottom: 10px;

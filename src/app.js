@@ -5,6 +5,7 @@ import Profile from "./profile";
 import axios from "./axios";
 import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
+import Friends from "./friends";
 
 const appDiv = {
     overflow: "auto"
@@ -107,6 +108,7 @@ export default class App extends React.Component {
                                 path="/users/"
                                 component={FindPeople}
                             />
+                            <Route exact path="/friends/" component={Friends} />
                         </div>
                     </div>
                 </BrowserRouter>

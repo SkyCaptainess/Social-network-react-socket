@@ -17,7 +17,7 @@ export default class Profile extends React.Component {
         return (
             <div>
                 <div className="uk-card uk-card-body uk-card-default">
-                    <div className="uk-child-width-1-2@m" uk-grid>
+                    <div className="uk-child-width-1-2@m">
                         <div>
                             <div className="uk-card-media-top">
                                 <ProfilePic
