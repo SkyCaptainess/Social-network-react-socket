@@ -60,7 +60,6 @@ export default class Register extends React.Component {
     render() {
         return (
             <div>
-                <header></header>
                 <div className="title">
                     <h2>Mutual Privacy Breach.</h2>
                 </div>

@@ -12,6 +12,7 @@
     grid-template-columns: 150px auto 150px;
     grid-template-rows: 100px auto 100px;
     grid-gap: 1em;
+    min-height: 100vh;
 }
 
 header {
@@ -63,9 +64,49 @@ footer {
 
 /* //////////////////////////////////////////////////////////////////////// */
 
+.content-wrapper {
+    width: 400px;
+    margin: 0 auto;
+}
+
 /* WELCOME PAGE */
 
 .welcomeInput {
     width: 400px;
     color: #b3b3b3;
+}
+
+/* WELCOME PAGE */
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+/* PROFILE CARD */
+
+.profile-card {
+    border: 2px black solid;
+}
+
+.uk-card-body.custom {
+    padding: 15px 0 0 0;
+}
+
+.uk-card-media-top img {
+    width: 100%;
+}
+
+.unordered-list {
+    padding: 0;
+}
+
+.list-element {
+    list-style-type: none;
+}
+
+.square-profile {
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+
+.link-block {
+    display: block;
 }

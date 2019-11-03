@@ -57,17 +57,17 @@ export class OtherProfile extends React.Component {
     render() {
         return (
             <div className="profile">
-                <div className="uk-card uk-card-body uk-card-default">
-                    <div className="uk-child-width-1-2@m">
+                <div className="uk-card uk-card-body profile-card">
+                    <div className="uk-child">
                         <div>
                             <div className="uk-card-media-top">
                                 <ProfilePic imgUrl={this.state.imgUrl} />
                             </div>
-                            <div className="uk-card-body">
+                            <div className="uk-card-body custom">
                                 <h3 className="uk-card-title">
                                     {this.state.firstName} {this.state.lastName}
                                 </h3>
-                                {this.state.bio}
+                                <p>{this.state.bio}</p>
                                 <FriendshipButton
                                     profileId={this.props.match.params.id}
                                 />

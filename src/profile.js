@@ -16,8 +16,8 @@ export default class Profile extends React.Component {
     render() {
         return (
             <div>
-                <div className="uk-card uk-card-body uk-card-default">
-                    <div className="uk-child-width-1-2@m">
+                <div className="uk-card uk-card-body profile-card">
+                    <div className="uk-child">
                         <div>
                             <div className="uk-card-media-top">
                                 <ProfilePic
@@ -25,7 +25,7 @@ export default class Profile extends React.Component {
                                     toggleModal={this.props.toggleModal}
                                 />
                             </div>
-                            <div className="uk-card-body">
+                            <div className="uk-card-body custom">
                                 <h3 className="uk-card-title">
                                     {this.props.firstName} {this.props.lastName}
                                 </h3>

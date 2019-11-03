@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -40,30 +41,39 @@ export default class Login extends React.Component {
         return (
             <div>
                 <div className="title">
-                    <h1>Hello there.</h1>
+                    <h2>Mutual Privacy Breach.</h2>
                 </div>
 
-                <div className="login">
-                    <div className="inputDiv">
-                        <input
-                            placeholder="email"
-                            name="email"
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <input
-                            placeholder="password"
-                            name="password"
-                            type="password"
-                            onChange={e => this.handleChange(e)}
-                        />
-                        <button onClick={() => this.submit()}>submit</button>
-                    </div>
-                    {this.state.error && (
-                        <div className="error title">
-                            <h1>Oops! Something went wrong.</h1>
-                        </div>
-                    )}
+                <div className="uk-card uk-card-default uk-card-body uk-card-secondary welcomeInput">
+                    <input
+                        name="email"
+                        placeholder="email"
+                        className="uk-input"
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="password"
+                        className="uk-input"
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <button
+                        className="uk-button uk-button-default"
+                        onClick={() => this.submit()}
+                    >
+                        SUBMIT
+                    </button>
+                    <Link to="/" className="uk-button uk-button-default">
+                        {/*<Link to="/login" style={logLink}>*/}
+                        ...or click here to register
+                    </Link>
                 </div>
+                {this.state.error && (
+                    <div className="error title">
+                        <h1>Oops! Something went wrong.</h1>
+                    </div>
+                )}
             </div>
         );
     }

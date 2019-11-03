@@ -7,10 +7,6 @@ import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
 import Friends from "./friends";
 
-const appDiv = {
-    overflow: "auto"
-};
-
 const appTitle = {
     borderBottom: "2px solid black",
     display: "flex",
@@ -65,7 +61,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <BrowserRouter>
-                    <div className="container" style={appDiv}>
+                    <div className="container">
                         <header style={appTitle}>
                             <img
                                 style={smallLogo}
@@ -77,39 +73,51 @@ export default class App extends React.Component {
                                 src={this.state.url}
                             />
                         </header>
+                        <aside className="sidebar-left">Left Sidebar</aside>
                         <div className="content">
-                            <div className="profile">
+                            <div className="content-wrapper">
+                                <div className="profile">
+                                    <Route
+                                        exact
+                                        path="/"
+                                        render={props => (
+                                            <Profile
+                                                key={props.match.url}
+                                                match={props.match}
+                                                history={props.history}
+                                                firstName={this.state.first}
+                                                lastName={this.state.last}
+                                                imgUrl={this.state.url}
+                                                bio={this.state.bio}
+                                                setBio={this.setBio}
+                                                toggleModal={this.toggleModal}
+                                            />
+                                        )}
+                                    />
+                                </div>
+
                                 <Route
                                     exact
-                                    path="/"
-                                    render={props => (
-                                        <Profile
-                                            key={props.match.url}
-                                            match={props.match}
-                                            history={props.history}
-                                            firstName={this.state.first}
-                                            lastName={this.state.last}
-                                            imgUrl={this.state.url}
-                                            bio={this.state.bio}
-                                            setBio={this.setBio}
-                                            toggleModal={this.toggleModal}
-                                        />
-                                    )}
+                                    path="/user/:id"
+                                    component={OtherProfile}
+                                />
+                                <Route
+                                    exact
+                                    path="/users/"
+                                    component={FindPeople}
+                                />
+                                <Route
+                                    exact
+                                    path="/friends/"
+                                    component={Friends}
                                 />
                             </div>
-
-                            <Route
-                                exact
-                                path="/user/:id"
-                                component={OtherProfile}
-                            />
-                            <Route
-                                exact
-                                path="/users/"
-                                component={FindPeople}
-                            />
-                            <Route exact path="/friends/" component={Friends} />
                         </div>
+
+                        <aside className="sidebar-right">Right Sidebar</aside>
+                        <footer>
+                            <h2>"It's Con-Sensual!"</h2>
+                        </footer>
                     </div>
                 </BrowserRouter>
 

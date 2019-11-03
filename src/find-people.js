@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
+import { ProfilePic } from "./profile-pic";
+import { Link } from "react-router-dom";
 
 const findPeopleDiv = {
     overflow: "auto"
@@ -47,15 +49,28 @@ export function FindPeople() {
             <div style={findPeopleDiv}>
                 <h2>Find People</h2>
                 <h3>Checkout who just joined</h3>
-                <ul>
+                <ul className="unordered-list">
                     {users.map(user => (
-                        <li key={user.first}>
-                            <h1>
-                                {user.first} {user.last}
-                            </h1>
-                            <a href={`user/${user.id}`}>
-                                <img src={user.url} />
-                            </a>
+                        <li className="list-element" key={user.first}>
+                            <div className="uk-card uk-card-body profile-card square-profile">
+                                <div className="uk-child">
+                                    <div>
+                                        <div className="uk-card-media-top">
+                                            <Link
+                                                to={`/user/${user.id}`}
+                                                className="link-block"
+                                            >
+                                                <ProfilePic imgUrl={user.url} />
+                                            </Link>
+                                        </div>
+                                        <div className="uk-card-body custom">
+                                            <h3 className="uk-card-title">
+                                                {user.first} {user.last}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>

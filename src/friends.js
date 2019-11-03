@@ -6,6 +6,8 @@ import {
     acceptFriendRequest,
     unfriend
 } from "./actions";
+import { ProfilePic } from "./profile-pic";
+import { Link } from "react-router-dom";
 
 export default function Friends() {
     const dispatch = useDispatch();
@@ -33,12 +35,34 @@ export default function Friends() {
                 {friends.length != 0 &&
                     friends.map(friend => (
                         <div className="friend" key={friend.id}>
-                            <img src={friend.url} />
-                            <button
-                                onClick={e => dispatch(unfriend(friend.id))}
-                            >
-                                Unfriend
-                            </button>
+                            <div className="uk-card uk-card-body profile-card square-profile">
+                                <div className="uk-child">
+                                    <div>
+                                        <div className="uk-card-media-top">
+                                            <Link
+                                                to={`/user/${friend.id}`}
+                                                className="link-block"
+                                            >
+                                                <ProfilePic
+                                                    imgUrl={friend.url}
+                                                />
+                                            </Link>
+                                        </div>
+                                        <div className="uk-card-body custom">
+                                            <h3 className="uk-card-title">
+                                                {friend.first} {friend.last}
+                                            </h3>
+                                        </div>
+                                        <button
+                                            onClick={e =>
+                                                dispatch(unfriend(friend.id))
+                                            }
+                                        >
+                                            Unfriend
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 {friends.length == 0 && <p>NO FRIENDS</p>}
@@ -47,15 +71,39 @@ export default function Friends() {
                 <h1>WANNABES:</h1>
                 {wannabes.length != 0 &&
                     wannabes.map(wannabe => (
-                        <div className="wannabe" key={wannabe.id}>
-                            <img src={wannabe.url} />
-                            <button
-                                onClick={e =>
-                                    dispatch(acceptFriendRequest(wannabe.id))
-                                }
-                            >
-                                Accept
-                            </button>
+                        <div className="friend" key={wannabe.id}>
+                            <div className="uk-card uk-card-body profile-card square-profile">
+                                <div className="uk-child">
+                                    <div>
+                                        <div className="uk-card-media-top">
+                                            <Link
+                                                to={`/user/${wannabe.id}`}
+                                                className="link-block"
+                                            >
+                                                <ProfilePic
+                                                    imgUrl={wannabe.url}
+                                                />
+                                            </Link>
+                                        </div>
+                                        <div className="uk-card-body custom">
+                                            <h3 className="uk-card-title">
+                                                {wannabe.first} {wannabe.last}
+                                            </h3>
+                                        </div>
+                                        <button
+                                            onClick={e =>
+                                                dispatch(
+                                                    acceptFriendRequest(
+                                                        wannabe.id
+                                                    )
+                                                )
+                                            }
+                                        >
+                                            Accept
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 {wannabes.length == 0 && <p>NO WANNABES</p>}
