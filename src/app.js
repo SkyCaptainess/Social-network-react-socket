@@ -69,7 +69,7 @@ export default class App extends React.Component {
                         <header style={appTitle}>
                             <img
                                 style={smallLogo}
-                                src="https://www.logolynx.com/images/logolynx/0a/0a6d1bda65baddebe16baeba09e18bcb.jpeg"
+                                src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
                             />
                             <img
                                 onClick={this.toggleModal}

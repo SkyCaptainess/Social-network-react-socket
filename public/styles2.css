@@ -2,5 +2,70 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
+    background-color: #b3b3b3;
+}
+
+/* MAIN GRID */
+
+.container {
+    display: grid;
+    grid-template-columns: 150px auto 150px;
+    grid-template-rows: 100px auto 100px;
+    grid-gap: 1em;
+}
+
+header {
+    /* Start on Row 1 */
+    grid-row: 1;
+    /* Start on the first column line and extend all the to the last column line */
+    grid-column: 1 / 4;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-left {
+    /* Start on Row 2 */
+    grid-row: 2;
+    /* Start on the first column line and stop at the next column line */
+    grid-column: 1 / 2;
+}
+
+#content {
+    height: 100%;
+    /* Start on Row 2 */
+    grid-row: 2;
+    /* Start on the second column line and stop at the third column line */
+    grid-column: 2 / 3;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-right {
+    /* Start on Row 2 */
+    grid-row: 2;
+    /* Start on the third column line and stop at the last column line */
+    grid-column: 3 / 4;
+}
+
+footer {
+    /* Start on Row 3, the last row */
+    grid-row: 3;
+    /* Start on the first column line and extend all the to the last column line */
+    grid-column: 1 / 4;
+    text-align: center;
+}
+
+/* MAIN GRID */
+
+/* //////////////////////////////////////////////////////////////////////// */
+
+/* WELCOME PAGE */
+
+.welcomeInput {
+    width: 400px;
+    color: #b3b3b3;
 }

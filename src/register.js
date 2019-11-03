@@ -2,21 +2,21 @@ import React from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
 
-const logLink = {
-    display: "grid",
-    alignItems: "center",
-    textAlign: "center",
-    margin: "0 auto",
-    marginBottom: "5px",
-    border: "2px outset black",
-    width: "200px",
-    height: "27px",
-    backgroundColor: "#1b2e2c",
-    fontFamily: "Times New Roman",
-    fontSize: "14px",
-    color: "#fff9ff",
-    textDecoration: "none"
-};
+// const logLink = {
+//     display: "grid",
+//     alignItems: "center",
+//     textAlign: "center",
+//     margin: "0 auto",
+//     marginBottom: "5px",
+//     border: "2px outset black",
+//     width: "200px",
+//     height: "27px",
+//     backgroundColor: "#1b2e2c",
+//     fontFamily: "Times New Roman",
+//     fontSize: "14px",
+//     color: "#fff9ff",
+//     textDecoration: "none"
+// };
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -60,34 +60,44 @@ export default class Register extends React.Component {
     render() {
         return (
             <div>
+                <header></header>
                 <div className="title">
-                    <h1>Welcome.</h1>
+                    <h2>Mutual Privacy Breach.</h2>
                 </div>
 
-                <div className="inputDiv">
+                <div className="uk-card uk-card-default uk-card-body uk-card-secondary welcomeInput">
                     <input
                         name="first"
                         placeholder="first name"
+                        className="uk-input"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="last"
                         placeholder="last name"
+                        className="uk-input"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="email"
                         placeholder="email"
+                        className="uk-input"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="password"
                         type="password"
                         placeholder="password"
+                        className="uk-input"
                         onChange={e => this.handleChange(e)}
                     />
-                    <button onClick={() => this.submit()}>SUBMIT</button>
-                    <Link to="/login">
+                    <button
+                        className="uk-button uk-button-default"
+                        onClick={() => this.submit()}
+                    >
+                        SUBMIT
+                    </button>
+                    <Link to="/login" className="uk-button uk-button-default">
                         {/*<Link to="/login" style={logLink}>*/}
                         ...or click here to log in
                     </Link>
