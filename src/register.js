@@ -87,7 +87,8 @@ export default class Register extends React.Component {
                         onChange={e => this.handleChange(e)}
                     />
                     <button onClick={() => this.submit()}>SUBMIT</button>
-                    <Link to="/login" style={logLink}>
+                    <Link to="/login">
+                        {/*<Link to="/login" style={logLink}>*/}
                         ...or click here to log in
                     </Link>
                 </div>
