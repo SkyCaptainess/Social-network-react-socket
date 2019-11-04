@@ -47,10 +47,10 @@ export default class Register extends React.Component {
                 <div className="welcome-link">
                     <Link to="/login" className="welcome-link">
                         {/*<Link to="/login" style={logLink}>*/}
-                        ...click here to log in
+                        log in.
                     </Link>
                 </div>
-                <div className="title">
+                <div className="register-title">
                     <h2>Mutual Privacy Breach.</h2>
                 </div>
 

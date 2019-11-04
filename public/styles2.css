@@ -5,10 +5,6 @@
     background-color: #b3b3b3;
 }
 
-/* img {
-    z-index: 5;
-} */
-
 @font-face {
     font-family: "Merkur";
     src: url("/fonts/Merkur.otf");
@@ -16,8 +12,31 @@
     font-weight: normal;
 }
 
-h1 {
-    font-family: "Merkur";
+@font-face {
+    font-family: "Nulshock";
+    src: url("/fonts/Nulshock.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Cubos";
+    src: url("/fonts/Cubos.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Prime";
+    src: url("/fonts/Prime-Regular.woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Cubos";
+    src: url("Cubos.ttf");
+    font-weight: bold;
 }
 
 /* MAIN GRID */
@@ -25,9 +44,13 @@ h1 {
 .container {
     display: grid;
     grid-template-columns: 150px auto 150px;
-    grid-template-rows: 150px auto 100px;
+    grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
     min-height: 100vh;
+}
+
+.container img {
+    margin: 0;
 }
 
 .container h1 {
@@ -35,6 +58,16 @@ h1 {
     font-size: 10vh;
     color: #ccff00;
     background-color: transparent;
+}
+
+.container h2 {
+    font-family: "Nulshock";
+    /* font-weight: bold; */
+    font-size: 23px;
+    color: black;
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 header {
@@ -86,6 +119,7 @@ footer {
     /* Start on the first column line and extend all the to the last column line */
     grid-column: 1 / 4;
     text-align: center;
+    background-color: #0f6ecd;
 }
 
 /* MAIN GRID */
@@ -112,6 +146,13 @@ footer {
     z-index: 6;
     background-color: transparent;
     color: #ccff00;
+    font-family: "Prime";
+}
+
+.register-title {
+    background-color: #ccff00;
+    font-size: 15px;
+    /* width: 100%; */
 }
 
 /* WELCOME PAGE */
