@@ -6,6 +6,7 @@ import axios from "./axios";
 import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
 import Friends from "./friends";
+import { Link } from "react-router-dom";
 
 const appTitle = {
     borderBottom: "2px solid black",
@@ -67,6 +68,8 @@ export default class App extends React.Component {
                                 style={smallLogo}
                                 src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
                             />
+                            <Link to={`/users/`}>Find new people</Link>
+                            <Link to={`/friends/`}>Friends</Link>
                             <img
                                 onClick={this.toggleModal}
                                 style={smallLogo}

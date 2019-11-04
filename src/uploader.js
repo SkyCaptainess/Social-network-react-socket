@@ -2,6 +2,7 @@ import React from "react";
 import axios from "./axios";
 
 const uploaderOverlay = {
+    position: "fixed",
     display: "grid",
     alignItems: "center",
     justifyContent: "center",
@@ -12,18 +13,18 @@ const uploaderOverlay = {
     bottom: "0"
 };
 
-const uploaderBox = {
-    border: "2px solid black",
-    width: "400px",
-    height: "200px",
-    position: "fixed",
-    display: "grid",
-    alignItems: "center",
-    justifyContent: "center",
-    top: "300px",
-    left: "50%",
-    marginLeft: "-200px"
-};
+// const uploaderBox = {
+//     border: "2px solid black",
+//     width: "400px",
+//     height: "200px",
+//     position: "fixed",
+//     display: "grid",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     top: "300px",
+//     left: "50%",
+//     marginLeft: "-200px"
+// };
 
 export default class Uploader extends React.Component {
     constructor(props) {
@@ -57,16 +58,23 @@ export default class Uploader extends React.Component {
     render() {
         return (
             <div style={uploaderOverlay}>
-                <div style={uploaderBox}>
-                    <input
-                        type="file"
-                        id="file"
-                        accept="image/*"
-                        onChange={e => {
-                            this.fileSelected(e);
-                        }}
-                    />
-                    <h1 onClick={() => this.uploadImg()}>click to upload </h1>
+                <div className="uk-card uk-card-default uploader">
+                    <div className="uk-form-file">
+                        <button
+                            className="uk-button"
+                            onClick={() => this.uploadImg()}
+                        >
+                            click to upload{" "}
+                        </button>
+                        <input
+                            type="file"
+                            id="file"
+                            accept="image/*"
+                            onChange={e => {
+                                this.fileSelected(e);
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         );

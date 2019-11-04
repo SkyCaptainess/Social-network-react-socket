@@ -2,22 +2,6 @@ import React from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
 
-// const logLink = {
-//     display: "grid",
-//     alignItems: "center",
-//     textAlign: "center",
-//     margin: "0 auto",
-//     marginBottom: "5px",
-//     border: "2px outset black",
-//     width: "200px",
-//     height: "27px",
-//     backgroundColor: "#1b2e2c",
-//     fontFamily: "Times New Roman",
-//     fontSize: "14px",
-//     color: "#fff9ff",
-//     textDecoration: "none"
-// };
-
 export default class Register extends React.Component {
     constructor(props) {
         super(props);

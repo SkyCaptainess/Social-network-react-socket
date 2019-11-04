@@ -5,6 +5,10 @@
     background-color: #b3b3b3;
 }
 
+img {
+    z-index: 5;
+}
+
 /* MAIN GRID */
 
 .container {
@@ -92,6 +96,7 @@ footer {
 
 .uk-card-media-top img {
     width: 100%;
+    z-index: 5;
 }
 
 .unordered-list {

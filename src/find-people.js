@@ -78,6 +78,7 @@ export function FindPeople() {
 
             <h2>Looking for someone?</h2>
             <input
+                className="uk-input"
                 name="user-input"
                 type="text"
                 onChange={e => setUserInput(e.target.value)}
