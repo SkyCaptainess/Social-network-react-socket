@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const compression = require("compression");
+const server = require("http").Server(app);
+const io = require("socket.io")(server, { origins: "localhost:8080" });
 const { hash, compare } = require("./passwordModules");
 const {
     register,
@@ -264,6 +266,10 @@ app.get("/friends-wannabes", async (req, res) => {
     }
 });
 
+// app.post("friend-request", (req, res) => {
+//     io.sockets.sockets[socketIdOfRecipient].emit("newFriendRequest");
+// });
+
 // DO NOT DELETE
 app.get("*", function(req, res) {
     if (!req.session.userId) {
@@ -274,6 +280,22 @@ app.get("*", function(req, res) {
 });
 // DO NOT DELETE
 
-app.listen(8080, function() {
+io.on("connection", socket => {
+    console.log(`a socket with the id ${socket.id} just connected`);
+    socket.on("iAmHere", data => {
+        console.log(data.message);
+    });
+    socket.emit("goodToSeeYou", {
+        message: "you look marvellous"
+    });
+
+    socket.on("disconnect", () => {
+        console.log(`a socket with the id ${socket.id} just disconnected`);
+        io.sockets.emit("somebodyNew");
+        //seding a message to everybody
+    });
+});
+
+server.listen(8080, function() {
     console.log("I'm listening.");
 });

@@ -44,6 +44,12 @@ export default class Register extends React.Component {
     render() {
         return (
             <div>
+                <div className="welcome-link">
+                    <Link to="/login" className="welcome-link">
+                        {/*<Link to="/login" style={logLink}>*/}
+                        ...click here to log in
+                    </Link>
+                </div>
                 <div className="title">
                     <h2>Mutual Privacy Breach.</h2>
                 </div>
@@ -80,10 +86,6 @@ export default class Register extends React.Component {
                     >
                         SUBMIT
                     </button>
-                    <Link to="/login" className="uk-button uk-button-default">
-                        {/*<Link to="/login" style={logLink}>*/}
-                        ...or click here to log in
-                    </Link>
                 </div>
                 {this.state.error && (
                     <div className="error title">

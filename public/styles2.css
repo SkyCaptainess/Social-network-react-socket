@@ -5,8 +5,19 @@
     background-color: #b3b3b3;
 }
 
-img {
+/* img {
     z-index: 5;
+} */
+
+@font-face {
+    font-family: "Merkur";
+    src: url("/fonts/Merkur.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+h1 {
+    font-family: "Merkur";
 }
 
 /* MAIN GRID */
@@ -14,12 +25,23 @@ img {
 .container {
     display: grid;
     grid-template-columns: 150px auto 150px;
-    grid-template-rows: 100px auto 100px;
+    grid-template-rows: 150px auto 100px;
     grid-gap: 1em;
     min-height: 100vh;
 }
 
+.container h1 {
+    font-family: "Merkur";
+    font-size: 10vh;
+    color: #ccff00;
+    background-color: transparent;
+}
+
 header {
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    background-color: rgba(42, 42, 42, 0.9);
     /* Start on Row 1 */
     grid-row: 1;
     /* Start on the first column line and extend all the to the last column line */
@@ -28,6 +50,8 @@ header {
     display: grid;
     align-items: center;
     justify-content: center;
+    box-shadow: -3px 5px 5px black;
+    z-index: 5;
 }
 
 .sidebar-left {
@@ -78,6 +102,16 @@ footer {
 .welcomeInput {
     width: 400px;
     color: #b3b3b3;
+}
+
+.welcome-link {
+    position: fixed;
+    display: block;
+    top: 100px;
+    right: 20px;
+    z-index: 6;
+    background-color: transparent;
+    color: #ccff00;
 }
 
 /* WELCOME PAGE */

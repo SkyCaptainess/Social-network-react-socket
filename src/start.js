@@ -5,6 +5,15 @@ import reduxPromise from "redux-promise";
 import { reducer } from "./reducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import * as io from "socket.io-client";
+
+const socket = io.connect();
+socket.emit("iAmHere", {
+    message: "hello"
+});
+socket.on("goodToSeeYou", data => {
+    console.log(data.message);
+});
 
 const store = createStore(
     reducer,
