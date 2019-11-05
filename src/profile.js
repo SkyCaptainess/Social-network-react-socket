@@ -18,23 +18,21 @@ export default class Profile extends React.Component {
             <div>
                 <div className="uk-card uk-card-body profile-card">
                     <div className="uk-child">
-                        <div>
-                            <div className="uk-card-media-top">
-                                <ProfilePic
-                                    imgUrl={this.props.imgUrl}
-                                    toggleModal={this.props.toggleModal}
-                                />
-                            </div>
-                            <div className="uk-card-body custom">
-                                <h3 className="uk-card-title">
-                                    {this.props.firstName} {this.props.lastName}
-                                </h3>
+                        <div className="uk-card-media-top">
+                            <ProfilePic
+                                imgUrl={this.props.imgUrl}
+                                toggleModal={this.props.toggleModal}
+                            />
+                        </div>
+                        <div className="uk-card-body custom">
+                            <h3 className="uk-card-title">
+                                {this.props.firstName} {this.props.lastName}
+                            </h3>
 
-                                <BioEditor
-                                    bio={this.props.bio}
-                                    setBio={this.props.setBio}
-                                />
-                            </div>
+                            <BioEditor
+                                bio={this.props.bio}
+                                setBio={this.props.setBio}
+                            />
                         </div>
                     </div>
                 </div>

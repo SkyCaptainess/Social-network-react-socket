@@ -26,6 +26,12 @@ export function reducer(state = {}, action) {
             users: state.users.filter(user => user.id != action.id)
         };
     }
+    if (action.type == "CHAT_MESSAGES") {
+        state = {
+            ...state,
+            chatMessages: action.messages.reverse()
+        };
+    }
     console.log("state: ", state);
     return state;
 }

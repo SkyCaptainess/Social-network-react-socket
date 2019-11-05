@@ -43,6 +43,7 @@
 
 .container {
     display: grid;
+    position: relative;
     grid-template-columns: 150px auto 150px;
     grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
@@ -83,7 +84,7 @@ header {
     display: grid;
     align-items: center;
     justify-content: center;
-    box-shadow: -3px 5px 5px black;
+    box-shadow: -3px 5px 5px -3px black;
     z-index: 5;
 }
 
@@ -149,7 +150,7 @@ footer {
     font-family: "Prime";
 }
 
-.register-title {
+.welcome-title {
     background-color: #ccff00;
     font-size: 15px;
     /* width: 100%; */
@@ -162,16 +163,54 @@ footer {
 /* PROFILE CARD */
 
 .profile-card {
-    border: 2px black solid;
+    border: 2px orange solid;
+    background-color: rgba(42, 42, 42, 0.2);
+    /* border: 2px #ccff00 solid; */
+}
+
+.profile-card h3 {
+    color: black;
+    /* background-color: #ccff00; */
+    /* background-color: #0f6ecd; */
+    font-family: "Nulshock";
+}
+
+.profile-card p {
+    color: black;
+    /* background-color: #ccff00; */
+    /* background-color: #0f6ecd; */
+}
+
+.profile-card button {
+    color: black;
+    /* background-color: #ccff00; */
+    /* background-color: #0f6ecd; */
+}
+
+.uk-child {
+    background-color: rgba(42, 42, 42, 0.2);
 }
 
 .uk-card-body.custom {
     padding: 15px 0 0 0;
+    border: 2px solid #ccff00;
+    /* background-color: rgba(22, 22, 22, 0.2); */
+}
+
+.uk-card-media-top div {
+    background-color: rgba(22, 22, 22, 0.2);
 }
 
 .uk-card-media-top img {
     width: 100%;
     z-index: 5;
+    border: 2px solid #0f6ecd;
+    margin-bottom: 10px;
+    background-color: rgba(42, 42, 42, 0.2);
+}
+
+div .uk-card-media-top img {
+    background-color: rgba(42, 42, 42, 0.8);
 }
 
 .unordered-list {
@@ -190,3 +229,23 @@ footer {
 .link-block {
     display: block;
 }
+
+/* PROFILE CARD */
+
+/* APP HEADER */
+
+.app-link {
+    z-index: 6;
+    background-color: transparent;
+    color: #ccff00;
+    font-family: "Prime";
+}
+
+/* CHAT */
+
+.chat-container {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+/* CHAT */

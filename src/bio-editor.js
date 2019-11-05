@@ -52,7 +52,7 @@ export default class BioEditor extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="bio-editor">
                 <p>{this.props.bio}</p>
 
                 {this.state.bioTxtAreaIsVisible && (

@@ -6,6 +6,7 @@ import { reducer } from "./reducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import * as io from "socket.io-client";
+import { init } from "./socket";
 
 const socket = io.connect();
 socket.emit("iAmHere", {
@@ -30,6 +31,7 @@ let elem;
 if (!userIsLoggedIn) {
     elem = <Welcome />;
 } else {
+    init(store);
     elem = (
         <Provider store={store}>
             <App />

@@ -131,3 +131,21 @@ exports.getFriendsWannabes = id => {
         [id]
     );
 };
+exports.addMessage = (msg, id) => {
+    return db.query(
+        `
+        INSERT INTO messages (message, sender_id)
+        VALUES ($1, $2)
+        RETURNING *
+        `,
+        [msg, id]
+    );
+};
+exports.getLastTenChatMessages = () => {
+    return db.query(
+        `
+        SELECT * FROM messages
+        ORDER BY id DESC LIMIT 10
+        `
+    );
+};

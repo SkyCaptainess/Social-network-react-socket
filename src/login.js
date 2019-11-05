@@ -40,11 +40,16 @@ export default class Login extends React.Component {
     render() {
         return (
             <div>
-                <div className="title">
-                    <h2>Mutual Privacy Breach.</h2>
+                <div className="welcome-link">
+                    <Link to="/" className="welcome-link">
+                        registered?
+                    </Link>
+                </div>
+                <div className="welcome-title">
+                    <h2>Well hello there.</h2>
                 </div>
 
-                <div className="uk-card uk-card-default uk-card-body uk-card-secondary welcomeInput">
+                <div className="uk-card uk-card-default uk-card-body welcomeInput">
                     <input
                         name="email"
                         placeholder="email"

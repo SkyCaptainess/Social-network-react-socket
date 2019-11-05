@@ -16,7 +16,9 @@ const {
     sendRequest,
     acceptRequest,
     endFriendship,
-    getFriendsWannabes
+    getFriendsWannabes,
+    addMessage,
+    getLastTenChatMessages
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -46,14 +48,24 @@ const uploader = multer({
 
 app.use(compression());
 
+const cookieSessionMiddleware = cookieSession({
+    secret: `I'm always angry.`,
+    maxAge: 1000 * 60 * 60 * 24 * 90
+});
+
+app.use(cookieSessionMiddleware);
+io.use(function(socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
+
 app.use(express.static("./public"));
 
-app.use(
-    cookieSession({
-        secret: `I'm always angry.`,
-        maxAge: 1000 * 60 * 60 * 24 * 14
-    })
-);
+// app.use(
+//     cookieSession({
+//         secret: `I'm always angry.`,
+//         maxAge: 1000 * 60 * 60 * 24 * 14
+//     })
+// );
 
 app.use(express.json());
 app.use(csurf());
@@ -280,16 +292,46 @@ app.get("*", function(req, res) {
 });
 // DO NOT DELETE
 
+// SERVER SIDE SOCKET CODE //
+const onlineUsers = {};
 io.on("connection", socket => {
     console.log(`a socket with the id ${socket.id} just connected`);
+    let userId = socket.request.session.userId;
+    onlineUsers[socket.id] = userId;
     socket.on("iAmHere", data => {
         console.log(data.message);
     });
-    socket.emit("goodToSeeYou", {
-        message: "you look marvellous"
+    // socket.emit("goodToSeeYou", {
+    //     message: "you look marvellous"
+    // });
+    if (!socket.request.session.userId) {
+        return socket.disconnect(true);
+    }
+
+    socket.on("getLastTenChatMessages", () => {
+        getLastTenChatMessages().then(data => {
+            console.log("get last messages: ", data.rows);
+            io.sockets.emit("lastTenMessages", data.rows);
+        });
     });
 
+    socket.on("chatMessage", msg => {
+        console.log("my amazing chat message", msg);
+        io.sockets.emit("chatMessages", msg);
+        addMessage(msg, userId).then(({ data }) => {
+            console.log("chatmessage data: ", data);
+        });
+    });
+
+    // socket.on("newMessage", newMessage => {
+    // do stuff in here...
+    // query - info with sender userId first last imgUrl
+    // emit message OBJECT to everybody - should look like object in last10msgs
+    // storeit in the database
+    // });
+
     socket.on("disconnect", () => {
+        delete onlineUsers[socket.id];
         console.log(`a socket with the id ${socket.id} just disconnected`);
         io.sockets.emit("somebodyNew");
         //seding a message to everybody

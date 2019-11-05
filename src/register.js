@@ -50,7 +50,7 @@ export default class Register extends React.Component {
                         log in.
                     </Link>
                 </div>
-                <div className="register-title">
+                <div className="welcome-title">
                     <h2>Mutual Privacy Breach.</h2>
                 </div>
 

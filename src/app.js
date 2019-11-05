@@ -7,6 +7,7 @@ import { OtherProfile } from "./otherprofile";
 import { FindPeople } from "./find-people";
 import Friends from "./friends";
 import { Link } from "react-router-dom";
+import { Chat } from "./chat";
 
 const appTitle = {
     borderBottom: "2px solid black",
@@ -68,8 +69,12 @@ export default class App extends React.Component {
                                 style={smallLogo}
                                 src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
                             />
-                            <Link to={`/users/`}>Find new people</Link>
-                            <Link to={`/friends/`}>Friends</Link>
+                            <Link to={`/users/`} className="app-link">
+                                find new people
+                            </Link>
+                            <Link to={`/friends/`} className="app-link">
+                                friends
+                            </Link>
                             <img
                                 onClick={this.toggleModal}
                                 style={smallLogo}
@@ -77,7 +82,7 @@ export default class App extends React.Component {
                             />
                         </header>
                         <aside className="sidebar-left">Left Sidebar</aside>
-                        <div className="content">
+                        <div id="content">
                             <div className="content-wrapper">
                                 <div className="profile">
                                     <Route
@@ -114,6 +119,7 @@ export default class App extends React.Component {
                                     path="/friends/"
                                     component={Friends}
                                 />
+                                <Route exact path="/chat/" component={Chat} />
                             </div>
                         </div>
 
