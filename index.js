@@ -18,7 +18,8 @@ const {
     endFriendship,
     getFriendsWannabes,
     addMessage,
-    getLastTenChatMessages
+    getLastTenChatMessages,
+    getNewMessage
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -320,9 +321,10 @@ io.on("connection", socket => {
     //     });
     // });
 
-    socket.on("chatMessage", msg => {
+    socket.on("chatMessage", async msg => {
         console.log("my amazing chat message", msg);
-        addMessage(msg, userId).then(({ rows }) => {
+        await addMessage(msg, userId);
+        getNewMessage(userId).then(({ rows }) => {
             console.log("chatmessage data: ", rows);
             io.sockets.emit("chatMessage", rows);
         });

@@ -34,7 +34,13 @@ export function Chat() {
                 {!!chatMessages &&
                     chatMessages.length != 0 &&
                     chatMessages.map(chatMessage => (
-                        <p key={chatMessage.id}>{chatMessage.message}</p>
+                        <div key={chatMessage.msg_id}>
+                            <img src={chatMessage.url} />
+                            <p>
+                                {chatMessage.first} {chatMessage.last}
+                            </p>
+                            <p>{chatMessage.message}</p>
+                        </div>
                     ))}
             </div>
             <textarea

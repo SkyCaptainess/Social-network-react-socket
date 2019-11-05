@@ -136,7 +136,6 @@ exports.addMessage = (msg, id) => {
         `
         INSERT INTO messages (message, sender_id)
         VALUES ($1, $2)
-        RETURNING *
         `,
         [msg, id]
     );
@@ -144,8 +143,21 @@ exports.addMessage = (msg, id) => {
 exports.getLastTenChatMessages = () => {
     return db.query(
         `
-        SELECT * FROM messages
-        ORDER BY id DESC LIMIT 10
+        SELECT first, last, url, message, created_at, messages.id AS msg_id FROM messages
+        JOIN users
+        ON sender_id = users.id
+        ORDER BY messages.id DESC LIMIT 10
         `
+    );
+};
+exports.getNewMessage = id => {
+    return db.query(
+        `
+        SELECT first, last, url, message, created_at, messages.id AS msg_id FROM messages
+        JOIN users
+        ON (sender_id = $1 AND sender_id = users.id)
+        ORDER BY messages.id DESC LIMIT 1
+        `,
+        [id]
     );
 };
