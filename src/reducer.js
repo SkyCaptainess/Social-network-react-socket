@@ -32,7 +32,13 @@ export function reducer(state = {}, action) {
             chatMessages: action.messages.reverse()
         };
     }
-    console.log("state: ", state);
+    if (action.type == "NEW_MESSAGE") {
+        state = {
+            ...state,
+            chatMessages: state.chatMessages.concat(action.message)
+        };
+    }
+    // console.log("state: ", state);
     return state;
 }
 

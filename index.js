@@ -308,18 +308,23 @@ io.on("connection", socket => {
         return socket.disconnect(true);
     }
 
-    socket.on("getLastTenChatMessages", () => {
-        getLastTenChatMessages().then(data => {
-            console.log("get last messages: ", data.rows);
-            io.sockets.emit("lastTenMessages", data.rows);
-        });
+    getLastTenChatMessages().then(data => {
+        console.log("get last messages: ", data.rows);
+        io.sockets.emit("lastTenMessages", data.rows);
     });
+
+    // socket.on("getLastTenChatMessages", () => {
+    //     getLastTenChatMessages().then(data => {
+    //         console.log("get last messages: ", data.rows);
+    //         io.sockets.emit("lastTenMessages", data.rows);
+    //     });
+    // });
 
     socket.on("chatMessage", msg => {
         console.log("my amazing chat message", msg);
-        io.sockets.emit("chatMessages", msg);
-        addMessage(msg, userId).then(({ data }) => {
-            console.log("chatmessage data: ", data);
+        addMessage(msg, userId).then(({ rows }) => {
+            console.log("chatmessage data: ", rows);
+            io.sockets.emit("chatMessage", rows);
         });
     });
 

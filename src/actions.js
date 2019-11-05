@@ -31,6 +31,12 @@ export async function chatMessages(msgs) {
         messages: msgs
     };
 }
+export async function newMessage(msg) {
+    return {
+        type: "NEW_MESSAGE",
+        message: msg
+    };
+}
 // export async function getLastTenChatMessages() {
 //     socket.emit("getLastTenChatMessages").then(data => {
 //         console.log("action last 10: ", data);

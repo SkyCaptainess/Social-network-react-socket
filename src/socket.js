@@ -1,4 +1,4 @@
-import { chatMessages, chatMessage } from "./actions";
+import { chatMessages, newMessage } from "./actions";
 import * as io from "socket.io-client";
 
 export let socket;
@@ -12,10 +12,13 @@ export const init = store => {
             // store.dispatch(chatMessages(msg));
         });
         socket.on("lastTenMessages", msgs => {
-            console.log("lastTenMessages: ", msgs);
+            // console.log("lastTenMessages: ", msgs);
             store.dispatch(chatMessages(msgs));
         });
 
-        // socket.on("chatMessage", msg => store.dispatch(chatMessage(msg)));
+        socket.on("chatMessage", msg => {
+            store.dispatch(newMessage(msg));
+            console.log("new message: ", msg);
+        });
     }
 };
