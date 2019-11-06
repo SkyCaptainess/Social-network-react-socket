@@ -3,18 +3,6 @@ import axios from "./axios";
 import { ProfilePic } from "./profile-pic";
 import FriendshipButton from "./friendship-button";
 
-const profileInfo = {
-    display: "grid"
-};
-
-const profilePic = {
-    display: "inline"
-};
-
-const profileName = {
-    display: "grid"
-};
-
 export class OtherProfile extends React.Component {
     constructor() {
         super();
@@ -48,10 +36,6 @@ export class OtherProfile extends React.Component {
             // imagine i'm logged in as user 6
             this.props.history.push("/");
         }
-
-        //make an axios req to server asking for info about this.props.match.params.id
-        // if there's no user with that id, redirect back to /
-        // if the user is trying to visit their own page redirect them back to /
     }
 
     render() {
@@ -63,14 +47,23 @@ export class OtherProfile extends React.Component {
                             <div className="uk-card-media-top">
                                 <ProfilePic imgUrl={this.state.imgUrl} />
                             </div>
-                            <div className="uk-card-body custom">
-                                <h3 className="uk-card-title">
-                                    {this.state.firstName} {this.state.lastName}
-                                </h3>
-                                <p>{this.state.bio}</p>
-                                <FriendshipButton
-                                    profileId={this.props.match.params.id}
-                                />
+                            <div className="card-content">
+                                <div className="uk-card-body custom">
+                                    <h3 className="uk-card-title">
+                                        {this.state.firstName}{" "}
+                                        {this.state.lastName}
+                                    </h3>
+                                    <p>{this.state.bio}</p>
+                                    <FriendshipButton
+                                        profileId={this.props.match.params.id}
+                                    />
+                                </div>
+                                <div className="uk-card-body custom wall-writing">
+                                    <h4>scribble on the wall.</h4>
+                                    <FriendshipButton
+                                        profileId={this.props.match.params.id}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

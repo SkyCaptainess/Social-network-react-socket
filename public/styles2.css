@@ -13,6 +13,13 @@
 }
 
 @font-face {
+    font-family: "Neuro";
+    src: url("/fonts/neuropolitical.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
     font-family: "Nulshock";
     src: url("/fonts/Nulshock.ttf");
     font-style: normal;
@@ -48,6 +55,7 @@
     grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
     min-height: 100vh;
+    font-family: "Neuro";
 }
 
 .container img {
@@ -96,6 +104,7 @@ header {
 }
 
 #content {
+    font-family: "Neuro";
     height: 100%;
     /* Start on Row 2 */
     grid-row: 2;
@@ -105,6 +114,10 @@ header {
     text-align: center;
     align-items: center;
     justify-content: center;
+}
+
+#content h3 {
+    font-family: "Neuro";
 }
 
 .sidebar-right {
@@ -168,11 +181,11 @@ footer {
     /* border: 2px #ccff00 solid; */
 }
 
-.profile-card h3 {
+#content .profile-card h3 {
+    font-family: "Nulshock";
     color: black;
     /* background-color: #ccff00; */
     /* background-color: #0f6ecd; */
-    font-family: "Nulshock";
 }
 
 .profile-card p {
@@ -194,7 +207,16 @@ footer {
 .uk-card-body.custom {
     padding: 15px 0 0 0;
     border: 2px solid #ccff00;
+    /* margin-top: 10px; */
     /* background-color: rgba(22, 22, 22, 0.2); */
+}
+
+.wall-writing {
+    margin-top: 10px;
+}
+
+.card-content {
+    background-color: rgba(22, 22, 22, 0.2);
 }
 
 .uk-card-media-top div {
@@ -204,14 +226,14 @@ footer {
 .uk-card-media-top img {
     width: 100%;
     z-index: 5;
-    border: 2px solid #0f6ecd;
+    border: 2px solid #ccff00;
     margin-bottom: 10px;
     background-color: rgba(42, 42, 42, 0.2);
 }
 
-div .uk-card-media-top img {
+/* div .uk-card-media-top img {
     background-color: rgba(42, 42, 42, 0.8);
-}
+} */
 
 .unordered-list {
     padding: 0;
@@ -235,10 +257,44 @@ div .uk-card-media-top img {
 /* APP HEADER */
 
 .app-link {
+    font-size: 40px;
     z-index: 6;
     background-color: transparent;
-    color: #ccff00;
+    color: #0f6ecd;
     font-family: "Prime";
+    transition-duration: 1s;
+}
+
+.app-link:hover {
+    animation-duration: 0.05s;
+    animation-name: shiver;
+    animation-iteration-count: infinite;
+    text-decoration: none;
+    text-shadow: -15px 0 black, 0 15px black, 15px 0 black, 0 -15px black;
+    color: magenta;
+}
+
+@keyframes shiver {
+    from {
+        text-shadow: -35px 0 black, 0 35px black, 35px 0 black, 0 -35px black;
+        color: #ccff00;
+        left: 100px;
+    }
+
+    to {
+        text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 -0px black;
+        font-size: 20px;
+    }
+    to {
+        text-shadow: -185px 0 black, 0 185px black, 185px 0 black,
+            0 -185px black;
+        color: magenta;
+        right: 500px;
+    }
+    to {
+        text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 -0px black;
+        font-size: 50px;
+    }
 }
 
 /* CHAT */
