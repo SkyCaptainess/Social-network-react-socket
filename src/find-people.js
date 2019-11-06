@@ -52,25 +52,25 @@ export function FindPeople() {
                 <ul className="unordered-list">
                     {users.map(user => (
                         <li className="list-element" key={user.first}>
-                            <div className="uk-card uk-card-body profile-card square-profile">
-                                <div className="uk-child">
-                                    <div>
-                                        <div className="uk-card-media-top">
-                                            <Link
-                                                to={`/user/${user.id}`}
-                                                className="link-block"
-                                            >
+                            <Link
+                                to={`/user/${user.id}`}
+                                className="link-block"
+                            >
+                                <div className="uk-card uk-card-body profile-card square-profile">
+                                    <div className="uk-child">
+                                        <div>
+                                            <div className="uk-card-media-top">
                                                 <ProfilePic imgUrl={user.url} />
-                                            </Link>
-                                        </div>
-                                        <div className="uk-card-body custom">
-                                            <h3 className="uk-card-title">
-                                                {user.first} {user.last}
-                                            </h3>
+                                            </div>
+                                            <div className="uk-card-body custom">
+                                                <h3 className="uk-card-title">
+                                                    {user.first} {user.last}
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </li>
                     ))}
                 </ul>

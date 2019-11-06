@@ -18,6 +18,12 @@
     font-style: normal;
     font-weight: normal;
 }
+@font-face {
+    font-family: "Earth";
+    src: url("/fonts/Earth.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
 
 @font-face {
     font-family: "Nulshock";
@@ -79,11 +85,25 @@
     margin-bottom: 0px;
 }
 
+.container p {
+    font-family: "Earth";
+    font-size: 20px;
+    /* font-weight: bold; */
+}
+
+.container button {
+    border-color: #ccff00;
+}
+.container button:hover {
+    border-color: #0f6ecd;
+    color: magenta;
+}
+
 header {
     top: 0;
     position: fixed;
     width: 100vw;
-    background-color: rgba(42, 42, 42, 0.9);
+    background-color: rgba(42, 42, 42, 0.8);
     /* Start on Row 1 */
     grid-row: 1;
     /* Start on the first column line and extend all the to the last column line */
@@ -92,8 +112,12 @@ header {
     display: grid;
     align-items: center;
     justify-content: center;
-    box-shadow: -3px 5px 5px -3px black;
+    /* box-shadow: 10px 10px 10px 10px grey; */
     z-index: 5;
+}
+
+header img {
+    opacity: 0.5;
 }
 
 .sidebar-left {
@@ -205,10 +229,28 @@ footer {
 }
 
 .uk-card-body.custom {
-    padding: 15px 0 0 0;
+    padding: 20px;
+    border: 2px solid #83f52c;
+    transition-duration: 0.001s;
+    margin: 0px auto 10px;
+}
+
+.uk-card-body.custom:hover {
     border: 2px solid #ccff00;
-    /* margin-top: 10px; */
-    /* background-color: rgba(22, 22, 22, 0.2); */
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes soft-shiver {
+    from {
+        border-color: magenta;
+    }
+
+    to {
+        border-color: #ccff00;
+    }
 }
 
 .wall-writing {
@@ -261,8 +303,10 @@ footer {
     z-index: 6;
     background-color: transparent;
     color: #0f6ecd;
-    font-family: "Prime";
+    font-family: "Neuro";
     transition-duration: 1s;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 0.5px -0.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 0.5px 0.5px 0 magenta;
 }
 
 .app-link:hover {
