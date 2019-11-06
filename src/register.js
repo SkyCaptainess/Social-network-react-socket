@@ -54,7 +54,7 @@ export default class Register extends React.Component {
                     <h2>Mutual Privacy Breach.</h2>
                 </div>
 
-                <div className="uk-card uk-card-default uk-card-body uk-card-secondary welcomeInput">
+                <div className="uk-card uk-card-default uk-card-body custom welcomeInput">
                     <input
                         name="first"
                         placeholder="first name"

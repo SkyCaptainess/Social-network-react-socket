@@ -18,10 +18,7 @@ export default function Welcome() {
             </header>
             <aside className="sidebar-left">Left Sidebar</aside>
             <div id="content">
-                <img
-                    style={entranceLogo}
-                    src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
-                />
+                <img style={entranceLogo} src="/img/fission.png" />
                 <HashRouter>
                     <div>
                         <Route exact path="/" component={Register} />

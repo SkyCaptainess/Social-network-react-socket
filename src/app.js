@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { Chat } from "./chat";
 
 const appTitle = {
-    borderBottom: "2px solid black",
     display: "flex",
     justifyContent: "space-between"
 };
@@ -70,7 +69,10 @@ export default class App extends React.Component {
                                 src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
                             />
                             <Link to={`/users/`} className="app-link">
-                                find new people
+                                new people
+                            </Link>
+                            <Link to={`/chat/`} className="app-link">
+                                chat
                             </Link>
                             <Link to={`/friends/`} className="app-link">
                                 friends

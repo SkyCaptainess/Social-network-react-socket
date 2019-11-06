@@ -49,7 +49,7 @@ export default class Login extends React.Component {
                     <h2>Well hello there.</h2>
                 </div>
 
-                <div className="uk-card uk-card-default uk-card-body welcomeInput">
+                <div className="uk-card uk-card-default uk-card-body custom welcomeInput">
                     <input
                         name="email"
                         placeholder="email"
