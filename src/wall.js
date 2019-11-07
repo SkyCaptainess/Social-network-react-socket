@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { receiveWallMessages } from "./actions";
 import { ProfilePic } from "./profile-pic";
-import { Link } from "react-router-dom";
 
 export default function Wall({ wallId, refresh }) {
     console.log("wall_id: ", wallId);
