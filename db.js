@@ -161,3 +161,16 @@ exports.getNewMessage = id => {
         [id]
     );
 };
+
+exports.getWallMessages = id => {
+    return db.query(
+        `
+        SELECT first, last, url, message, created_at, wallmessages.id AS wall_msg_id
+        FROM wallmessages
+        JOIN users
+        ON (wall_receiver_id = $1 AND wall_sender_id = users.id)
+        ORDER BY wallmessages.id DESC LIMIT 10
+        `,
+        [id]
+    );
+};

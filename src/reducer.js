@@ -38,6 +38,13 @@ export function reducer(state = {}, action) {
             chatMessages: state.chatMessages.concat(action.message)
         };
     }
+    if (action.type == "RECEIVE_WALL_MESSAGES") {
+        console.log("wall msg reducer: ", action.messages);
+        state = {
+            ...state,
+            wallMessages: action.messages
+        };
+    }
     // console.log("state: ", state);
     return state;
 }

@@ -42,3 +42,11 @@ export async function newMessage(msg) {
 //         console.log("action last 10: ", data);
 //     });
 // }
+
+export async function receiveWallMessages(id) {
+    const { data } = await axios.get(`/wall-messages/${id}`);
+    return {
+        type: "RECEIVE_WALL_MESSAGES",
+        messages: data
+    };
+}

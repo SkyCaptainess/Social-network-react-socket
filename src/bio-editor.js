@@ -59,8 +59,8 @@ export default class BioEditor extends React.Component {
                     <div>
                         <textarea
                             name="bio"
-                            className="uk-textarea"
-                            placeholder="enter bio here"
+                            className="uk-textarea custom"
+                            placeholder={this.props.bio}
                             onChange={e => this.handleChange(e)}
                         ></textarea>
                         <button
@@ -71,7 +71,7 @@ export default class BioEditor extends React.Component {
                         </button>
                     </div>
                 )}
-                {!this.props.bio && (
+                {!this.props.bio && !this.state.bioTxtAreaIsVisible && (
                     <button
                         id="addBio"
                         className="uk-button uk-button-default bio-button"
@@ -80,7 +80,7 @@ export default class BioEditor extends React.Component {
                         Add bio
                     </button>
                 )}
-                {this.props.bio && (
+                {this.props.bio && !this.state.bioTxtAreaIsVisible && (
                     <button
                         id="editBio"
                         className="uk-button uk-button-default bio-button"

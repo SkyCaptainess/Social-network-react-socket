@@ -2,6 +2,7 @@ import React from "react";
 import axios from "./axios";
 import { ProfilePic } from "./profile-pic";
 import FriendshipButton from "./friendship-button";
+import Wall from "./wall";
 
 export class OtherProfile extends React.Component {
     constructor() {
@@ -64,6 +65,7 @@ export class OtherProfile extends React.Component {
                                         profileId={this.props.match.params.id}
                                     />
                                 </div>
+                                <Wall wallId={this.props.match.params.id} />
                             </div>
                         </div>
                     </div>

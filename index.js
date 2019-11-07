@@ -19,7 +19,8 @@ const {
     getFriendsWannabes,
     addMessage,
     getLastTenChatMessages,
-    getNewMessage
+    getNewMessage,
+    getWallMessages
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -275,6 +276,18 @@ app.get("/friends-wannabes", async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.log("error getting friends-wannabes: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.get("/wall-messages/:id", async (req, res) => {
+    console.log("wallmsg id: ", req.params.id);
+    try {
+        const { rows } = await getWallMessages(req.params.id);
+        console.log("wall msg ", rows);
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting wall messages: ", err);
         res.sendStatus(500);
     }
 });

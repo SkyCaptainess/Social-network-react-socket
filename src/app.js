@@ -8,6 +8,7 @@ import { FindPeople } from "./find-people";
 import Friends from "./friends";
 import { Link } from "react-router-dom";
 import { Chat } from "./chat";
+import Wall from "./wall";
 
 const appTitle = {
     display: "flex",
