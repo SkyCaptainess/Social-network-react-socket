@@ -4,7 +4,7 @@ import { receiveWallMessages } from "./actions";
 import { ProfilePic } from "./profile-pic";
 import { Link } from "react-router-dom";
 
-export default function Wall({ wallId }) {
+export default function Wall({ wallId, refresh }) {
     console.log("wall_id: ", wallId);
     const dispatch = useDispatch();
     const wallMessages = useSelector(state => state.wallMessages);
@@ -13,14 +13,14 @@ export default function Wall({ wallId }) {
         console.log("Wall sanity check");
         dispatch(receiveWallMessages(wallId));
         console.log("wallmessages: ", wallMessages);
-    }, []);
+    }, [refresh]);
 
     if (!wallMessages) {
         return null;
     }
 
     return (
-        <div id="friends_wannabes">
+        <div id="sidebar-right">
             <div className="friends">
                 <h1>MESSAGES:</h1>
                 {!!wallMessages &&

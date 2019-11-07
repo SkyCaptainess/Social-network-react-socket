@@ -20,7 +20,8 @@ const {
     addMessage,
     getLastTenChatMessages,
     getNewMessage,
-    getWallMessages
+    getWallMessages,
+    addWallMessage
 } = require("./db");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -284,6 +285,22 @@ app.get("/wall-messages/:id", async (req, res) => {
     console.log("wallmsg id: ", req.params.id);
     try {
         const { rows } = await getWallMessages(req.params.id);
+        console.log("wall msg ", rows);
+        res.json(rows);
+    } catch (err) {
+        console.log("error getting wall messages: ", err);
+        res.sendStatus(500);
+    }
+});
+
+app.post("/addWallMessage/:id", async (req, res) => {
+    console.log("addWallMessage req body ", req.body);
+    try {
+        const { rows } = await addWallMessage(
+            req.session.userId,
+            req.params.id,
+            req.body.wallmsg
+        );
         console.log("wall msg ", rows);
         res.json(rows);
     } catch (err) {

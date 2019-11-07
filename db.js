@@ -174,3 +174,13 @@ exports.getWallMessages = id => {
         [id]
     );
 };
+exports.addWallMessage = (senderId, receiverId, message) => {
+    return db.query(
+        `
+        INSERT INTO wallmessages (wall_sender_id, wall_receiver_id, message)
+        VALUES ($1, $2, $3)
+        RETURNING true
+        `,
+        [senderId, receiverId, message]
+    );
+};

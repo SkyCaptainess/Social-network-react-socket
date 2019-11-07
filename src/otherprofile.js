@@ -7,7 +7,10 @@ import Wall from "./wall";
 export class OtherProfile extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            scribbleIsVisible: false,
+            refresh: false
+        };
     }
 
     async componentDidMount() {
@@ -39,6 +42,46 @@ export class OtherProfile extends React.Component {
         }
     }
 
+    toggleScribbleInput() {
+        console.log("I'm a togglebioinput");
+        this.setState({ scribbleIsVisible: !this.state.scribbleIsVisible });
+    }
+
+    handleChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+    }
+
+    submit() {
+        axios
+            .post(`/addWallMessage/${this.props.match.params.id}`, {
+                wallmsg: this.state.wallmsg
+            })
+            .then(({ data }) => {
+                // this.props.setBio(data);
+                this.setState({
+                    scribbleIsVisible: !this.state.scribbleIsVisible
+                });
+                this.setState({
+                    refresh: !this.state.refresh
+                });
+                if (data.success) {
+                    console.log("data success: ", data.success);
+                } else {
+                    this.setState({
+                        error: true
+                    });
+                }
+            })
+            .catch(err => {
+                console.log("error: ", err);
+                this.setState({
+                    error: true
+                });
+            });
+    }
+
     render() {
         return (
             <div className="profile">
@@ -61,11 +104,36 @@ export class OtherProfile extends React.Component {
                                 </div>
                                 <div className="uk-card-body custom wall-writing">
                                     <h4>scribble on the wall.</h4>
-                                    <FriendshipButton
-                                        profileId={this.props.match.params.id}
-                                    />
+                                    {this.state.scribbleIsVisible && (
+                                        <div>
+                                            <textarea
+                                                name="wallmsg"
+                                                className="uk-textarea custom"
+                                                placeholder="scribble here"
+                                                onChange={e =>
+                                                    this.handleChange(e)
+                                                }
+                                            ></textarea>
+                                            <button
+                                                className="uk-button uk-button-default bio-button"
+                                                onClick={() => this.submit()}
+                                            >
+                                                SUBMIT
+                                            </button>
+                                        </div>
+                                    )}
+                                    <button
+                                        onClick={() =>
+                                            this.toggleScribbleInput()
+                                        }
+                                    >
+                                        DO IT NOW
+                                    </button>
                                 </div>
-                                <Wall wallId={this.props.match.params.id} />
+                                <Wall
+                                    wallId={this.props.match.params.id}
+                                    refresh={this.state.refresh}
+                                />
                             </div>
                         </div>
                     </div>

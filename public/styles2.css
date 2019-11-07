@@ -57,7 +57,7 @@
 .container {
     display: grid;
     position: relative;
-    grid-template-columns: 150px auto 150px;
+    grid-template-columns: 300px auto 300px;
     grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
     min-height: 100vh;

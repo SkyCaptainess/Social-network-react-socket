@@ -18,7 +18,8 @@ const appTitle = {
 const smallLogo = {
     width: "100px",
     height: "100px",
-    objectFit: "cover"
+    objectFit: "cover",
+    backgroundColor: "transparent"
 };
 
 export default class App extends React.Component {
@@ -65,10 +66,7 @@ export default class App extends React.Component {
                 <BrowserRouter>
                     <div className="container">
                         <header style={appTitle}>
-                            <img
-                                style={smallLogo}
-                                src="https://www.maketecheasier.com/assets/uploads/2019/02/news-google-chrome-incognito-featured-800x400.jpg"
-                            />
+                            <img style={smallLogo} src="/img/fission.png" />
                             <Link to={`/users/`} className="app-link">
                                 new people
                             </Link>
@@ -126,7 +124,9 @@ export default class App extends React.Component {
                             </div>
                         </div>
 
-                        <aside className="sidebar-right">Right Sidebar</aside>
+                        <aside className="sidebar-right">
+                            <Wall />
+                        </aside>
                         <footer>
                             <h2>"It's Con-Sensual!"</h2>
                         </footer>
