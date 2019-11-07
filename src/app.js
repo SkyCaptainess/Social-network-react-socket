@@ -82,7 +82,7 @@ export default class App extends React.Component {
                                 src={this.state.url}
                             />
                         </header>
-                        <aside className="sidebar-left">Left Sidebar</aside>
+
                         <div id="content">
                             <div className="content-wrapper">
                                 <div className="profile">
@@ -124,9 +124,6 @@ export default class App extends React.Component {
                             </div>
                         </div>
 
-                        <aside className="sidebar-right">
-                            <Wall />
-                        </aside>
                         <footer>
                             <h2>"It's Con-Sensual!"</h2>
                         </footer>

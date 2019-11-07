@@ -9,7 +9,8 @@ export class OtherProfile extends React.Component {
         super();
         this.state = {
             scribbleIsVisible: false,
-            refresh: false
+            refresh: false,
+            friendship: false
         };
     }
 
@@ -40,6 +41,29 @@ export class OtherProfile extends React.Component {
             // imagine i'm logged in as user 6
             this.props.history.push("/");
         }
+        // try {
+        //     const { data } = await axios.get(
+        //         `/get-initial-status/${this.props.match.params.id}`
+        //     );
+        //     console.log("otherprofile friendship data: ", data.relationship);
+        //     if (data.relationship == "false") {
+        //         console.log("oth prof rel is false");
+        //         this.setState({
+        //             friendship: false
+        //         });
+        //     } else {
+        //         console.log("oth prof rel is not false");
+        //         this.setState({
+        //             friendship: true
+        //         });
+        //     }
+        //     this.setState({
+        //         friendship: data.relationship
+        //     });
+        // } catch (err) {
+        //     console.log("error in OtherProfile: ", err);
+        // }
+        // console.log("other profile state friendship", this.state.friendship);
     }
 
     toggleScribbleInput() {
@@ -53,34 +77,34 @@ export class OtherProfile extends React.Component {
         });
     }
 
-    submit() {
-        axios
-            .post(`/addWallMessage/${this.props.match.params.id}`, {
-                wallmsg: this.state.wallmsg
-            })
-            .then(({ data }) => {
-                // this.props.setBio(data);
-                this.setState({
-                    scribbleIsVisible: !this.state.scribbleIsVisible
-                });
-                this.setState({
-                    refresh: !this.state.refresh
-                });
-                if (data.success) {
-                    console.log("data success: ", data.success);
-                } else {
-                    this.setState({
-                        error: true
-                    });
-                }
-            })
-            .catch(err => {
-                console.log("error: ", err);
-                this.setState({
-                    error: true
-                });
-            });
-    }
+    // submit() {
+    //     axios
+    //         .post(`/addWallMessage/${this.props.match.params.id}`, {
+    //             wallmsg: this.state.wallmsg
+    //         })
+    //         .then(({ data }) => {
+    //             // this.props.setBio(data);
+    //             this.setState({
+    //                 scribbleIsVisible: !this.state.scribbleIsVisible
+    //             });
+    //             this.setState({
+    //                 refresh: !this.state.refresh
+    //             });
+    //             if (data.success) {
+    //                 console.log("data success: ", data.success);
+    //             } else {
+    //                 this.setState({
+    //                     error: true
+    //                 });
+    //             }
+    //         })
+    //         .catch(err => {
+    //             console.log("error: ", err);
+    //             this.setState({
+    //                 error: true
+    //             });
+    //         });
+    // }
 
     render() {
         return (
@@ -102,43 +126,14 @@ export class OtherProfile extends React.Component {
                                         profileId={this.props.match.params.id}
                                     />
                                 </div>
-                                <div className="uk-card-body custom wall-writing">
-                                    <h4>scribble on the wall.</h4>
-                                    {this.state.scribbleIsVisible && (
-                                        <div>
-                                            <textarea
-                                                name="wallmsg"
-                                                className="uk-textarea custom"
-                                                placeholder="scribble here"
-                                                onChange={e =>
-                                                    this.handleChange(e)
-                                                }
-                                            ></textarea>
-                                            <button
-                                                className="uk-button uk-button-default bio-button"
-                                                onClick={() => this.submit()}
-                                            >
-                                                SUBMIT
-                                            </button>
-                                        </div>
-                                    )}
-                                    <button
-                                        onClick={() =>
-                                            this.toggleScribbleInput()
-                                        }
-                                    >
-                                        DO IT NOW
-                                    </button>
-                                </div>
-                                {}
-                                <Wall
-                                    wallId={this.props.match.params.id}
-                                    refresh={this.state.refresh}
-                                />
                             </div>
                         </div>
                     </div>
                 </div>
+                <Wall
+                    wallId={this.props.match.params.id}
+                    refresh={this.state.refresh}
+                />
             </div>
         );
     }

@@ -168,7 +168,10 @@ exports.getWallMessages = id => {
         SELECT first, last, url, message, created_at, wallmessages.id AS wall_msg_id
         FROM wallmessages
         JOIN users
-        ON (wall_receiver_id = $1 AND wall_sender_id = users.id)
+        ON wall_receiver_id = $1 AND wall_sender_id = users.id
+        OR wall_sender_id = $1 AND wall_sender_id = users.id
+
+
         ORDER BY wallmessages.id DESC LIMIT 10
         `,
         [id]
@@ -184,3 +187,6 @@ exports.addWallMessage = (senderId, receiverId, message) => {
         [senderId, receiverId, message]
     );
 };
+
+//OR (wall_receiver_id = $1 AND wall_sender_id = users.id)
+// ON (wall_receiver_id = $1 AND wall_receiver_id = users.id)

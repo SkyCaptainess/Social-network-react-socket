@@ -50,3 +50,32 @@ export async function receiveWallMessages(id) {
         messages: data
     };
 }
+export async function getFriendship(wallId) {
+    const { data } = await axios.get(`/get-initial-status/${wallId}`);
+    if (data.relationship == "false") {
+        return {
+            type: "RECEIVE_WALL_FRIENDSHIP",
+            friendship: false
+        };
+    } else if (data.accepted == true) {
+        return {
+            type: "RECEIVE_WALL_FRIENDSHIP",
+            friendship: true
+        };
+    } else if (data.accepted == false) {
+        return {
+            type: "RECEIVE_WALL_FRIENDSHIP",
+            friendship: false
+        };
+    }
+}
+export async function addWallMessage(wallId, wallmsg) {
+    await axios.post(`/addWallMessage/${wallId}`, {
+        wallMessage: wallmsg
+    });
+    const { data } = await axios.get(`/newWallMessage/${wallId}`);
+    return {
+        type: "RECEIVE_NEW_WALL_MESSAGE",
+        message: data
+    };
+}

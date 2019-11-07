@@ -57,7 +57,7 @@
 .container {
     display: grid;
     position: relative;
-    grid-template-columns: 300px auto 300px;
+    /* grid-template-columns: auto; */
     grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
     min-height: 100vh;
@@ -108,7 +108,7 @@ header {
     /* Start on Row 1 */
     grid-row: 1;
     /* Start on the first column line and extend all the to the last column line */
-    grid-column: 1 / 4;
+    /* grid-column: 1 / 4; */
     text-align: center;
     display: grid;
     align-items: center;
@@ -133,20 +133,21 @@ header h1 {
         -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
 }
 
-.sidebar-left {
-    /* Start on Row 2 */
+/* .sidebar-left {
+
     grid-row: 2;
-    /* Start on the first column line and stop at the next column line */
+
     grid-column: 1 / 2;
-}
+} */
 
 #content {
     font-family: "Neuro";
     height: 100%;
+    min-width: 400px;
     /* Start on Row 2 */
     grid-row: 2;
     /* Start on the second column line and stop at the third column line */
-    grid-column: 2 / 3;
+    /* grid-column: 2 / 3; */
     display: grid;
     text-align: center;
     align-items: center;
@@ -158,18 +159,47 @@ header h1 {
     font-family: "Neuro";
 }
 
-.sidebar-right {
-    /* Start on Row 2 */
-    grid-row: 2;
-    /* Start on the third column line and stop at the last column line */
-    grid-column: 3 / 4;
+#content .uk-button:focus {
+    border-color: #ccff00;
 }
+
+#content .flexDiv {
+    height: 100%;
+    display: flex;
+    align-items: space-between;
+}
+
+/* .profile {
+    display: flex;
+    justify-content: space-between;
+} */
+
+#wall {
+    border: 2px solid magenta;
+    position: absolute;
+    top: 200px;
+    right: 40px;
+    height: 600px;
+    overflow: auto;
+    width: 700px;
+}
+
+#wall::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+/* .sidebar-right {
+
+    grid-row: 2;
+
+    grid-column: 3 / 4;
+} */
 
 footer {
     /* Start on Row 3, the last row */
     grid-row: 3;
     /* Start on the first column line and extend all the to the last column line */
-    grid-column: 1 / 4;
+    /* grid-column: 1 / 4; */
     text-align: center;
     background-color: #0f6ecd;
 }

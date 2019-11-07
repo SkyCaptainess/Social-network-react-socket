@@ -231,8 +231,10 @@ app.get("/get-initial-status/:id", async (req, res) => {
             req.session.userId
         );
         if (rows.length == 0) {
+            console.log("initial status - rel false");
             res.json({ relationship: "false" });
         } else {
+            console.log("initial status:", rows[0]);
             res.json(rows[0]);
         }
     } catch (err) {
@@ -299,7 +301,7 @@ app.post("/addWallMessage/:id", async (req, res) => {
         const { rows } = await addWallMessage(
             req.session.userId,
             req.params.id,
-            req.body.wallmsg
+            req.body.wallMessage
         );
         console.log("wall msg ", rows);
         res.json(rows);
