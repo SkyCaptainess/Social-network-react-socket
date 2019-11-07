@@ -169,7 +169,6 @@ exports.getWallMessages = id => {
         FROM wallmessages
         JOIN users
         ON wall_receiver_id = $1 AND wall_sender_id = users.id
-        OR wall_sender_id = $1 AND wall_sender_id = users.id
 
 
         ORDER BY wallmessages.id DESC LIMIT 10
