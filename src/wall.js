@@ -6,26 +6,33 @@ import { ProfilePic } from "./profile-pic";
 
 export default function Wall({ wallId }) {
     console.log("wall_id: ", wallId);
+    console.log("after wall_id: ", wallId);
     const dispatch = useDispatch();
     const wallMessages = useSelector(state => state.wallMessages);
     const friendship = useSelector(state => state.friendship);
     const [scribbleInput, setScribbleInput] = useState();
     const [toggle, setToggle] = useState();
+    const [user, setUser] = useState();
 
     useEffect(() => {
-        setScribbleInput(false);
-        setToggle(true);
-        console.log("Wall sanity check");
-        dispatch(receiveWallMessages(wallId));
-        dispatch(getFriendship(wallId));
-        console.log("wallmessages: ", wallMessages);
-
-        console.log("wall friendship is actually : ", friendship);
+        (async () => {
+            setScribbleInput(false);
+            setToggle(true);
+            console.log("Wall sanity check");
+            dispatch(receiveWallMessages(wallId));
+            dispatch(getFriendship(wallId));
+            setUser(true);
+        })();
     }, [toggle]);
+    console.log("wall friendship is actually : ", friendship);
+    console.log("wallmessages: ", wallMessages);
 
     if (!wallMessages) {
         return null;
     }
+
+    // || wallMessages.wall_msg_id !== wallId
+    // || wallId !== wallMessages[0].wall_receiver_id
 
     const keyCheck = e => {
         if (e.key === "Enter") {
@@ -48,55 +55,60 @@ export default function Wall({ wallId }) {
 
     return (
         <div>
-            <div id="wall" className="friends">
-                {friendship && (
-                    <button
-                        className="uk-button uk-button-default friendship-button"
-                        onClick={() => setScribbleInput(!scribbleInput)}
-                    >
-                        SCRIBBLE ON THE WALL
-                    </button>
-                )}
-                {scribbleInput && (
-                    <div className="uk-card-body custom wall-writing">
-                        <div>
-                            <textarea
-                                name="wallmsg"
-                                className="uk-textarea custom"
-                                placeholder="scribble here"
-                                onKeyDown={keyCheck}
-                            ></textarea>
+            {user && (
+                <div id="wall" className="friends">
+                    {friendship && (
+                        <button
+                            className="uk-button uk-button-default friendship-button"
+                            onClick={() => setScribbleInput(!scribbleInput)}
+                        >
+                            SCRIBBLE ON THE WALL
+                        </button>
+                    )}
+                    {scribbleInput && (
+                        <div className="uk-card-body custom wall-writing">
+                            <div>
+                                <textarea
+                                    name="wallmsg"
+                                    className="uk-textarea custom"
+                                    placeholder="scribble here"
+                                    onKeyDown={keyCheck}
+                                ></textarea>
+                            </div>
                         </div>
-                    </div>
-                )}
-                {!!wallMessages &&
-                    wallMessages.length != 0 &&
-                    wallMessages.map(wallMessage => (
-                        <div className="friend" key={wallMessage.wall_msg_id}>
-                            <div className="uk-card uk-card-body ">
-                                <div className="uk-child">
-                                    <div>
+                    )}
+                    {!!wallMessages &&
+                        wallMessages.length != 0 &&
+                        wallMessages.map(wallMessage => (
+                            <div
+                                className="friend"
+                                key={wallMessage.wall_msg_id}
+                            >
+                                <div className="uk-card uk-card-body ">
+                                    <div className="uk-child">
                                         <div>
-                                            <ProfilePic
-                                                imgUrl={wallMessage.url}
-                                            />
-                                        </div>
-                                        <div className="">
-                                            <h3 className="">
-                                                {wallMessage.first}{" "}
-                                                {wallMessage.last}
-                                            </h3>
-                                            <p className="uk-card-title">
-                                                {wallMessage.message}
-                                            </p>
+                                            <div>
+                                                <ProfilePic
+                                                    imgUrl={wallMessage.url}
+                                                />
+                                            </div>
+                                            <div className="">
+                                                <h3 className="">
+                                                    {wallMessage.first}{" "}
+                                                    {wallMessage.last}
+                                                </h3>
+                                                <p className="uk-card-title">
+                                                    {wallMessage.message}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                {wallMessages.length == 0 && <p>NO WALLMESSAGES</p>}
-            </div>
+                        ))}
+                    {wallMessages.length == 0 && <p>NO WALLMESSAGES</p>}
+                </div>
+            )}
         </div>
     );
 }

@@ -130,10 +130,7 @@ export class OtherProfile extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Wall
-                    wallId={this.props.match.params.id}
-                    refresh={this.state.refresh}
-                />
+                <Wall wallId={this.props.match.params.id} />
             </div>
         );
     }

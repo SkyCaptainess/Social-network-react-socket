@@ -6,7 +6,9 @@ import Wall from "./wall";
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            wall_id: this.props.match.params.id
+        };
     }
 
     componentDidMount() {
@@ -37,7 +39,7 @@ export default class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
-                <Wall />
+                <Wall wallId={this.props.userId} />
             </div>
         );
     }

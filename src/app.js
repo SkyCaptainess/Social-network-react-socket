@@ -38,6 +38,7 @@ export default class App extends React.Component {
         const { data } = await axios.get("/user");
         console.log("app data: ", data);
         this.setState(data);
+        console.log("app data: ", data);
     }
 
     toggleModal() {
@@ -83,7 +84,7 @@ export default class App extends React.Component {
                         </header>
 
                         <div id="content">
-                            <div className="content-wrapper">
+                            <div>
                                 <div className="profile">
                                     <Route
                                         exact
@@ -99,6 +100,7 @@ export default class App extends React.Component {
                                                 bio={this.state.bio}
                                                 setBio={this.setBio}
                                                 toggleModal={this.toggleModal}
+                                                userId={this.state.id}
                                             />
                                         )}
                                     />

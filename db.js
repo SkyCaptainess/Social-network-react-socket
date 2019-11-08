@@ -163,12 +163,14 @@ exports.getNewMessage = id => {
 };
 
 exports.getWallMessages = id => {
+    console.log("get wall messages id: ", id);
     return db.query(
         `
-        SELECT first, last, url, message, created_at, wallmessages.id AS wall_msg_id
+        SELECT first, last, url, message, created_at, wallmessages.id AS wall_msg_id, wall_receiver_id, wall_sender_id
         FROM wallmessages
         JOIN users
-        ON wall_receiver_id = $1 AND wall_sender_id = users.id
+        ON wall_sender_id = users.id
+        WHERE wall_receiver_id = $1
 
 
         ORDER BY wallmessages.id DESC LIMIT 10

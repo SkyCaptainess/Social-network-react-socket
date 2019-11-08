@@ -284,15 +284,9 @@ app.get("/friends-wannabes", async (req, res) => {
 });
 
 app.get("/wall-messages/:id", async (req, res) => {
-    let wallId = req.session.userId;
+    let wallId = req.params.id;
     console.log("first wallid : ", wallId);
-    if (!req.params.id) {
-        wallId = req.params.id;
-    }
-    if (!wallId) {
-        wallId = req.session.userId;
-    }
-    console.log("second wallmsg id: ", wallId);
+
     try {
         const { rows } = await getWallMessages(wallId);
         console.log("wall msg ", rows);

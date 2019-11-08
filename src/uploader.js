@@ -59,7 +59,7 @@ export default class Uploader extends React.Component {
         return (
             <div style={uploaderOverlay}>
                 <div className="uk-card uk-card-default uploader">
-                    <div className="uk-form-file">
+                    <div className="uk-form-file custom">
                         <button
                             className="uk-button"
                             onClick={() => this.uploadImg()}

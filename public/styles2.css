@@ -151,6 +151,7 @@ header h1 {
 #content {
     font-family: "Neuro";
     height: 100%;
+    /* width: 100vw; */
     min-width: 400px;
     /* Start on Row 2 */
     grid-row: 2;
@@ -163,6 +164,10 @@ header h1 {
     overflow: hidden;
 }
 
+/* #content.profile-flex {
+    justify-content: space-between;
+} */
+
 #content h3 {
     font-family: "Neuro";
 }
@@ -171,11 +176,11 @@ header h1 {
     border-color: #ccff00;
 }
 
-#content .flexDiv {
+/* #content .flexDiv {
     height: 100%;
     display: flex;
     align-items: space-between;
-}
+} */
 
 /* .profile {
     display: flex;
@@ -189,7 +194,7 @@ header h1 {
     right: 40px;
     height: 600px;
     overflow: auto;
-    width: 700px;
+    width: 400px;
 }
 
 #wall::-webkit-scrollbar {
@@ -272,7 +277,15 @@ footer {
 
 /* PROFILE CARD */
 
+#profile-flex {
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .profile-card {
+    width: 500px;
     border: 2px orange solid;
     background-color: rgba(42, 42, 42, 0.2);
     /* border: 2px #ccff00 solid; */
@@ -354,6 +367,7 @@ footer {
 
 .unordered-list {
     padding: 0;
+    width: 400px;
 }
 
 .list-element {
