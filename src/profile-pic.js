@@ -1,7 +1,7 @@
 import React from "react";
 
 export function ProfilePic({ imgUrl, toggleModal }) {
-    imgUrl = imgUrl || "/default.jpg";
+    imgUrl = imgUrl || "/img/fission.png";
 
     return (
         <div>
