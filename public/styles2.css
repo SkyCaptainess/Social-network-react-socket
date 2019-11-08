@@ -133,6 +133,14 @@ header h1 {
         -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
 }
 
+.uploader {
+    transform: rotate(-20deg);
+}
+
+.uk-form-file.custom {
+    border-color: #ccff00;
+}
+
 /* .sidebar-left {
 
     grid-row: 2;
@@ -215,8 +223,9 @@ footer {
 
 /* WELCOME PAGE */
 
-.welcomeInput {
+#content .welcomeInput {
     width: 400px;
+    background-color: rgba(42, 42, 42, 0.2);
     color: #b3b3b3;
 }
 
@@ -232,7 +241,7 @@ footer {
 }
 
 .welcome-title {
-    background-color: #ccff00;
+    background-color: #83f52c;
     font-size: 15px;
     /* width: 100%; */
 }
@@ -244,6 +253,16 @@ footer {
 }
 
 .uk-textarea.custom::placeholder {
+    color: magenta;
+}
+
+.uk-input.custom {
+    background-color: rgba(204, 255, 0, 0.2);
+    border-color: #0f6ecd;
+    margin-bottom: 5px;
+}
+
+.uk-input.custom::placeholder {
     color: magenta;
 }
 

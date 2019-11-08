@@ -1,6 +1,7 @@
 import React from "react";
 import { ProfilePic } from "./profile-pic";
 import BioEditor from "./bio-editor";
+import Wall from "./wall";
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -36,6 +37,7 @@ export default class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Wall />
             </div>
         );
     }

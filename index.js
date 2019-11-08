@@ -284,9 +284,17 @@ app.get("/friends-wannabes", async (req, res) => {
 });
 
 app.get("/wall-messages/:id", async (req, res) => {
-    console.log("wallmsg id: ", req.params.id);
+    let wallId = req.session.userId;
+    console.log("first wallid : ", wallId);
+    if (!req.params.id) {
+        wallId = req.params.id;
+    }
+    if (!wallId) {
+        wallId = req.session.userId;
+    }
+    console.log("second wallmsg id: ", wallId);
     try {
-        const { rows } = await getWallMessages(req.params.id);
+        const { rows } = await getWallMessages(wallId);
         console.log("wall msg ", rows);
         res.json(rows);
     } catch (err) {

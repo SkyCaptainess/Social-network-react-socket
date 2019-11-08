@@ -58,26 +58,26 @@ export default class Register extends React.Component {
                     <input
                         name="first"
                         placeholder="first name"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="last"
                         placeholder="last name"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="email"
                         placeholder="email"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="password"
                         type="password"
                         placeholder="password"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <button

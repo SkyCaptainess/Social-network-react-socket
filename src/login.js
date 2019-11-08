@@ -42,25 +42,25 @@ export default class Login extends React.Component {
             <div>
                 <div className="welcome-link">
                     <Link to="/" className="welcome-link">
-                        registered?
+                        need to register?
                     </Link>
                 </div>
                 <div className="welcome-title">
-                    <h2>Well hello there.</h2>
+                    <h2>Well hello again.</h2>
                 </div>
 
                 <div className="uk-card uk-card-default uk-card-body custom welcomeInput">
                     <input
                         name="email"
                         placeholder="email"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <input
                         name="password"
                         type="password"
                         placeholder="password"
-                        className="uk-input"
+                        className="uk-input custom"
                         onChange={e => this.handleChange(e)}
                     />
                     <button
@@ -69,10 +69,6 @@ export default class Login extends React.Component {
                     >
                         SUBMIT
                     </button>
-                    <Link to="/" className="uk-button uk-button-default">
-                        {/*<Link to="/login" style={logLink}>*/}
-                        ...or click here to register
-                    </Link>
                 </div>
                 {this.state.error && (
                     <div className="error title">
