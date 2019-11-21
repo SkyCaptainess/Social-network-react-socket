@@ -16,8 +16,6 @@ export default function Friends() {
     const wannabes = useSelector(
         state => state.users && state.users.filter(user => !user.accepted)
     );
-    console.log("friends.js friends: ", friends);
-    console.log("friends.js wannabes: ", wannabes);
 
     useEffect(() => {
         dispatch(receiveFriendsWannabes());
@@ -53,6 +51,7 @@ export default function Friends() {
                                             </h3>
                                         </div>
                                         <button
+                                            className="uk-button uk-button-default friendship-button"
                                             onClick={e =>
                                                 dispatch(unfriend(friend.id))
                                             }
@@ -90,6 +89,7 @@ export default function Friends() {
                                             </h3>
                                         </div>
                                         <button
+                                            className="uk-button uk-button-default friendship-button"
                                             onClick={e =>
                                                 dispatch(
                                                     acceptFriendRequest(

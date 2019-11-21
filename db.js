@@ -163,7 +163,6 @@ exports.getNewMessage = id => {
 };
 
 exports.getWallMessages = id => {
-    console.log("get wall messages id: ", id);
     return db.query(
         `
         SELECT first, last, url, message, created_at, wallmessages.id AS wall_msg_id, wall_receiver_id, wall_sender_id
@@ -188,6 +187,3 @@ exports.addWallMessage = (senderId, receiverId, message) => {
         [senderId, receiverId, message]
     );
 };
-
-//OR (wall_receiver_id = $1 AND wall_sender_id = users.id)
-// ON (wall_receiver_id = $1 AND wall_receiver_id = users.id)

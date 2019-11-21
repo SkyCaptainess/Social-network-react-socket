@@ -57,7 +57,6 @@
 .container {
     display: grid;
     position: relative;
-    /* grid-template-columns: auto; */
     grid-template-rows: 130px auto 50px;
     grid-gap: 1em;
     min-height: 100vh;
@@ -77,7 +76,6 @@
 
 .container h2 {
     font-family: "Nulshock";
-    /* font-weight: bold; */
     font-size: 23px;
     color: black;
     background-color: transparent;
@@ -88,7 +86,6 @@
 .container p {
     font-family: "Earth";
     font-size: 20px;
-    /* font-weight: bold; */
 }
 
 .container button {
@@ -105,15 +102,11 @@ header {
     width: 100vw;
     max-height: 130px;
     background-color: rgba(42, 42, 42, 0.8);
-    /* Start on Row 1 */
     grid-row: 1;
-    /* Start on the first column line and extend all the to the last column line */
-    /* grid-column: 1 / 4; */
     text-align: center;
     display: grid;
     align-items: center;
     justify-content: center;
-    /* box-shadow: 10px 10px 10px 10px grey; */
     z-index: 5;
     border-bottom: 0;
     overflow: clip;
@@ -141,13 +134,6 @@ header h1 {
     border-color: #ccff00;
 }
 
-/* .sidebar-left {
-
-    grid-row: 2;
-
-    grid-column: 1 / 2;
-} */
-
 #content {
     font-family: "Neuro";
     height: 100%;
@@ -164,10 +150,6 @@ header h1 {
     overflow: hidden;
 }
 
-/* #content.profile-flex {
-    justify-content: space-between;
-} */
-
 #content h3 {
     font-family: "Neuro";
 }
@@ -175,17 +157,6 @@ header h1 {
 #content .uk-button:focus {
     border-color: #ccff00;
 }
-
-/* #content .flexDiv {
-    height: 100%;
-    display: flex;
-    align-items: space-between;
-} */
-
-/* .profile {
-    display: flex;
-    justify-content: space-between;
-} */
 
 #wall {
     border: 2px solid magenta;
@@ -201,25 +172,13 @@ header h1 {
     width: 0 !important;
 }
 
-/* .sidebar-right {
-
-    grid-row: 2;
-
-    grid-column: 3 / 4;
-} */
-
 footer {
-    /* Start on Row 3, the last row */
     grid-row: 3;
-    /* Start on the first column line and extend all the to the last column line */
-    /* grid-column: 1 / 4; */
     text-align: center;
     background-color: #0f6ecd;
 }
 
 /* MAIN GRID */
-
-/* //////////////////////////////////////////////////////////////////////// */
 
 .content-wrapper {
     width: 400px;
@@ -248,7 +207,6 @@ footer {
 .welcome-title {
     background-color: #83f52c;
     font-size: 15px;
-    /* width: 100%; */
 }
 
 .uk-textarea.custom {
@@ -273,8 +231,6 @@ footer {
 
 /* WELCOME PAGE */
 
-/* //////////////////////////////////////////////////////////////////////// */
-
 /* PROFILE CARD */
 
 #profile-flex {
@@ -288,26 +244,19 @@ footer {
     width: 500px;
     border: 2px orange solid;
     background-color: rgba(42, 42, 42, 0.2);
-    /* border: 2px #ccff00 solid; */
 }
 
 #content .profile-card h3 {
     font-family: "Nulshock";
     color: black;
-    /* background-color: #ccff00; */
-    /* background-color: #0f6ecd; */
 }
 
 .profile-card p {
     color: black;
-    /* background-color: #ccff00; */
-    /* background-color: #0f6ecd; */
 }
 
 .profile-card button {
     color: black;
-    /* background-color: #ccff00; */
-    /* background-color: #0f6ecd; */
 }
 
 .uk-child {
@@ -360,10 +309,6 @@ footer {
     margin-bottom: 10px;
     background-color: rgba(42, 42, 42, 0.2);
 }
-
-/* div .uk-card-media-top img {
-    background-color: rgba(42, 42, 42, 0.8);
-} */
 
 .unordered-list {
     padding: 0;

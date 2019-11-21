@@ -12,9 +12,6 @@ const socket = io.connect();
 socket.emit("iAmHere", {
     message: "hello"
 });
-socket.on("goodToSeeYou", data => {
-    console.log(data.message);
-});
 
 const store = createStore(
     reducer,
@@ -24,7 +21,6 @@ const store = createStore(
 import Welcome from "./welcome";
 import App from "./app";
 
-//use the url to determine if the user is logged in
 const userIsLoggedIn = location.pathname != "/welcome";
 
 let elem;

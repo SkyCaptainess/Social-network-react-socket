@@ -1,5 +1,4 @@
 import axios from "./axios";
-// import { socket } from "./socket";
 
 export async function receiveFriendsWannabes() {
     const { data } = await axios.get("/friends-wannabes");
@@ -37,11 +36,6 @@ export async function newMessage(msg) {
         message: msg
     };
 }
-// export async function getLastTenChatMessages() {
-//     socket.emit("getLastTenChatMessages").then(data => {
-//         console.log("action last 10: ", data);
-//     });
-// }
 
 export async function receiveWallMessages(id) {
     const { data } = await axios.get(`/wall-messages/${id}`);

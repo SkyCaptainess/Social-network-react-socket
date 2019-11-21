@@ -15,13 +15,10 @@ export class OtherProfile extends React.Component {
     }
 
     async componentDidMount() {
-        console.log("othrprofile mounted");
-        console.log("this.props.match.params.id", this.props.match.params.id);
         try {
             const { data } = await axios.get(
                 "/api/user/" + this.props.match.params.id
             );
-            console.log("otherprofile data: ", data);
             this.setState({
                 imgUrl: data.rows.url,
                 firstName: data.rows.first,
@@ -38,36 +35,11 @@ export class OtherProfile extends React.Component {
         );
 
         if (!data || this.props.match.params.id == this.state.id) {
-            // imagine i'm logged in as user 6
             this.props.history.push("/");
         }
-        // try {
-        //     const { data } = await axios.get(
-        //         `/get-initial-status/${this.props.match.params.id}`
-        //     );
-        //     console.log("otherprofile friendship data: ", data.relationship);
-        //     if (data.relationship == "false") {
-        //         console.log("oth prof rel is false");
-        //         this.setState({
-        //             friendship: false
-        //         });
-        //     } else {
-        //         console.log("oth prof rel is not false");
-        //         this.setState({
-        //             friendship: true
-        //         });
-        //     }
-        //     this.setState({
-        //         friendship: data.relationship
-        //     });
-        // } catch (err) {
-        //     console.log("error in OtherProfile: ", err);
-        // }
-        // console.log("other profile state friendship", this.state.friendship);
     }
 
     toggleScribbleInput() {
-        console.log("I'm a togglebioinput");
         this.setState({ scribbleIsVisible: !this.state.scribbleIsVisible });
     }
 
@@ -76,35 +48,6 @@ export class OtherProfile extends React.Component {
             [target.name]: target.value
         });
     }
-
-    // submit() {
-    //     axios
-    //         .post(`/addWallMessage/${this.props.match.params.id}`, {
-    //             wallmsg: this.state.wallmsg
-    //         })
-    //         .then(({ data }) => {
-    //             // this.props.setBio(data);
-    //             this.setState({
-    //                 scribbleIsVisible: !this.state.scribbleIsVisible
-    //             });
-    //             this.setState({
-    //                 refresh: !this.state.refresh
-    //             });
-    //             if (data.success) {
-    //                 console.log("data success: ", data.success);
-    //             } else {
-    //                 this.setState({
-    //                     error: true
-    //                 });
-    //             }
-    //         })
-    //         .catch(err => {
-    //             console.log("error: ", err);
-    //             this.setState({
-    //                 error: true
-    //             });
-    //         });
-    // }
 
     render() {
         return (

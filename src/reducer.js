@@ -39,29 +39,23 @@ export function reducer(state = {}, action) {
         };
     }
     if (action.type == "RECEIVE_WALL_MESSAGES") {
-        console.log("wall msg reducer: ", action.messages);
         state = {
             ...state,
             wallMessages: action.messages
         };
     }
     if (action.type == "RECEIVE_WALL_FRIENDSHIP") {
-        console.log("RECEIVE_WALL_FRIENDSHIP reducer: ", action.messages);
         state = {
             ...state,
             friendship: action.friendship
         };
     }
     if (action.type == "RECEIVE_NEW_WALL_MESSAGE") {
-        console.log("RECEIVE_NEW_WALL_MESSAGE reducer: ", action.message);
         state = {
             ...state,
             wallMessages: state.wallMessages.concat(action.message),
             toggle: !state.toggle
         };
     }
-    // console.log("state: ", state);
     return state;
 }
-
-//action describes change that we want to make to redux

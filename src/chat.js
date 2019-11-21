@@ -7,21 +7,12 @@ export function Chat() {
     const elemRef = useRef();
 
     useEffect(() => {
-        console.log("current: ", elemRef.current);
-        console.log("chat mounted: ");
-        console.log("scroll top: ", elemRef.current.scrollTop);
-        console.log("scroll height: ", elemRef.current.scrollHeight);
-        console.log("client height: ", elemRef.current.clientHeight);
         elemRef.current.scrollTop =
             elemRef.current.scrollHeight - elemRef.current.clientHeight;
     }, [chatMessages]);
-    // socket.emit("getLastTenChatMessages");
-    // console.log("Here are the last 10 chat msgs: ", chatMessages);
     const keyCheck = e => {
         if (e.key === "Enter") {
             e.preventDefault();
-            console.log("keycheck: ", e.target.value);
-            console.log("keycode: ", e.key);
             socket.emit("chatMessage", e.target.value);
             e.target.value = "";
         }

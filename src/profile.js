@@ -12,7 +12,6 @@ export default class Profile extends React.Component {
     }
 
     componentDidMount() {
-        console.log("profile mounted!");
         console.log("this.props profile: ", this.props);
     }
 

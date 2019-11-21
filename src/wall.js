@@ -5,8 +5,6 @@ import { ProfilePic } from "./profile-pic";
 // import axios from "./axios";
 
 export default function Wall({ wallId }) {
-    console.log("wall_id: ", wallId);
-    console.log("after wall_id: ", wallId);
     const dispatch = useDispatch();
     const wallMessages = useSelector(state => state.wallMessages);
     const friendship = useSelector(state => state.friendship);
@@ -18,21 +16,15 @@ export default function Wall({ wallId }) {
         (async () => {
             setScribbleInput(false);
             setToggle(true);
-            console.log("Wall sanity check");
             dispatch(receiveWallMessages(wallId));
             dispatch(getFriendship(wallId));
             setUser(true);
         })();
     }, [toggle]);
-    console.log("wall friendship is actually : ", friendship);
-    console.log("wallmessages: ", wallMessages);
 
     if (!wallMessages) {
         return null;
     }
-
-    // || wallMessages.wall_msg_id !== wallId
-    // || wallId !== wallMessages[0].wall_receiver_id
 
     const keyCheck = e => {
         if (e.key === "Enter") {
@@ -40,15 +32,6 @@ export default function Wall({ wallId }) {
             console.log("wall target value: ", e.target.value);
             dispatch(addWallMessage(wallId, e.target.value));
             setToggle(!toggle);
-            // axios
-            //     .post(`/addWallMessage/${wallId}`, {
-            //         wallMessage: e.target.value
-            //     })
-            //     .then(({ data }) => {
-            //         setToggle(!toggle);
-            //         console.log("jel ima data: ", data);
-            //     });
-            // dispatch(addWallMessage(wallId, e.target.value));
             e.target.value = "";
         }
     };

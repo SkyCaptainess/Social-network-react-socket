@@ -13,19 +13,6 @@ const uploaderOverlay = {
     bottom: "0"
 };
 
-// const uploaderBox = {
-//     border: "2px solid black",
-//     width: "400px",
-//     height: "200px",
-//     position: "fixed",
-//     display: "grid",
-//     alignItems: "center",
-//     justifyContent: "center",
-//     top: "300px",
-//     left: "50%",
-//     marginLeft: "-200px"
-// };
-
 export default class Uploader extends React.Component {
     constructor(props) {
         super(props);
@@ -34,7 +21,6 @@ export default class Uploader extends React.Component {
 
     componentDidMount() {
         console.log("uploader mounted!");
-        console.log("this.props: ", this.props);
     }
 
     muffinMaker() {

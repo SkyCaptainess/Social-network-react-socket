@@ -33,23 +33,15 @@ export default class App extends React.Component {
     }
 
     async componentDidMount() {
-        console.log("App mounted!!");
-        console.log("this.props: ", this.props);
         const { data } = await axios.get("/user");
-        console.log("app data: ", data);
         this.setState(data);
-        console.log("app data: ", data);
     }
 
     toggleModal() {
-        console.log("I'm a togglemodal");
         this.setState({ uploaderIsVisible: !this.state.uploaderIsVisible });
     }
 
     methodInApp(freshUrl) {
-        console.log("fresh url: ", freshUrl);
-        console.log("I am a method running in APP");
-        // console.log("muffin: ", muffin);
         this.setState({ url: freshUrl });
     }
 
@@ -66,7 +58,9 @@ export default class App extends React.Component {
                 <BrowserRouter>
                     <div className="container">
                         <header style={appTitle}>
-                            <img style={smallLogo} src="/img/fission.png" />
+                            <Link to={`/`}>
+                                <img style={smallLogo} src="/img/fission.png" />
+                            </Link>
                             <Link to={`/users/`} className="app-link">
                                 new people
                             </Link>

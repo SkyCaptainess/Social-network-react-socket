@@ -4,7 +4,9 @@ import { ProfilePic } from "./profile-pic";
 import { Link } from "react-router-dom";
 
 const findPeopleDiv = {
-    overflow: "auto"
+    width: "600px",
+    overflow: "auto",
+    textAlign: "center"
 };
 
 export function FindPeople() {
@@ -14,24 +16,16 @@ export function FindPeople() {
 
     useEffect(() => {
         let ignore = false;
-        //if ignore is false that means axios response is good and I want to use it
-        // console.log("useEffect is running!");
         if (!userInput) {
             (async () => {
-                console.log("userInput: ", userInput);
                 const { data } = await axios.get("/api/users/new");
-                console.log("find people data: ", data);
                 setUsers(data);
-                console.log("new people data: ", users);
             })();
         } else {
             (async () => {
-                console.log("userInput: ", userInput);
                 const { data } = await axios.get(`/api/users/${userInput}`);
-                console.log("2nd find people data: ", data);
                 if (!ignore) {
                     setUsers(data);
-                    console.log("set users data: ", users);
                 } else {
                     console.log("ignored!");
                 }

@@ -23,9 +23,7 @@ export default class Register extends React.Component {
                 password: this.state.password
             })
             .then(({ data }) => {
-                console.log("data is back: ", data);
                 if (data.success) {
-                    console.log("data success: ", data.success);
                     location.replace("/");
                 } else {
                     this.setState({
@@ -46,7 +44,6 @@ export default class Register extends React.Component {
             <div>
                 <div className="welcome-link">
                     <Link to="/login" className="welcome-link">
-                        {/*<Link to="/login" style={logLink}>*/}
                         log in.
                     </Link>
                 </div>

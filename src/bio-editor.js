@@ -46,7 +46,6 @@ export default class BioEditor extends React.Component {
     }
 
     toggleBioInput() {
-        console.log("I'm a togglebioinput");
         this.setState({ bioTxtAreaIsVisible: !this.state.bioTxtAreaIsVisible });
     }
 

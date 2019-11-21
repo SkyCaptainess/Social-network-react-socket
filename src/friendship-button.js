@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "./axios";
 
 export default function FriendshipButton(props) {
-    console.log("button props: ", props.profileId);
     const [status, setStatus] = useState();
 
     useEffect(() => {
