@@ -16,6 +16,7 @@ export default function Welcome() {
             <header>
                 <h1>VOYEUR VOYEUR</h1>
             </header>
+
             <div id="content">
                 <img style={entranceLogo} src="/img/fission.png" />
                 <HashRouter>
@@ -25,6 +26,7 @@ export default function Welcome() {
                     </div>
                 </HashRouter>
             </div>
+
             <footer>
                 <h2>"It's Con-Sensual!"</h2>
             </footer>

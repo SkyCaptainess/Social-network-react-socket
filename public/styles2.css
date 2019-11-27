@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #b3b3b3;
+    /* background-color: #b3b3b3; */
 }
 
 @font-face {
@@ -61,6 +61,21 @@
     grid-gap: 1em;
     min-height: 100vh;
     font-family: "Neuro";
+    background-image: url("img/plastic.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.content::after {
+    content: "";
+    background: url("img/plastic.jpg");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .container img {
@@ -101,7 +116,7 @@ header {
     position: fixed;
     width: 100vw;
     max-height: 130px;
-    background-color: rgba(42, 42, 42, 0.8);
+    background-color: rgba(15, 110, 205, 0.3);
     grid-row: 1;
     text-align: center;
     display: grid;
@@ -176,6 +191,7 @@ footer {
     grid-row: 3;
     text-align: center;
     background-color: #0f6ecd;
+    opacity: 0.8;
 }
 
 /* MAIN GRID */
@@ -207,6 +223,7 @@ footer {
 .welcome-title {
     background-color: #83f52c;
     font-size: 15px;
+    opacity: 0.8;
 }
 
 .uk-textarea.custom {
