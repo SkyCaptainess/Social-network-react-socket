@@ -17,7 +17,7 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="profile-flex">
                 <div className="uk-card uk-card-body profile-card">
                     <div className="uk-child">
                         <div className="uk-card-media-top">

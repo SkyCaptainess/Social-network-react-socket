@@ -105,6 +105,7 @@
 
 .container button {
     border-color: #ccff00;
+    color: #0f6ecd;
 }
 .container button:hover {
     border-color: #0f6ecd;
@@ -116,14 +117,16 @@ header {
     position: fixed;
     width: 100vw;
     max-height: 130px;
-    background-color: rgba(15, 110, 205, 0.3);
+    background-color: rgba(42, 42, 42, 0.75);
+    /* background-color: rgba(15, 110, 205, 0.7); */
+    opacity: 0.8;
     grid-row: 1;
     text-align: center;
     display: grid;
     align-items: center;
     justify-content: center;
     z-index: 5;
-    border-bottom: 0;
+    border-bottom: 1px ridge magenta;
     overflow: clip;
 }
 
@@ -177,7 +180,7 @@ header h1 {
     border: 2px solid magenta;
     position: absolute;
     top: 200px;
-    right: 40px;
+    right: 20vw;
     height: 600px;
     overflow: auto;
     width: 400px;
@@ -205,7 +208,7 @@ footer {
 
 #content .welcomeInput {
     width: 400px;
-    background-color: rgba(42, 42, 42, 0.2);
+    background-color: rgba(42, 42, 42, 0.75);
     color: #b3b3b3;
 }
 
@@ -221,9 +224,11 @@ footer {
 }
 
 .welcome-title {
-    background-color: #83f52c;
+    background-color: #0f6ecd;
+    /* background-color: #83f52c; */
     font-size: 15px;
     opacity: 0.8;
+    /* border: 4px groove magenta; */
 }
 
 .uk-textarea.custom {
@@ -237,7 +242,8 @@ footer {
 }
 
 .uk-input.custom {
-    background-color: rgba(204, 255, 0, 0.2);
+    background-color: rgba(204, 255, 0, 0.34);
+    /* background-color: rgba(204, 255, 0, 0.2); */
     border-color: #0f6ecd;
     margin-bottom: 5px;
 }
@@ -258,26 +264,28 @@ footer {
 }
 
 .profile-card {
+    /* position: absolute; */
+    left: -20vw;
     width: 500px;
     border: 2px orange solid;
-    background-color: rgba(42, 42, 42, 0.2);
+    background-color: rgba(42, 42, 42, 0.35);
 }
 
 #content .profile-card h3 {
     font-family: "Nulshock";
-    color: black;
+    color: magenta;
 }
 
 .profile-card p {
-    color: black;
+    color: rgb(204, 255, 0);
 }
 
 .profile-card button {
-    color: black;
+    color: #0f6ecd;
 }
 
 .uk-child {
-    background-color: rgba(42, 42, 42, 0.2);
+    background-color: rgba(42, 42, 42, 0.6);
 }
 
 .uk-card-body.custom {
