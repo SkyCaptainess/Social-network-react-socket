@@ -414,3 +414,20 @@ header {
 }
 
 /* CHAT */
+
+.find-people-main {
+    width: 800px;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+#find-card {
+    position: relative;
+    left: 0;
+    right: 30vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 400px;
+}

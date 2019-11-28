@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 const findPeopleDiv = {
     width: "600px",
     overflow: "auto",
-    textAlign: "center"
+    textAlign: "center",
+    display: "grid",
+    alignItems: "center",
+    justifyContent: "center",
+    left: "20vw"
 };
 
 export function FindPeople() {
@@ -39,7 +43,7 @@ export function FindPeople() {
     }, [userInput]);
 
     return (
-        <div>
+        <div className="find-people-main">
             <div style={findPeopleDiv}>
                 <h2>Find People</h2>
                 <h3>Checkout who just joined</h3>
@@ -50,7 +54,10 @@ export function FindPeople() {
                                 to={`/user/${user.id}`}
                                 className="link-block"
                             >
-                                <div className="uk-card uk-card-body profile-card square-profile">
+                                <div
+                                    id="find-card"
+                                    className="uk-card uk-card-body profile-card square-profile"
+                                >
                                     <div className="uk-child">
                                         <div>
                                             <div className="uk-card-media-top">
