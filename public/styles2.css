@@ -196,7 +196,7 @@ header h1 {
 .message {
     width: 600px;
     height: 200px;
-    border: 2px solid orange;
+    border: 2px ridge orange;
     margin: 20px 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -205,9 +205,9 @@ header h1 {
 .message-author {
     grid-column: 1;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
     /* border: 2px solid blue; */
-    max-height: 200px;
+    max-height: 196px;
     background-color: rgba(0, 0, 0, 0.6);
     border-right: 2px solid orange;
 }
@@ -215,16 +215,16 @@ header h1 {
 .message-pic {
     grid-row: 1;
     /* border: 2px solid green; */
-    max-height: 100px;
+    min-height: 70px;
     width: 100%;
     overflow: hidden;
     object-fit: cover;
 }
 
 .message-pic img {
-    /* max-height: 200px; */
-    /* min-width: 100%; */
-    min-height: 100%;
+    max-height: 140px;
+    min-width: 100%;
+    /* min-height: 100%; */
     overflow: hidden;
 
     object-fit: cover;
@@ -234,10 +234,12 @@ header h1 {
     grid-row: 2;
     /* border: 2px solid yellow; */
     max-height: 100px;
+    padding-top: 10px;
     /* background-color: rgba(42, 42, 42, 0.75); */
 }
 
 .message-name h3 {
+    font-size: 15px;
     color: magenta;
     margin: 0 auto;
 }
