@@ -67,24 +67,22 @@ export default function Wall({ wallId }) {
                                 className="friend"
                                 key={wallMessage.wall_msg_id}
                             >
-                                <div className="uk-card uk-card-body ">
-                                    <div className="uk-child">
-                                        <div>
-                                            <div>
-                                                <ProfilePic
-                                                    imgUrl={wallMessage.url}
-                                                />
-                                            </div>
-                                            <div className="">
-                                                <h3 className="">
-                                                    {wallMessage.first}{" "}
-                                                    {wallMessage.last}
-                                                </h3>
-                                                <p className="uk-card-title">
-                                                    {wallMessage.message}
-                                                </p>
-                                            </div>
+                                <div className="message">
+                                    <div className="message-author">
+                                        <div className="message-pic">
+                                            <ProfilePic
+                                                imgUrl={wallMessage.url}
+                                            />
                                         </div>
+                                        <div className="message-name">
+                                            <h3 className="">
+                                                {wallMessage.first}{" "}
+                                                {wallMessage.last}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div className="message-txt">
+                                        <p>{wallMessage.message}</p>
                                     </div>
                                 </div>
                             </div>

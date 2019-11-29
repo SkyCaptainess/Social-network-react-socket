@@ -180,14 +180,77 @@ header h1 {
     border: 2px solid magenta;
     position: absolute;
     top: 200px;
-    right: 20vw;
-    height: 600px;
+    right: 15vw;
+    height: 640px;
     overflow: auto;
-    width: 400px;
+    width: 640px;
+    /* background-color: rgba(204, 255, 0, 0.34); */
+    background-color: rgba(42, 42, 42, 0.35);
+    padding: 20px;
 }
 
 #wall::-webkit-scrollbar {
     width: 0 !important;
+}
+
+.message {
+    width: 600px;
+    height: 200px;
+    border: 2px solid orange;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.message-author {
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    /* border: 2px solid blue; */
+    max-height: 200px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid orange;
+}
+
+.message-pic {
+    grid-row: 1;
+    /* border: 2px solid green; */
+    max-height: 100px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.message-pic img {
+    /* max-height: 200px; */
+    /* min-width: 100%; */
+    min-height: 100%;
+    overflow: hidden;
+
+    object-fit: cover;
+}
+
+.message-name {
+    grid-row: 2;
+    /* border: 2px solid yellow; */
+    max-height: 100px;
+    /* background-color: rgba(42, 42, 42, 0.75); */
+}
+
+.message-name h3 {
+    color: magenta;
+    margin: 0 auto;
+}
+
+.message-txt {
+    grid-column: 2;
+    background-color: rgba(0, 0, 0, 0.4);
+    max-height: 300px;
+    color: #ccff00;
+}
+
+.message-txt p {
+    font-size: 50px;
 }
 
 footer {
