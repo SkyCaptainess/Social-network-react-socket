@@ -4,12 +4,12 @@ import { ProfilePic } from "./profile-pic";
 import { Link } from "react-router-dom";
 
 const findPeopleDiv = {
-    width: "600px",
+    width: "100vw",
     overflow: "auto",
     textAlign: "center",
     display: "grid",
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "space-between",
+    justifyContent: "space-between",
     left: "20vw"
 };
 
