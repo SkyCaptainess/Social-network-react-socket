@@ -28,45 +28,55 @@ export default function Friends() {
     return (
         <div id="friends_wannabes">
             <div className="friends">
-                <h1>FRIENDS:</h1>
-                {friends.length != 0 &&
-                    friends.map(friend => (
-                        <div className="friend" key={friend.id}>
-                            <div className="uk-card uk-card-body profile-card square-profile">
-                                <div className="uk-child">
-                                    <div>
-                                        <div className="uk-card-media-top">
-                                            <Link
-                                                to={`/user/${friend.id}`}
-                                                className="link-block"
-                                            >
-                                                <ProfilePic
-                                                    imgUrl={friend.url}
-                                                />
-                                            </Link>
+                <div className="friends-title">
+                    <h1>FRIENDS:</h1>
+                </div>
+                <div className="friends-container">
+                    {friends.length != 0 &&
+                        friends.map(friend => (
+                            <div className="friend" key={friend.id}>
+                                <Link
+                                    to={`/user/${friend.id}`}
+                                    className="link-block"
+                                >
+                                    <div className="uk-card uk-card-body profile-card square-profile">
+                                        <div className="uk-child">
+                                            <div>
+                                                <div className="uk-card-media-top">
+                                                    <ProfilePic
+                                                        imgUrl={friend.url}
+                                                    />
+                                                </div>
+                                                <div className="uk-card-body custom">
+                                                    <h3 className="uk-card-title">
+                                                        {friend.first}{" "}
+                                                        {friend.last}
+                                                    </h3>
+                                                </div>
+                                                <button
+                                                    className="uk-button uk-button-default friendship-button"
+                                                    onClick={e =>
+                                                        dispatch(
+                                                            unfriend(friend.id)
+                                                        )
+                                                    }
+                                                >
+                                                    Unfriend
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div className="uk-card-body custom">
-                                            <h3 className="uk-card-title">
-                                                {friend.first} {friend.last}
-                                            </h3>
-                                        </div>
-                                        <button
-                                            className="uk-button uk-button-default friendship-button"
-                                            onClick={e =>
-                                                dispatch(unfriend(friend.id))
-                                            }
-                                        >
-                                            Unfriend
-                                        </button>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
-                        </div>
-                    ))}
-                {friends.length == 0 && <p>NO FRIENDS</p>}
+                        ))}
+                    {friends.length == 0 && <p>NO FRIENDS</p>}
+                </div>
             </div>
             <div className="wannabes">
-                <h1>WANNABES:</h1>
+                <div className="friends-title">
+                    <h1>WANNABES:</h1>
+                </div>
+
                 {wannabes.length != 0 &&
                     wannabes.map(wannabe => (
                         <div className="friend" key={wannabe.id}>

@@ -193,10 +193,51 @@ header h1 {
     width: 0 !important;
 }
 
+#wall:hover {
+    border: 2px solid #ccff00;
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+#wall .wall-writing {
+    margin-top: 150px;
+}
+
+.wall-title {
+    position: absolute;
+    top: 20px;
+    width: 598px;
+    height: 130px;
+    /* background-color: rgba(0, 0, 0, 1); */
+    margin: 20 auto;
+}
+
+.wall-title h1 {
+    font-size: 80px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+.uk-button.wall-button {
+    margin-top: 110px;
+    margin-bottom: -100px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.uk-button.wall-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.wall-container {
+    margin-top: 140px;
+}
+
 .message {
     width: 600px;
     height: 200px;
-    border: 2px ridge orange;
+    border: 2px solid #83f52c;
     margin: 20px 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -209,7 +250,7 @@ header h1 {
     /* border: 2px solid blue; */
     max-height: 196px;
     background-color: rgba(0, 0, 0, 0.6);
-    border-right: 2px solid orange;
+    border-right: 2px solid #83f52c;
 }
 
 .message-pic {
@@ -234,7 +275,10 @@ header h1 {
     grid-row: 2;
     /* border: 2px solid yellow; */
     max-height: 100px;
-    padding-top: 10px;
+    /* padding-top: 10px; */
+    display: grid;
+    align-items: center;
+    justify-content: center;
     /* background-color: rgba(42, 42, 42, 0.75); */
 }
 
@@ -246,13 +290,16 @@ header h1 {
 
 .message-txt {
     grid-column: 2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.4);
     max-height: 300px;
     color: #ccff00;
 }
 
 .message-txt p {
-    font-size: 50px;
+    font-size: 30px;
 }
 
 footer {
@@ -350,14 +397,14 @@ footer {
 }
 
 .uk-child {
-    background-color: rgba(42, 42, 42, 0.6);
 }
 
 .uk-card-body.custom {
     padding: 20px;
     border: 2px solid #83f52c;
     transition-duration: 0.001s;
-    margin: 0px auto 10px;
+    margin: 0px auto;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .uk-card-body.custom:hover {
@@ -376,10 +423,6 @@ footer {
     to {
         border-color: #ccff00;
     }
-}
-
-.wall-writing {
-    margin-top: 10px;
 }
 
 .card-content {
@@ -496,3 +539,34 @@ header {
     margin-bottom: 20px;
     width: 400px;
 }
+
+/* FRIENDS PAGE */
+
+.friends-title {
+    width: 100vw;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+.friends-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.friends-container .profile-card {
+    left: 0;
+    height: 500px;
+}
+
+.friends-container .friendship-button {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.friends-container .friendship-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* FRIENDS PAGE */

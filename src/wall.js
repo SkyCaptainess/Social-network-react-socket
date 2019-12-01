@@ -40,9 +40,12 @@ export default function Wall({ wallId }) {
         <div>
             {user && (
                 <div id="wall" className="friends">
+                    <div className="wall-title">
+                        <h1>Wall Messages</h1>
+                    </div>
                     {friendship && (
                         <button
-                            className="uk-button uk-button-default friendship-button"
+                            className="uk-button uk-button-default wall-button"
                             onClick={() => setScribbleInput(!scribbleInput)}
                         >
                             SCRIBBLE ON THE WALL
@@ -60,33 +63,36 @@ export default function Wall({ wallId }) {
                             </div>
                         </div>
                     )}
-                    {!!wallMessages &&
-                        wallMessages.length != 0 &&
-                        wallMessages.map(wallMessage => (
-                            <div
-                                className="friend"
-                                key={wallMessage.wall_msg_id}
-                            >
-                                <div className="message">
-                                    <div className="message-author">
-                                        <div className="message-pic">
-                                            <ProfilePic
-                                                imgUrl={wallMessage.url}
-                                            />
+                    <div className="wall-container">
+                        {!!wallMessages &&
+                            wallMessages.length != 0 &&
+                            wallMessages.map(wallMessage => (
+                                <div
+                                    className="friend"
+                                    key={wallMessage.wall_msg_id}
+                                >
+                                    <div className="message">
+                                        <div className="message-author">
+                                            <div className="message-pic">
+                                                <ProfilePic
+                                                    imgUrl={wallMessage.url}
+                                                />
+                                            </div>
+                                            <div className="message-name">
+                                                <h3 className="">
+                                                    {wallMessage.first}{" "}
+                                                    {wallMessage.last}
+                                                </h3>
+                                            </div>
                                         </div>
-                                        <div className="message-name">
-                                            <h3 className="">
-                                                {wallMessage.first}{" "}
-                                                {wallMessage.last}
-                                            </h3>
+                                        <div className="message-txt">
+                                            <p>{wallMessage.message}</p>
                                         </div>
-                                    </div>
-                                    <div className="message-txt">
-                                        <p>{wallMessage.message}</p>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                    </div>
+
                     {wallMessages.length == 0 && <p>NO WALLMESSAGES</p>}
                 </div>
             )}
