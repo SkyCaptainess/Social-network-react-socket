@@ -19,23 +19,35 @@ export function Chat() {
     };
 
     return (
-        <div>
+        <div className="chat">
             <h1>chatroom</h1>
             <div className="chat-container" ref={elemRef}>
                 {!!chatMessages &&
                     chatMessages.length != 0 &&
                     chatMessages.map(chatMessage => (
                         <div key={chatMessage.msg_id}>
-                            <img src={chatMessage.url} />
-                            <p>
-                                {chatMessage.first} {chatMessage.last}
-                            </p>
-                            <p>{chatMessage.message}</p>
+                            <div className="message">
+                                <div className="message-author">
+                                    <div className="message-pic">
+                                        <img src={chatMessage.url} />
+                                    </div>
+                                    <div className="message-name">
+                                        <h3 className="">
+                                            {chatMessage.first}{" "}
+                                            {chatMessage.last}
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div className="message-txt">
+                                    <p>{chatMessage.message}</p>
+                                </div>
+                            </div>
                         </div>
                     ))}
             </div>
             <textarea
                 placeholder="Add your chat message here."
+                className="uk-textarea custom chat"
                 onKeyDown={keyCheck}
             ></textarea>
         </div>

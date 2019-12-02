@@ -79,9 +79,10 @@ export function FindPeople() {
 
             <h2>Looking for someone?</h2>
             <input
-                className="uk-input"
+                className="uk-input find"
                 name="user-input"
                 type="text"
+                autoComplete="off"
                 onChange={e => setUserInput(e.target.value)}
             />
         </div>

@@ -519,15 +519,6 @@ header {
     overflow: clip;
 }
 
-/* CHAT */
-
-.chat-container {
-    height: 300px;
-    overflow-y: scroll;
-}
-
-/* CHAT */
-
 .find-people-main {
     width: 800px;
     margin: 0 auto;
@@ -543,6 +534,32 @@ header {
     margin: 0 auto;
     margin-bottom: 20px;
     width: 400px;
+}
+
+.uk-input.find {
+    background-color: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(204, 255, 0, 0.2); */
+    border-color: #0f6ecd;
+    margin-bottom: 5px;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.uk-input.find::selection {
+    background: rgba(0, 0, 0, 0.8);
+    color: magenta;
+}
+
+.uk-input.find:link {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #0f6ecd;
+}
+
+.uk-input.find:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: magenta;
 }
 
 /* FRIENDS PAGE */
@@ -575,3 +592,51 @@ header {
 }
 
 /* FRIENDS PAGE */
+
+/* CHAT */
+
+.chat {
+    width: 50vw;
+    height: 700px;
+    border: 2px solid #0f6ecd;
+    margin-top: -150px;
+    margin-bottom: -150px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.chat:hover {
+    border: 2px solid #ccff00;
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.chat-container {
+    height: 500px;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 2px solid #0f6ecd;
+}
+
+.uk-textarea.custom.chat {
+    max-width: 400px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: magenta;
+}
+
+.chat h1 {
+    font-size: 80px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+/* CHAT */
