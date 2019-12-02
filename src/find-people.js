@@ -9,7 +9,7 @@ const findPeopleDiv = {
     textAlign: "center",
     display: "grid",
     alignItems: "space-between",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     left: "20vw"
 };
 
