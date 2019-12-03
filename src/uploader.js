@@ -44,23 +44,27 @@ export default class Uploader extends React.Component {
     render() {
         return (
             <div style={uploaderOverlay}>
-                <div className="uk-card uk-card-default uploader">
-                    <div className="uk-form-file custom">
-                        <button
-                            className="uk-button"
-                            onClick={() => this.uploadImg()}
-                        >
-                            click to upload{" "}
-                        </button>
-                        <input
-                            type="file"
-                            id="file"
-                            accept="image/*"
-                            onChange={e => {
-                                this.fileSelected(e);
-                            }}
-                        />
-                    </div>
+                <div className="uploader">
+                    <h1>TO UPLOAD A PROFILE PICTURE, FIRST</h1>
+                    <input
+                        type="file"
+                        id="file"
+                        className="inputfile"
+                        accept="image/*"
+                        onChange={e => {
+                            this.fileSelected(e);
+                        }}
+                    />
+                    <label htmlFor="file" className="uk-button">
+                        CHOOSE A FILE
+                    </label>
+                    <h1>THEN</h1>
+                    <button
+                        className="uk-button"
+                        onClick={() => this.uploadImg()}
+                    >
+                        click to upload{" "}
+                    </button>
                 </div>
             </div>
         );

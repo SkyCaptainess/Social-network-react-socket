@@ -144,12 +144,68 @@ header h1 {
         -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
 }
 
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
 .uploader {
     transform: rotate(-20deg);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: "Neuro";
+    width: 300px;
+    color: #0f6ecd;
+    border: 2px solid #ccff00;
+    background-color: black;
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: -20px;
+}
+
+.uploader button {
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: "Neuro";
+    width: 300px;
+    color: #0f6ecd;
+    border: 2px solid #ccff00;
+    background-color: black;
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: -20px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #0f6ecd;
+    color: magenta;
+}
+.uploader button:focus,
+.uploader button:hover {
+    background-color: #0f6ecd;
+    color: magenta;
+}
+.uploader h1 {
+    font-family: "Neuro";
+    color: magenta;
 }
 
 .uk-form-file.custom {
     border-color: #ccff00;
+    width: 600px;
+    height: 200px;
 }
 
 #content {
