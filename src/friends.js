@@ -26,7 +26,7 @@ export default function Friends() {
     }
 
     return (
-        <div id="friends_wannabes">
+        <div className="friends_wannabes">
             <div className="friends">
                 <div className="friends-title">
                     <h1>FRIENDS:</h1>
@@ -115,7 +115,7 @@ export default function Friends() {
                             </div>
                         </div>
                     ))}
-                {wannabes.length == 0 && <p>NO WANNABES</p>}
+                {wannabes.length == 0 && <p>AT THE MOMENT, NO WANNABES</p>}
             </div>
         </div>
     );

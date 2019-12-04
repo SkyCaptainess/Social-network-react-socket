@@ -66,14 +66,15 @@
     grid-gap: 1em;
     min-height: 100vh;
     font-family: "Neuro";
-    background-image: url("img/plastic.jpg");
-    background-repeat: no-repeat;
+    background-image: url("img/plastik.jpg");
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-y;
     background-size: 100%;
 }
 
 .content::after {
     content: "";
-    background: url("img/plastic.jpg");
+    background: url("img/plastik.jpg");
     opacity: 0.5;
     top: 0;
     left: 0;
@@ -673,6 +674,7 @@ header {
 .friends-container .profile-card {
     left: 0;
     height: 500px;
+    text-decoration: none;
 }
 
 .friends-container .friendship-button {
@@ -682,6 +684,16 @@ header {
 
 .friends-container .friendship-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.friends_wannabes p {
+    color: magenta;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.friend a:hover {
+    /* border: 10px solid black; */
+    text-decoration: none;
 }
 
 /* FRIENDS PAGE */
