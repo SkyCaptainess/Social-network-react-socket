@@ -3,6 +3,11 @@
     padding: 0;
     box-sizing: border-box;
     /* background-color: #b3b3b3; */
+    text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+    width: 0 !important;
 }
 
 @font-face {
@@ -131,12 +136,14 @@ header {
 }
 
 header img {
-    opacity: 0.5;
-    transition-duration: 1s;
+    height: 80%;
+    opacity: 1;
+    transition-duration: 0.2s;
 }
 
 header img:hover {
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
+    transform: scale(0.8);
 }
 
 header h1 {
@@ -192,6 +199,11 @@ header h1 {
     background-color: #0f6ecd;
     color: magenta;
 }
+.inputfile:visited + label {
+    background-color: black;
+    color: #0f6ecd;
+}
+
 .uploader button:focus,
 .uploader button:hover {
     background-color: #0f6ecd;
@@ -461,6 +473,7 @@ footer {
     transition-duration: 0.001s;
     margin: 0px auto;
     background-color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
 }
 
 .uk-card-body.custom:hover {
@@ -469,6 +482,7 @@ footer {
     animation-name: soft-shiver;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+    text-decoration: none;
 }
 
 @keyframes soft-shiver {
@@ -583,6 +597,29 @@ header {
     justify-content: center;
 }
 
+.find-people-main h1 {
+    /* margin-top: -30px; */
+    width: 600px;
+    margin: 0 auto;
+    font-size: 60px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid magenta;
+    opacity: 0.95;
+}
+
+.find-people-main h4 {
+    margin: 0 auto;
+
+    width: 600px;
+    color: #83f52c;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-family: "Neuro";
+    opacity: 0.95;
+    padding: 5px 0;
+}
+
 #find-card {
     position: relative;
     left: 0;
@@ -603,7 +640,7 @@ header {
     margin: 0 auto;
 }
 
-.uk-input.find::selection {
+.uk-input.find:focus {
     background: rgba(0, 0, 0, 0.8);
     color: magenta;
 }
@@ -696,3 +733,16 @@ header {
 }
 
 /* CHAT */
+
+.list-element a:hover,
+a:visited,
+a:link,
+a:active {
+    text-decoration: none;
+}
+
+.container h2.looking {
+    text-shadow: -0.25px -0.25px 0 magenta, 0.75px -0.75px 0 #0f6ecd,
+        -0.25px 0.25px 0 magenta, 0.75px 0.75px 0 #0f6ecd;
+    color: #ccff00;
+}

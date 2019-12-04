@@ -15,8 +15,9 @@ const appTitle = {
 };
 
 const smallLogo = {
-    width: "100px",
-    height: "100px",
+    width: "80px",
+    height: "80px",
+    margin: "10px",
     objectFit: "cover",
     backgroundColor: "transparent"
 };
@@ -70,11 +71,13 @@ export default class App extends React.Component {
                             <Link to={`/friends/`} className="app-link">
                                 friends
                             </Link>
-                            <img
-                                onClick={this.toggleModal}
-                                style={smallLogo}
-                                src={this.state.url}
-                            />
+                            <div className="header-img">
+                                <img
+                                    onClick={this.toggleModal}
+                                    style={smallLogo}
+                                    src={this.state.url}
+                                />
+                            </div>
                         </header>
 
                         <div id="content">

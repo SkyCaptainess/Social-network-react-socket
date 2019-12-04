@@ -45,8 +45,8 @@ export function FindPeople() {
     return (
         <div className="find-people-main">
             <div style={findPeopleDiv}>
-                <h2>Find People</h2>
-                <h3>Checkout who just joined</h3>
+                <h1>DISCOVER OTHER USERS</h1>
+                {!userInput && <h4>Checkout who just joined</h4>}
                 <ul className="unordered-list">
                     {users.map(user => (
                         <li className="list-element" key={user.first}>
@@ -77,7 +77,7 @@ export function FindPeople() {
                 </ul>
             </div>
 
-            <h2>Looking for someone?</h2>
+            <h2 className="looking">Looking for someone?</h2>
             <input
                 className="uk-input find"
                 name="user-input"
