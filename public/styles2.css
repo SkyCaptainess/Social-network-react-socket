@@ -59,6 +59,10 @@
 
 /* MAIN GRID */
 
+p {
+    color: #ccff00;
+}
+
 .container {
     display: grid;
     position: relative;
@@ -254,7 +258,8 @@ header h1 {
     overflow: auto;
     width: 640px;
     /* background-color: rgba(204, 255, 0, 0.34); */
-    background-color: rgba(42, 42, 42, 0.35);
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(42, 42, 42, 0.35); */
     padding: 20px;
 }
 
@@ -393,6 +398,11 @@ footer {
     color: #b3b3b3;
 }
 
+.uk-input.custom:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #b3b3b3;
+}
+
 .welcome-link {
     position: fixed;
     display: block;
@@ -454,7 +464,8 @@ footer {
     left: -20vw;
     width: 500px;
     border: 2px orange solid;
-    background-color: rgba(42, 42, 42, 0.35);
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(42, 42, 42, 0.35); */
 }
 
 #content .profile-card h3 {
@@ -688,6 +699,10 @@ header {
 .friends-container .friendship-button {
     margin-top: 15px;
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+.uk-button-default.friendship-button:visited {
+    color: magenta;
 }
 
 .friends-container .friendship-button:hover {

@@ -94,3 +94,7 @@ header {
     text-align: center;
     margin-bottom: 10px;
 }
+
+input::selection {
+    background-color: black;
+}

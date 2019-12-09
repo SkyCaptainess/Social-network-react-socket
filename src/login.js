@@ -55,6 +55,7 @@ export default class Login extends React.Component {
                         placeholder="email"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <input
                         name="password"
@@ -62,6 +63,7 @@ export default class Login extends React.Component {
                         placeholder="password"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <button
                         className="uk-button uk-button-default"

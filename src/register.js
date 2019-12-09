@@ -57,18 +57,21 @@ export default class Register extends React.Component {
                         placeholder="first name"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <input
                         name="last"
                         placeholder="last name"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <input
                         name="email"
                         placeholder="email"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <input
                         name="password"
@@ -76,6 +79,7 @@ export default class Register extends React.Component {
                         placeholder="password"
                         className="uk-input custom"
                         onChange={e => this.handleChange(e)}
+                        autoComplete="off"
                     />
                     <button
                         className="uk-button uk-button-default"

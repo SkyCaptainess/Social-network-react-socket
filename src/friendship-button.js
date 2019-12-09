@@ -53,11 +53,13 @@ export default function FriendshipButton(props) {
                 setStatus("Make Friend Request");
             }
         }
+        document.getElementById("friend-button").blur();
     };
 
     return (
         <div>
             <button
+                id="friend-button"
                 className="uk-button uk-button-default friendship-button"
                 onClick={postRequest}
             >

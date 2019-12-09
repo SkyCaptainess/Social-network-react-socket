@@ -56,7 +56,7 @@ export function FindPeople() {
                             >
                                 <div
                                     id="find-card"
-                                    className="uk-card uk-card-body profile-card square-profile"
+                                    className="uk-card uk-card-body profile-card custom square-profile"
                                 >
                                     <div className="uk-child">
                                         <div>
