@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS messages;
+
 CREATE TABLE messages (
     id SERIAL PRIMARY KEY,
     message VARCHAR(300),

@@ -252,7 +252,7 @@ header h1 {
 #wall {
     border: 2px solid magenta;
     position: absolute;
-    top: 200px;
+    top: 178px;
     right: 15vw;
     height: 640px;
     overflow: auto;
@@ -370,6 +370,7 @@ header h1 {
     background-color: rgba(0, 0, 0, 0.4);
     max-height: 300px;
     color: #ccff00;
+    padding: 20px;
 }
 
 .message-txt p {
@@ -378,6 +379,10 @@ header h1 {
 
 footer {
     grid-row: 3;
+    position: fixed;
+    width: 100vw;
+    bottom: 0px;
+    height: 50px;
     text-align: center;
     background-color: #0f6ecd;
     opacity: 0.8;

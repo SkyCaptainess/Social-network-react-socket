@@ -76,45 +76,47 @@ export default function Friends() {
                 <div className="friends-title">
                     <h1>WANNABES:</h1>
                 </div>
-
-                {wannabes.length != 0 &&
-                    wannabes.map(wannabe => (
-                        <div className="friend" key={wannabe.id}>
-                            <div className="uk-card uk-card-body profile-card square-profile">
-                                <div className="uk-child">
-                                    <div>
-                                        <div className="uk-card-media-top">
-                                            <Link
-                                                to={`/user/${wannabe.id}`}
-                                                className="link-block"
-                                            >
-                                                <ProfilePic
-                                                    imgUrl={wannabe.url}
-                                                />
-                                            </Link>
-                                        </div>
-                                        <div className="uk-card-body custom">
-                                            <h3 className="uk-card-title">
-                                                {wannabe.first} {wannabe.last}
-                                            </h3>
-                                        </div>
-                                        <button
-                                            className="uk-button uk-button-default friendship-button"
-                                            onClick={e =>
-                                                dispatch(
-                                                    acceptFriendRequest(
-                                                        wannabe.id
+                <div className="friends-container">
+                    {wannabes.length != 0 &&
+                        wannabes.map(wannabe => (
+                            <div className="friend" key={wannabe.id}>
+                                <div className="uk-card uk-card-body profile-card square-profile">
+                                    <div className="uk-child">
+                                        <div>
+                                            <div className="uk-card-media-top">
+                                                <Link
+                                                    to={`/user/${wannabe.id}`}
+                                                    className="link-block"
+                                                >
+                                                    <ProfilePic
+                                                        imgUrl={wannabe.url}
+                                                    />
+                                                </Link>
+                                            </div>
+                                            <div className="uk-card-body custom">
+                                                <h3 className="uk-card-title">
+                                                    {wannabe.first}{" "}
+                                                    {wannabe.last}
+                                                </h3>
+                                            </div>
+                                            <button
+                                                className="uk-button uk-button-default friendship-button"
+                                                onClick={e =>
+                                                    dispatch(
+                                                        acceptFriendRequest(
+                                                            wannabe.id
+                                                        )
                                                     )
-                                                )
-                                            }
-                                        >
-                                            Accept
-                                        </button>
+                                                }
+                                            >
+                                                Accept
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                </div>
                 {wannabes.length == 0 && <p>AT THE MOMENT, NO WANNABES</p>}
             </div>
         </div>
