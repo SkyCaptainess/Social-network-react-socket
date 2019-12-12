@@ -19,7 +19,8 @@ const smallLogo = {
     height: "80px",
     margin: "10px",
     objectFit: "cover",
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    opacity: "0.7"
 };
 
 export default class App extends React.Component {

@@ -2,99 +2,787 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
+    /* background-color: #b3b3b3; */
+    text-decoration: none;
 }
 
-input {
-    font-family: "Times New Roman";
-    font-size: 20px;
-    border: 2px inset black;
-    display: block;
-    width: 300px;
-    margin: 10px 5px auto;
-    background-color: #fff9ff;
-    color: #1b2e2c;
+*::-webkit-scrollbar {
+    width: 0 !important;
 }
 
-input::placeholder {
-    text-align: center;
-    font-style: italic;
+@font-face {
+    font-family: "Merkur";
+    src: url("/fonts/Merkur.otf");
+    font-style: normal;
+    font-weight: normal;
 }
 
-#welcome {
-    display: grid;
-    align-items: center;
-    justify-content: center;
+@font-face {
+    font-family: "Neuro";
+    src: url("/fonts/neuropolitical.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Earth";
+    src: url("/fonts/Earth.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Nulshock";
+    src: url("/fonts/Nulshock.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Cubos";
+    src: url("/fonts/Cubos.ttf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Prime";
+    src: url("/fonts/Prime-Regular.woff");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Cubos";
+    src: url("Cubos.ttf");
+    font-weight: bold;
+}
+
+/* MAIN GRID */
+
+p {
+    color: #ccff00;
 }
 
 .container {
     display: grid;
-    grid-template-areas: "header" "content" "footer";
-    grid-template-rows: auto 1fr auto;
-    grid-gap: 10px;
-    height: 100vh;
+    position: relative;
+    grid-template-rows: 110px auto 50px;
+    grid-gap: 1em;
+    min-height: 100vh;
+    font-family: "Neuro";
+    background-image: url("img/plastik.jpg");
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-y;
+    background-size: 100%;
 }
 
-header {
-    grid-area: header;
+.content::after {
+    content: "";
+    background: url("img/plastik.jpg");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
-.content {
-    display: grid;
-    align-items: center;
-    justify-content: center;
+.container img {
+    margin: 0;
 }
 
-.profile {
-    width: 500px;
+.container h1 {
+    font-family: "Merkur";
+    font-size: 10vh;
+    color: #ccff00;
+    background-color: transparent;
 }
 
-.profile img {
-    width: 100%;
-    object-fit: cover;
-    max-height: 60%;
+.container h2 {
+    font-family: "Nulshock";
+    font-size: 23px;
+    color: black;
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.inputDiv {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid black;
-    background-color: #459649;
-    padding: 10px 0;
-    font-family: "Lucida Grande";
-}
-
-.inputDiv button {
-    width: 200px;
-    margin: 10px auto;
-    background-color: #1b2e2c;
-    color: #fff9ff;
-    border-color: black;
-    font-family: "Times New Roman";
+.container p {
+    font-family: "Earth";
     font-size: 20px;
 }
 
-.uk-card button {
-    width: 150px;
-    margin: 10px auto;
+.container button {
+    border-color: #ccff00;
+    color: #0f6ecd;
+}
+.container button:hover {
+    border-color: #0f6ecd;
+    color: magenta;
 }
 
-.friendship-button {
-    width: 300px;
-}
-
-.logLink {
+header {
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    max-height: 130px;
+    background-color: rgba(42, 42, 42, 0.75);
+    /* background-color: rgba(15, 110, 205, 0.7); */
+    opacity: 0.8;
+    grid-row: 1;
     text-align: center;
-    margin-bottom: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    border-bottom: 1px ridge magenta;
+    overflow: clip;
 }
 
-input::selection {
+header img {
+    height: 80%;
+    opacity: 1;
+    transition-duration: 0.2s;
+}
+
+header img:hover {
+    /* transform: rotate(180deg); */
+    transform: scale(0.8);
+}
+
+header h1 {
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.uploader {
+    transform: rotate(-20deg);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: "Neuro";
+    width: 300px;
+    color: #0f6ecd;
+    border: 2px solid #ccff00;
     background-color: black;
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: -20px;
+}
+
+.uploader button {
+    font-size: 1.25em;
+    font-weight: 700;
+    font-family: "Neuro";
+    width: 300px;
+    color: #0f6ecd;
+    border: 2px solid #ccff00;
+    background-color: black;
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: -20px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #0f6ecd;
+    color: magenta;
+}
+.inputfile:visited + label {
+    background-color: black;
+    color: #0f6ecd;
+}
+
+.uploader button:focus,
+.uploader button:hover {
+    background-color: #0f6ecd;
+    color: magenta;
+}
+.uploader h1 {
+    font-family: "Neuro";
+    color: magenta;
+}
+
+.uk-form-file.custom {
+    border-color: #ccff00;
+    width: 600px;
+    height: 200px;
+}
+
+#content {
+    font-family: "Neuro";
+    height: 100%;
+    /* width: 100vw; */
+    min-width: 400px;
+    /* Start on Row 2 */
+    grid-row: 2;
+    /* Start on the second column line and stop at the third column line */
+    /* grid-column: 2 / 3; */
+    display: grid;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#content h3 {
+    font-family: "Neuro";
+}
+
+#content .uk-button:focus {
+    border-color: #ccff00;
+}
+
+#wall {
+    border: 2px solid magenta;
+    position: absolute;
+    top: 178px;
+    right: 15vw;
+    height: 640px;
+    overflow: auto;
+    width: 640px;
+    /* background-color: rgba(204, 255, 0, 0.34); */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(42, 42, 42, 0.35); */
+    padding: 20px;
+}
+
+#wall::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+#wall:hover {
+    border: 2px solid #ccff00;
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+#wall .wall-writing {
+    margin-top: 150px;
+}
+
+.wall-title {
+    position: absolute;
+    top: 20px;
+    width: 598px;
+    height: 130px;
+    /* background-color: rgba(0, 0, 0, 1); */
+    margin: 20 auto;
+}
+
+.wall-title h1 {
+    font-size: 80px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+.uk-button.wall-button {
+    margin-top: 110px;
+    margin-bottom: -100px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.uk-button.wall-button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.wall-container {
+    margin-top: 140px;
+}
+
+.message {
+    width: 600px;
+    height: 200px;
+    border: 2px solid #83f52c;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.message-author {
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    /* border: 2px solid blue; */
+    max-height: 196px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-right: 2px solid #83f52c;
+}
+
+.message-pic {
+    grid-row: 1;
+    /* border: 2px solid green; */
+    min-height: 70px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.message-pic img {
+    max-height: 140px;
+    min-width: 100%;
+    /* min-height: 100%; */
+    overflow: hidden;
+
+    object-fit: cover;
+}
+
+.message-name {
+    grid-row: 2;
+    /* border: 2px solid yellow; */
+    max-height: 100px;
+    /* padding-top: 10px; */
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgba(42, 42, 42, 0.75); */
+}
+
+.message-name h3 {
+    font-size: 15px;
+    color: magenta;
+    margin: 0 auto;
+}
+
+.message-txt {
+    grid-column: 2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    max-height: 300px;
+    color: #ccff00;
+    padding: 20px;
+}
+
+.message-txt p {
+    font-size: 30px;
+}
+
+footer {
+    grid-row: 3;
+    position: fixed;
+    width: 100vw;
+    bottom: 0px;
+    height: 50px;
+    text-align: center;
+    background-color: #0f6ecd;
+    opacity: 0.8;
+}
+
+/* MAIN GRID */
+
+.content-wrapper {
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* WELCOME PAGE */
+
+#content .welcomeInput {
+    width: 400px;
+    background-color: rgba(42, 42, 42, 0.75);
+    color: #b3b3b3;
+}
+
+.uk-input.custom:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #b3b3b3;
+}
+
+.welcome-link {
+    position: fixed;
+    display: block;
+    top: 100px;
+    right: 20px;
+    z-index: 6;
+    background-color: transparent;
+    color: #ccff00;
+    font-family: "Prime";
+}
+
+.welcome-title {
+    background-color: #0f6ecd;
+    /* background-color: #83f52c; */
+    font-size: 15px;
+    opacity: 0.8;
+    /* border: 4px groove magenta; */
+}
+
+.uk-textarea.custom {
+    background-color: transparent;
+    border-color: #0f6ecd;
+    margin-bottom: 20px;
+}
+
+.uk-textarea.custom:focus {
+    background: rgba(0, 0, 0, 0.8);
+    color: magenta;
+}
+
+.uk-textarea.custom::placeholder {
+    color: magenta;
+}
+
+.uk-input.custom {
+    background-color: rgba(204, 255, 0, 0.34);
+    /* background-color: rgba(204, 255, 0, 0.2); */
+    border-color: #0f6ecd;
+    margin-bottom: 5px;
+}
+
+.uk-input.custom::placeholder {
+    color: magenta;
+}
+
+/* WELCOME PAGE */
+
+/* PROFILE CARD */
+
+#profile-flex {
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-card {
+    /* position: absolute; */
+    left: -20vw;
+    width: 500px;
+    border: 2px orange solid;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(42, 42, 42, 0.35); */
+}
+
+#content .profile-card h3 {
+    font-family: "Nulshock";
+    color: magenta;
+}
+
+.profile-card p {
+    color: rgb(204, 255, 0);
+}
+
+.profile-card button {
+    color: #0f6ecd;
+}
+
+.uk-child {
+}
+
+.uk-card-body.custom {
+    padding: 20px;
+    border: 2px solid #83f52c;
+    transition-duration: 0.001s;
+    margin: 0px auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+}
+
+.uk-card-body.custom:hover {
+    border: 2px solid #ccff00;
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    text-decoration: none;
+}
+
+@keyframes soft-shiver {
+    from {
+        border-color: magenta;
+    }
+
+    to {
+        border-color: #ccff00;
+    }
+}
+
+.card-content {
+    background-color: rgba(22, 22, 22, 0.2);
+}
+
+.uk-card-media-top div {
+    background-color: rgba(22, 22, 22, 0.2);
+}
+
+.uk-card-media-top img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    z-index: 5;
+    border: 2px solid #ccff00;
+    margin-bottom: 10px;
+    background-color: rgba(42, 42, 42, 0.2);
+}
+
+.unordered-list {
+    padding: 0;
+    /* height: 100%; */
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.list-element {
+    list-style-type: none;
+}
+
+.square-profile {
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+
+.link-block {
+    display: block;
+}
+
+/* PROFILE CARD */
+
+/* APP HEADER */
+
+.app-link {
+    font-size: 30px;
+    z-index: 6;
+    background-color: transparent;
+    color: #0f6ecd;
+    font-family: "Neuro";
+    transition-duration: 1s;
+    text-shadow: -1px -1px 0 #ccff00, 0.5px -0.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1px 1px 0 magenta;
+}
+
+.app-link:hover {
+    animation-duration: 0.17s;
+    animation-name: shiver;
+    animation-iteration-count: infinite;
+    text-decoration: none;
+    text-shadow: -15px 0 black, 0 15px black, 15px 0 black, 0 -15px black;
+    color: magenta;
+    overflow: clip;
+}
+
+@keyframes shiver {
+    from {
+        text-shadow: -35px 0 black, 0 35px black, 35px 0 black, 0 -35px black;
+        color: #ccff00;
+        left: 100px;
+    }
+
+    to {
+        text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 -0px black;
+        font-size: 20px;
+    }
+    to {
+        text-shadow: -185px 0 black, 0 185px black, 185px 0 black,
+            0 -185px black;
+        color: magenta;
+        right: 500px;
+    }
+    to {
+        text-shadow: 0px 0 black, 0 0px black, 0px 0 black, 0 -0px black;
+        font-size: 50px;
+    }
+}
+
+header {
+    max-height: 130px;
+    overflow: clip;
+}
+
+.find-people-main {
+    width: 800px;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.find-people-main h1 {
+    width: 700px;
+    margin: 0 auto;
+    font-size: 70px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    border-bottom: 1px solid magenta;
+    opacity: 0.95;
+}
+
+.find-people-main h4 {
+    margin: 0 auto;
+
+    width: 600px;
+    color: #83f52c;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    font-family: "Neuro";
+    font-size: 30px;
+    opacity: 0.95;
+    padding: 5px 0;
+    margin-bottom: 30px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+#find-card {
+    position: relative;
+    left: 0;
+    right: 30vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+.uk-input.find {
+    background-color: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(204, 255, 0, 0.2); */
+    border-color: #0f6ecd;
+    margin-bottom: 5px;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.uk-input.find:focus {
+    background: rgba(0, 0, 0, 0.8);
+    color: magenta;
+}
+
+.uk-input.find:link {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #0f6ecd;
+}
+
+.uk-input.find:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: magenta;
+}
+
+/* FRIENDS PAGE */
+
+.friends-title {
+    width: 100vw;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+.friends-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.friends-container .profile-card {
+    left: 0;
+    height: 500px;
+    text-decoration: none;
+}
+
+.friends-container .friendship-button {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.uk-button-default.friendship-button:visited {
+    color: magenta;
+}
+
+.friends-container .friendship-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.friends_wannabes p {
+    color: magenta;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.friend a:hover {
+    /* border: 10px solid black; */
+    text-decoration: none;
+}
+
+/* FRIENDS PAGE */
+
+/* CHAT */
+
+.chat {
+    width: 50vw;
+    height: 700px;
+    border: 2px solid #0f6ecd;
+    margin-top: -150px;
+    margin-bottom: -150px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.chat:hover {
+    border: 2px solid #ccff00;
+    animation-duration: 0.001s;
+    animation-name: soft-shiver;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.chat-container {
+    height: 500px;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 2px solid #0f6ecd;
+}
+
+.uk-textarea.custom.chat {
+    max-width: 400px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: magenta;
+}
+
+.chat h1 {
+    font-size: 80px;
+    text-shadow: -0.5px -0.5px 0 #ccff00, 1.5px -1.5px 0 magenta,
+        -0.5px 0.5px 0 #ccff00, 1.5px 1.5px 0 magenta;
+}
+
+/* CHAT */
+
+.list-element a:hover,
+a:visited,
+a:link,
+a:active {
+    text-decoration: none;
+}
+
+.container h2.looking {
+    text-shadow: -0.25px -0.25px 0 magenta, 0.75px -0.75px 0 #0f6ecd,
+        -0.25px 0.25px 0 magenta, 0.75px 0.75px 0 #0f6ecd;
+    color: #ccff00;
 }

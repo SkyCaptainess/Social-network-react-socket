@@ -7,7 +7,8 @@ const entranceLogo = {
     width: "400px",
     height: "400px",
     objectFit: "cover",
-    margin: "0 auto"
+    margin: "0 auto",
+    opacity: "0.7"
 };
 
 export default function Welcome() {
