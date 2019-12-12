@@ -1,6 +1,6 @@
-# PETSCII
+# VOYEUR VOYEUR
 
-"Voyeur Voyeur" is a post-apocalyptic social network built in React.js. It was completed in a 2 1/2 weeks time at [SPICED Academy](https://www.spiced.academy/program/full-stack-web-development/), with hooks, Redux and socket.io being introduced in stages. _Note: The project is not hosted, due to liability concerns._
+"Voyeur Voyeur: mutual privacy breach" is a post-apocalyptic social network built in React.js. It was completed in a 2 1/2 weeks time at [SPICED Academy](https://www.spiced.academy/program/full-stack-web-development/), with hooks, Redux and socket.io being introduced in stages. _Note: The project is not hosted, due to liability concerns._
 
 ---
 
