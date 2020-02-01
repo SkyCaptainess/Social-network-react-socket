@@ -2,11 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
-import { reducer } from "./reducer";
+import { reducer } from "./components/reducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import * as io from "socket.io-client";
-import { init } from "./socket";
+import { init } from "./components/socket";
 
 const socket = io.connect();
 socket.emit("iAmHere", {
@@ -18,8 +18,8 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(reduxPromise))
 );
 
-import Welcome from "./welcome";
-import App from "./app";
+import Welcome from "./components/welcome";
+import App from "./components/app";
 
 const userIsLoggedIn = location.pathname != "/welcome";
 
