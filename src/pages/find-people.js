@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "./axios";
-import { ProfilePic } from "./profile-pic";
+import axios from "../axios";
+import { ProfilePic } from "../elements/profile-pic";
 import { Link } from "react-router-dom";
 
 const findPeopleDiv = {

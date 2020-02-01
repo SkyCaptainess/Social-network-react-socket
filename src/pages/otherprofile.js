@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "./axios";
-import { ProfilePic } from "./profile-pic";
-import FriendshipButton from "./friendship-button";
-import Wall from "./wall";
+import axios from "../axios";
+import { ProfilePic } from "../elements/profile-pic";
+import FriendshipButton from "../elements/friendship-button";
+import Wall from "../elements/wall";
 
 export class OtherProfile extends React.Component {
     constructor() {

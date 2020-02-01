@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { socket } from "./socket";
+import { socket } from "../socket";
 
 export function Chat() {
     const chatMessages = useSelector(state => state && state.chatMessages);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { receiveWallMessages, getFriendship, addWallMessage } from "./actions";
+import { receiveWallMessages, getFriendship, addWallMessage } from "../actions";
 import { ProfilePic } from "./profile-pic";
 // import axios from "./axios";
 

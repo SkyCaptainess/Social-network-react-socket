@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter, Route } from "react-router-dom";
-import Register from "./register";
-import Login from "./login";
+import Register from "./pages/register";
+import Login from "./pages/login";
 
 const entranceLogo = {
     width: "400px",

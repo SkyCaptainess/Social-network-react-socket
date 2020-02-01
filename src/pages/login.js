@@ -1,8 +1,8 @@
 import React from "react";
-import axios from "./axios";
+import axios from "../axios";
 import { Link } from "react-router-dom";
 
-export default class Register extends React.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -16,9 +16,7 @@ export default class Register extends React.Component {
 
     submit() {
         axios
-            .post("/register", {
-                first: this.state.first,
-                last: this.state.last,
+            .post("/login", {
                 email: this.state.email,
                 password: this.state.password
             })
@@ -43,29 +41,15 @@ export default class Register extends React.Component {
         return (
             <div>
                 <div className="welcome-link">
-                    <Link to="/login" className="welcome-link">
-                        log in.
+                    <Link to="/" className="welcome-link">
+                        need to register?
                     </Link>
                 </div>
                 <div className="welcome-title">
-                    <h2>Mutual Privacy Breach.</h2>
+                    <h2>Well hello again.</h2>
                 </div>
 
                 <div className="uk-card uk-card-default uk-card-body custom welcomeInput">
-                    <input
-                        name="first"
-                        placeholder="first name"
-                        className="uk-input custom"
-                        onChange={e => this.handleChange(e)}
-                        autoComplete="off"
-                    />
-                    <input
-                        name="last"
-                        placeholder="last name"
-                        className="uk-input custom"
-                        onChange={e => this.handleChange(e)}
-                        autoComplete="off"
-                    />
                     <input
                         name="email"
                         placeholder="email"

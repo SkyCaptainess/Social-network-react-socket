@@ -4,8 +4,8 @@ import {
     receiveFriendsWannabes,
     acceptFriendRequest,
     unfriend
-} from "./actions";
-import { ProfilePic } from "./profile-pic";
+} from "../actions";
+import { ProfilePic } from "../elements/profile-pic";
 import { Link } from "react-router-dom";
 
 export default function Friends() {
