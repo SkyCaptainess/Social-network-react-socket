@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Uploader from "./elements/uploader";
 import Profile from "./pages/profile";
-import axios from "./axios";
+import axios from "../axios";
 import { OtherProfile } from "./pages/otherprofile";
 import { FindPeople } from "./pages/find-people";
 import Friends from "./pages/friends";

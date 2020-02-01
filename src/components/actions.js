@@ -1,4 +1,4 @@
-import axios from "./axios";
+import axios from "../axios";
 
 export async function receiveFriendsWannabes() {
     const { data } = await axios.get("/friends-wannabes");

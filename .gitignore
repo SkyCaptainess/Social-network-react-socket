@@ -7,6 +7,6 @@ src/cute-animals.js
 src/hello-world.js
 src/hooks.js
 src/hooks2.js
-src/bio-editor.test.js
-src/app.test.js
-src/profile-pic.test.js
+src/tests/bio-editor.test.js
+src/tests/app.test.js
+src/tests/profile-pic.test.js
